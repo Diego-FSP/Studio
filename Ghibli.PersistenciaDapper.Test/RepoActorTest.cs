@@ -27,7 +27,7 @@ public class RepoActorTest : TestBase
         {
             Nombre = "Guillermo",
             Apellido = "Del Toro",
-            IdActor= 122
+            IdActor= 1
         };
 
         _repoActor.Alta(guillermo);
@@ -57,9 +57,9 @@ public class RepoActorTest : TestBase
     {
         var guillermo = new ActorVoz()
         {
-            Nombre = "Guillermo",
-            Apellido = "Del Toro",
-            IdActor= 122
+            Nombre = "GuillermoAsync",
+            Apellido = "Del ToroAsync",
+            IdActor= 1
         };
 
         await _repoActor.AltaAsync(guillermo);

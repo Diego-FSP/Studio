@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 using Directores;
 using Ghibli.Persistencia;
 using Peli;
@@ -13,7 +12,7 @@ public class RepoPeliculaTest : TestBase
         => _repoPelicula = new RepoPelicula(Conexion);
 
 //SIN ASYNC================================================================================================
-     [Fact]
+    [Fact]
     public void TraerPelicula()
     {
         var peliculas = _repoPelicula.Listar();
@@ -63,7 +62,7 @@ public class RepoPeliculaTest : TestBase
         Assert.True( totoro.Nombre == "Totoro" && totoro.IdPelicula == 3 );
     }
 //CON ASYNC====================================================================================================================
-     [Fact]
+    [Fact]
     public async Task TraerPeliculaAsync()
     {
         var peliculas = await _repoPelicula.ListarAsync();
@@ -88,12 +87,12 @@ public class RepoPeliculaTest : TestBase
         var nino = new Pelicula()
         {
             IdPelicula= 122,
-            Nombre = "Niño y la Garza",
+            Nombre = "El Niño y la Garza",
             idStudio = 1,
             FechaEstreno = new DateTime(2011, 6, 10),
             FechaCreacion = new DateTime(2011, 6, 10),
             Duracion= "2.h",
-            Genero= "Animacion",
+            Genero= "Anime",
             Calificacion= "9.2",
             Presupuesto= 110002,
             ProgramaEstilo= "usaweew",

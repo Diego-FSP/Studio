@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 using Actores;
 using Ghibli.Persistencia;
 using Personajes;
@@ -12,7 +11,7 @@ public class RepoPersonajeTest : TestBase
     public RepoPersonajeTest() : base()
         => _repoPersonaje = new RepoPersonaje(Conexion);
 
-//SIN ASYNC==========================================================================================================================
+    //SIN ASYNC==========================================================================================================================
     [Fact]
     public void TraerPersonaje()
     {
@@ -24,18 +23,19 @@ public class RepoPersonajeTest : TestBase
     }
     [Fact]
     public void AltaOK()
-    {   var guill = new ActorVoz()
+    {
+        var guill = new ActorVoz()
         {
             Nombre = "Guillermo",
             Apellido = "Franchella",
-            IdActor= 122
+            IdActor = 122
         };
         var guillermo = new Personaje()
         {
             Nombre = "Hachiko",
-            idPelicula= 2,
-            idPersonaje=1,
-            Actor= guill
+            idPelicula = 2,
+            idPersonaje = 1,
+            Actor = guill
         };
 
         _repoPersonaje.Alta(guillermo);
@@ -51,7 +51,7 @@ public class RepoPersonajeTest : TestBase
         Assert.True(gavilan.Nombre == "Gavilán" && gavilan.idPelicula == 2);
     }
 
-//CON ASYNC=================================================================================================================================================
+    //CON ASYNC=================================================================================================================================================
 
     [Fact]
     public async Task TraerPersonajeAsync()
@@ -64,18 +64,19 @@ public class RepoPersonajeTest : TestBase
     }
     [Fact]
     public async Task AltaOKAsync()
-    {   var guill = new ActorVoz()
+    {
+        var guill = new ActorVoz()
         {
-            Nombre = "Guillermo",
-            Apellido = "Franchella",
-            IdActor= 122
+            Nombre = "GuillermoAsync",
+            Apellido = "FranchellaAsync",
+            IdActor = 1         
         };
         var guillermo = new Personaje()
         {
-            Nombre = "Hachiko",
-            idPelicula= 2,
-            idPersonaje=1,
-            Actor= guill
+            Nombre = "HachikoAsync",
+            idPelicula = 2,
+            idPersonaje = 1,
+            Actor = guill
         };
 
         await _repoPersonaje.AltaAsync(guillermo);

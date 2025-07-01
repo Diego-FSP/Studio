@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 using Directores;
 using Ghibli.Persistencia;
 
@@ -11,7 +10,7 @@ public class RepoDirectorTest : TestBase
     public RepoDirectorTest() : base()
         => _repoDirector = new RepoDirector(Conexion);
 
-//SIN ASYNC=======================================================================================================================================
+    //SIN ASYNC=======================================================================================================================================
     [Fact]
     public void TraerDirector()
     {
@@ -28,11 +27,11 @@ public class RepoDirectorTest : TestBase
     {
         var guillermo = new Director()
         {
-            idDirector= 122,
+            idDirector = 122,
             Nombre = "Guillermo",
             Apellido = "Del Toro",
-            nacionalidad="Peru",
-            FechaNacimiento= new DateTime(2011, 6, 10)
+            nacionalidad = "Peru",
+            FechaNacimiento = new DateTime(2011, 6, 10)
         };
 
         _repoDirector.Alta(guillermo);
@@ -48,7 +47,7 @@ public class RepoDirectorTest : TestBase
         Assert.True(hayao.Nombre == "Hayao" && hayao.Apellido == "Miyazaki");
     }
 
-//CON ASYNC========================================================================================================================
+    //CON ASYNC========================================================================================================================
     [Fact]
     public async Task TraerDirectorAsync()
     {
@@ -65,11 +64,11 @@ public class RepoDirectorTest : TestBase
     {
         var guillermo = new Director()
         {
-            idDirector= 122,
-            Nombre = "Guillermo",
-            Apellido = "Del Toro",
-            nacionalidad="Peru",
-            FechaNacimiento= new DateTime(2011, 6, 10)
+            idDirector = 122,
+            Nombre = "Guillermo Async",
+            Apellido = "Del Toro Async",
+            nacionalidad = "Mexico",
+            FechaNacimiento = new DateTime(2011, 6, 10)
         };
 
         await _repoDirector.AltaAsync(guillermo);
