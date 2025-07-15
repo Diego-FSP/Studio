@@ -16,6 +16,11 @@ public class RepoPelicula : RepoBase, IRepoPelicula
     static readonly string _detallepelicula = _listadoPeliculas + @"
     where id_pelicula = @idpelicula
     limit 1";
+
+    string _Eliminar =
+    @"DELETE FROM peliculas
+    WHERE id_pelicula=";
+
     public RepoPelicula(IDbConnection conexion)
         : base(conexion) { }
 
@@ -97,5 +102,15 @@ public class RepoPelicula : RepoBase, IRepoPelicula
     {
         var peliculas = await Conexion.QueryAsync<Pelicula>(_listadoPeliculas);
         return peliculas;
+    }
+
+    public void Eliminar(int id)
+    {
+        throw new NotImplementedException();
+    }
+
+    public async Task EliminarAsync(int id)
+    {
+        await Conexion.QueryAsync<Pelicula>(_Eliminar+id);
     }
 }

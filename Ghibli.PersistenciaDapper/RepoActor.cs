@@ -11,13 +11,17 @@ public class RepoActor : RepoBase, IRepoActor
     static readonly string _listadoActores =
         @"SELECT id_actor AS IdActor, nombre, apellido
         FROM    Actor_voz";
-    
+
     static readonly string _detalleActor = _listadoActores + @"
     WHERE id_actor = @idactor
     LIMIT 1";
+
+    string _Eliminar =
+    @"DELETE FROM actor_voz
+    WHERE id_actor=";
     public RepoActor(IDbConnection conexion)
         : base(conexion) { }
-//METODOS NO ASINCRONICOS____________________________________________________________________________________________________________________
+    //METODOS NO ASINCRONICOS____________________________________________________________________________________________________________________
     public void Alta(ActorVoz actor)
     {
         //throw new NotImplementedException();
@@ -27,19 +31,19 @@ public class RepoActor : RepoBase, IRepoActor
         parametros.Add("@unnombre", actor.Nombre);
         parametros.Add("@unapellido", actor.Apellido);
         parametros.Add("@unidactor", direction: ParameterDirection.Output);
-    
-        
+
+
         Conexion.Execute("nuevoActor", parametros);
         //Obtengo el valor de parametro de tipo salida
         actor.IdActor = parametros.Get<int>("@unidactor");
     }
-    
+
 
     public ActorVoz? Detalle(int idActor)
     {
-         var actor = Conexion.QueryFirst<ActorVoz>(
-            _detalleActor,
-            new {idActor = idActor});
+        var actor = Conexion.QueryFirst<ActorVoz>(
+           _detalleActor,
+           new { idActor = idActor });
         return actor;
     }
 
@@ -48,7 +52,7 @@ public class RepoActor : RepoBase, IRepoActor
         var actores = Conexion.Query<ActorVoz>(_listadoActores);
         return actores;
     }
-//METODOS ASINCRONICOS_______________________________________________________________________________________________________________________
+    //METODOS ASINCRONICOS_______________________________________________________________________________________________________________________
 
     public async Task AltaAsync(ActorVoz actor)
     {
@@ -59,18 +63,18 @@ public class RepoActor : RepoBase, IRepoActor
         parametros.Add("@unnombre", actor.Nombre);
         parametros.Add("@unapellido", actor.Apellido);
         parametros.Add("@unidactor", direction: ParameterDirection.Output);
-        
+
         await Conexion.ExecuteAsync("nuevoActor", parametros);
         //Obtengo el valor de parametro de tipo salida
         actor.IdActor = parametros.Get<int>("@unidactor");
     }
-    
+
 
     public async Task<ActorVoz?> DetalleAsync(int idActor)
     {
         var actor = await Conexion.QueryFirstAsync<ActorVoz>(
             _detalleActor,
-            new {idActor = idActor});
+            new { idActor = idActor });
         return actor;
     }
 
@@ -78,6 +82,16 @@ public class RepoActor : RepoBase, IRepoActor
     {
         var actores = await Conexion.QueryAsync<ActorVoz>(_listadoActores);
         return actores;
+    }
+
+    public async Task EliminarAsync(int id)
+    {
+        await Conexion.QueryAsync<ActorVoz>(_Eliminar+id);
+    }
+
+    public void Eliminar(int id)
+    {
+        throw new NotImplementedException();
     }
 }
 
