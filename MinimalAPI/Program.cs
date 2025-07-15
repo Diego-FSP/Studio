@@ -30,7 +30,10 @@ if (app.Environment.IsDevelopment())
 app.MapGet("/Actor", async (IRepoActor actor) =>
     await actor.ListarAsync());
 
-app.MapPost("/Actor/{ID}", async (ActorVoz nuevo , IRepoActor actor) =>
-await actor.AltaAsync(nuevo));
+app.MapPost("/Actor/", async (ActorVoz nuevo , IRepoActor actor) =>
+{
+    await actor.AltaAsync(nuevo);
+    return Results.Created($"/Actor/{nuevo.IdActor}", nuevo);
+});
 
 app.Run();
