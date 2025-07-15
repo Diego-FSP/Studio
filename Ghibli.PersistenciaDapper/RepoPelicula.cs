@@ -92,7 +92,7 @@ public class RepoPelicula : RepoBase, IRepoPelicula
 
     public async Task<Pelicula?> DetalleAsync(int idPelicula)
     {
-        var pelicula = await Conexion.QueryFirstAsync<Pelicula>(
+        var pelicula = await Conexion.QueryFirstOrDefaultAsync<Pelicula>(
             _detallepelicula,
             new {idPelicula = idPelicula});
         return pelicula;

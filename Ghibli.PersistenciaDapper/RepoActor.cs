@@ -2,7 +2,6 @@ using System.Data;
 using Dapper;
 using Actores;
 using Ghibli.Persistencia;
-using System.Threading.Tasks;
 
 namespace Ghibli.PersistenciaDapper;
 
@@ -72,7 +71,7 @@ public class RepoActor : RepoBase, IRepoActor
 
     public async Task<ActorVoz?> DetalleAsync(int idActor)
     {
-        var actor = await Conexion.QueryFirstAsync<ActorVoz>(
+        var actor = await Conexion.QueryFirstOrDefaultAsync<ActorVoz>(
             _detalleActor,
             new { idActor = idActor });
         return actor;
