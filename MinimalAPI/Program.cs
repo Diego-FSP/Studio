@@ -68,7 +68,7 @@ app.MapGet("/Pelicula/{id}", async (int id, IRepoPelicula pelicula) =>
 app.MapPost("/Pelicula/", async (Pelicula nuevo, IRepoPelicula pelicula) =>
 {
     await pelicula.AltaAsync(nuevo);
-    return Results.Created($"/Actor/{nuevo.IdPelicula}", nuevo);
+    return Results.Created($"/Pelicula/{nuevo.IdPelicula}", nuevo);
 });
 
 app.MapDelete("/Pelicula/{id}", async (int id, IRepoPelicula pelicula) =>
