@@ -5,6 +5,7 @@ using System.Data;
 using MySqlConnector;
 using Scalar.AspNetCore;
 using Ghibli.Persistencia;
+using MinimalAPI.DTO;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -56,8 +57,12 @@ app.MapDelete("/Actor/{id}", async (int id, IRepoActor actor) =>
 
 
 
-app.MapGet("/Pelicula", async (IRepoPelicula pelicula) =>
-    await pelicula.ListarAsync());
+app.MapGet("/Pelicula", async (IRepoPelicula repo) =>
+{
+    var peliculas = await repo.ListarAsync();
+    return Results.Ok(peliculas.Select(p => new PeliculaDTO(p)));
+});
+    
 
 app.MapGet("/Pelicula/{id}", async (int id, IRepoPelicula pelicula) =>
     await pelicula.DetalleAsync(id)
