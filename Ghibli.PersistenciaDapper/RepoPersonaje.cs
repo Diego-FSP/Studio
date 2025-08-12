@@ -22,6 +22,11 @@ public class RepoPersonaje : RepoBase, IRepoPersonajes
     where id_personaje = @idPersonaje
     limit 1";
 
+    static readonly string _Actor =
+    @"Select id_actor
+    from personaje_voz
+    where id_personaje= @idpersonaje";
+
     public RepoPersonaje(IDbConnection conexion)
         : base(conexion) { }
 
@@ -88,7 +93,7 @@ public class RepoPersonaje : RepoBase, IRepoPersonajes
             new { idPersonaje = idPersonaje });
 
         
-        
+
         return personaje;
     }
 
@@ -97,10 +102,29 @@ public class RepoPersonaje : RepoBase, IRepoPersonajes
         var personajes = await Conexion.QueryAsync<Personaje>(_listadoPersonajes);
         return personajes;
     }
-    
+
     public async Task<IEnumerable<Personaje>> ListarfromAsync(int id)
     {
-        var personajes = await Conexion.QueryAsync<Personaje>(_listadoPersonajesfrom+id);
+        var personajes = await Conexion.QueryAsync<Personaje>(_listadoPersonajesfrom + id);
+        
         return personajes;
     }
 }
+
+/*
+
+int aux = await Conexion.QueryFirstOrDefaultAsync<int>(_Actor,
+        new { idPersonaje = idPersonaje });
+
+        RepoActor repoActor = new RepoActor(base.Conexion);
+        personaje.Actor = await repoActor.DetalleAsync(aux);
+______________________________________________________________________________
+RepoActor repoActor = new RepoActor(base.Conexion);
+        foreach (Personaje p in personajes)
+        {
+            int aux = await Conexion.QueryFirstOrDefaultAsync<int>(_Actor,
+            new { idPersonaje = p.idPersonaje });
+
+            p.Actor = await repoActor.DetalleAsync(aux);
+        }
+*/
