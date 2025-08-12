@@ -4,6 +4,7 @@ using Actores;
 using Ghibli.Persistencia;
 using Peli;
 using System.Threading.Tasks;
+using Microsoft.VisualBasic;
 
 namespace Ghibli.PersistenciaDapper;
 
@@ -21,8 +22,14 @@ public class RepoPelicula : RepoBase, IRepoPelicula
     @"DELETE FROM peliculas
     WHERE id_pelicula=";
 
+    string _Director =
+    @"select id_director
+    from peliculas
+    where id_pelicula=@idpelicula";
+
+    IDbConnection conex;
     public RepoPelicula(IDbConnection conexion)
-        : base(conexion) { }
+        : base(conexion) { conex = conexion; }
 
 //SIN ASYNC========================================================================================
     public void Alta(Pelicula pelicula)
@@ -95,6 +102,16 @@ public class RepoPelicula : RepoBase, IRepoPelicula
         var pelicula = await Conexion.QueryFirstOrDefaultAsync<Pelicula>(
             _detallepelicula,
             new {idPelicula = idPelicula});
+
+        int AUX = await Conexion.QueryFirstOrDefaultAsync<int>(_Director,
+        new {idPelicula = idPelicula});
+
+        RepoDirector repoDirector = new RepoDirector(conex);
+        pelicula.director = await repoDirector.DetalleAsync(AUX);
+
+        RepoPersonaje repoPersonaje = new RepoPersonaje(conex);
+        pelicula.Personajes = (List<Personajes.Personaje>)await repoPersonaje.ListarfromAsync(idPelicula);
+
         return pelicula;
     }
 
