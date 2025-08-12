@@ -107,7 +107,21 @@ public class RepoPersonaje : RepoBase, IRepoPersonajes
     {
         var personajes = await Conexion.QueryAsync<Personaje>(_listadoPersonajesfrom + id);
         
+        RepoActor repoActor = new RepoActor(base.Conexion);
+        foreach (Personaje p in personajes)
+        {
+            int aux = await Conexion.QueryFirstOrDefaultAsync<int>(_Actor,
+            new { idPersonaje = p.idPersonaje });
+
+            p.Actor = await repoActor.DetalleAsync(aux);
+        }
+        
         return personajes;
+    }
+
+    public Task<IEnumerable<Personaje>> ListarfromAsync()
+    {
+        throw new NotImplementedException();
     }
 }
 
