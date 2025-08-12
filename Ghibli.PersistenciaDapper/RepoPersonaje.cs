@@ -86,6 +86,9 @@ public class RepoPersonaje : RepoBase, IRepoPersonajes
         var personaje = await Conexion.QueryFirstAsync<Personaje>(
             _detallePersonajes,
             new { idPersonaje = idPersonaje });
+
+        
+        
         return personaje;
     }
 
