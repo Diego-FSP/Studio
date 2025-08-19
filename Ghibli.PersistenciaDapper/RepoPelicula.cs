@@ -130,4 +130,9 @@ public class RepoPelicula : RepoBase, IRepoPelicula
     {
         await Conexion.QueryAsync<Pelicula>(_Eliminar+id);
     }
+
+    public Task<IEnumerable<Pelicula>> ListarfromAsync(int id)
+    {
+        throw new NotImplementedException();
+    }
 }

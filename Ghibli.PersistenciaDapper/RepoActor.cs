@@ -92,6 +92,11 @@ public class RepoActor : RepoBase, IRepoActor
     {
         throw new NotImplementedException();
     }
+
+    public Task<IEnumerable<ActorVoz>> ListarfromAsync(int id)
+    {
+        throw new NotImplementedException();
+    }
 }
 
 

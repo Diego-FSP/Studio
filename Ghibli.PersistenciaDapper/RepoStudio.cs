@@ -83,4 +83,9 @@ public class RepoStudio : RepoBase, IRepoStudio
         var studio = await Conexion.QueryAsync<Studio>(_listadoStudio);
         return studio;
     }
+
+    public Task<IEnumerable<Studio>> ListarfromAsync(int id)
+    {
+        throw new NotImplementedException();
+    }
 }

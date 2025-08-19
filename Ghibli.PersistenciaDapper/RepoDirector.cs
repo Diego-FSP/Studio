@@ -81,4 +81,9 @@ public class RepoDirector : RepoBase, IRepoDirector
         var Directores = await Conexion.QueryAsync<Director>(_listadoDirectores);
         return Directores;
     }
+
+    public Task<IEnumerable<Director>> ListarfromAsync(int id)
+    {
+        throw new NotImplementedException();
+    }
 }
