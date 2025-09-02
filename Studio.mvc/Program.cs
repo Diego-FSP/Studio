@@ -1,7 +1,22 @@
+using System.Data;
+using Ghibli.Persistencia;
+using Ghibli.PersistenciaDapper;
+using MySqlConnector;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+var connectionString = builder.Configuration.GetConnectionString("MySQL");
+
+builder.Services.AddScoped<IDbConnection>(sp => new MySqlConnection(connectionString));
+
+//Cada vez que necesite la interfaz, se va a instanciar automaticamente AdoDapper y se va a pasar al metodo de la API
+builder.Services.AddScoped<IRepoActor, RepoActor>();
+builder.Services.AddScoped<IRepoPelicula, RepoPelicula>();
+builder.Services.AddScoped<IRepoDirector, RepoDirector>();
+
 
 var app = builder.Build();
 
