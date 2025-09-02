@@ -1,6 +1,7 @@
 using Ghibli.PersistenciaDapper;
 using Actores;
 using Peli;
+using Directores;
 using System.Data;
 using MySqlConnector;
 using Scalar.AspNetCore;
@@ -16,6 +17,7 @@ builder.Services.AddScoped<IDbConnection>(sp => new MySqlConnection(connectionSt
 //Cada vez que necesite la interfaz, se va a instanciar automaticamente AdoDapper y se va a pasar al metodo de la API
 builder.Services.AddScoped<IRepoActor, RepoActor>();
 builder.Services.AddScoped<IRepoPelicula, RepoPelicula>();
+builder.Services.AddScoped<IRepoDirector, RepoDirector>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -29,6 +31,11 @@ if (app.Environment.IsDevelopment())
     });
     app.MapScalarApiReference();
 }
+
+
+//_______________________________________________________________________________________________________
+//-------------------------------------------ACTOR-------------------------------------------------------
+//_______________________________________________________________________________________________________
 
 app.MapGet("/Actor", async (IRepoActor actor) =>
     await actor.ListarAsync());
@@ -54,8 +61,9 @@ app.MapDelete("/Actor/{id}", async (int id, IRepoActor actor) =>
     }
     return Results.NotFound();
 });
-
-
+//_______________________________________________________________________________________________________
+//----------------------------------------PELICULAS------------------------------------------------------
+//_______________________________________________________________________________________________________
 
 app.MapGet("/Pelicula", async (IRepoPelicula repo) =>
 {
@@ -84,6 +92,20 @@ app.MapDelete("/Pelicula/{id}", async (int id, IRepoPelicula pelicula) =>
         return Results.NoContent();
     }
     return Results.NotFound();
+});
+
+
+//_______________________________________________________________________________________________________
+//----------------------------------------DIRECTORES-----------------------------------------------------
+//_______________________________________________________________________________________________________
+
+app.MapGet("/Director", async (IRepoDirector repo) =>
+    await repo.ListarAsync()); 
+
+app.MapPost("/Director/", async (Director nuevo, IRepoDirector repo) =>
+{
+    await repo.AltaAsync(nuevo);
+    return Results.Created($"/Director/{nuevo.idDirector}", nuevo);
 });
 
 app.Run();
