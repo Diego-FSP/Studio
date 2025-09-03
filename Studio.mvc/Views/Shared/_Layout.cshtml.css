@@ -1,6 +1,28 @@
 ﻿/* Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
+ul.ListaI{
+  background-color: rgb(184, 237, 219);
+  display: block;
+}
+
+.ListaNombre{
+  margin-left: -30px;
+}
+
+li.ListItem{
+  position: relative;
+  display: none;
+}
+
+.ListaI:hover>.ListItem{
+  display: block;
+}
+
+.ListaNombre:focus~li.ListItem{
+  display: block;
+}
+
 a.navbar-brand {
   white-space: normal;
   text-align: center;

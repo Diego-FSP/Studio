@@ -23,9 +23,16 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Directores">Directores</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="INFO">INFO</a>
                         </li>
                     </ul>
+                    <ul class="ListaI">
+                        <h4 class="ListaNombre">Directores</h4>
+                        <li class="ListItem"><a asp-controller="Directores" asp-action="Listado">Listado</a></li>
+                        <li class="ListItem"><a asp-controller="Directores" asp-action="Agregar">Agregar</a></li>
+                    </ul>
+                    <script>
+                    </script>
                 </div>
             </div>
         </nav>
@@ -38,7 +45,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2025 - Studio.mvc - <a asp-area="" asp-controller="Home" asp-action="Directores">Directores</a>
+            &copy; 2025 - Studio.mvc - <a asp-area="" asp-controller="Home" asp-action="INFO">INFO</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
