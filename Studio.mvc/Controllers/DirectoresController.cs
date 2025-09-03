@@ -13,8 +13,8 @@ public class DirectoresController : Controller
     
     public async Task<IActionResult> Listado()
     {
-        var paises = await repo.ListarAsync();
-        return View(paises);
+        var Directores = await repo.ListarAsync();
+        return View(Directores);
     }
 }
 /* */
