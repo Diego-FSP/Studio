@@ -1,12 +1,12 @@
 use studio;
-Insert into `Director` (id_director, nombre, apellido, fecha_nacimiento, nacionalidad)
-Values (1, 'Hayao', 'Miyazaki', '1941-01-05', 'Japonesa'),
-(2, 'Isao', 'Takahata', '1935-10-29', 'Japonesa'),
-(3, 'Hiromasa', 'Yonebayashi', '1973-07-10', 'Japonesa'),
-(4, 'Gorō', 'Miyazaki', '1967-01-21', 'Japonesa'),
-(5, 'Hiroyuki', 'Morita', '1964-06-26', 'Japonesa'),
-(6, 'Tomomi', 'Mochizuki', '1958-12-31', 'Japonesa'),
-(7, 'Yoshifumi', 'Kondo', '1950-03-31', 'Japonesa');
+Insert into `Director` (id_director, nombre, apellido, fecha_nacimiento, nacionalidad, descripcion)
+Values (1, 'Hayao', 'Miyazaki', '1941-01-05', 'Japonesa','Hayao Miyazaki es un director de cine de animación, animador, ilustrador, empresario, mangaka y productor de anime japonés, de renombre internacional y con una carrera de cinco décadas. Junto con Isao Takahata fundó Studio Ghibli, un estudio de películas y animación.'),
+(2, 'Isao', 'Takahata', '1935-10-29', 'Japonesa','Isao Takahata fue un director, productor y guionista de películas y series de animación japonesa. Fundó, junto con su amigo Hayao Miyazaki, los estudios Ghibli'),
+(3, 'Hiromasa', 'Yonebayashi', '1973-07-10', 'Japonesa','Hiromasa Yonebayashi, también conocido como Maro, es un director y técnico de animación japonés, antiguo jefe de animación de Hayao Miyazaki y trabajador del Studio Ghibli.​ Estudió en el Kanazawa College of Art, donde realizó estudios en diseño comercial.'),
+(4, 'Gorō', 'Miyazaki', '1967-01-21', 'Japonesa','Gorō Miyazaki es un director de cine, guionista y arquitecto japonés. Es hijo del destacado director de animación Hayao Miyazaki. Inicialmente era reacio a seguir los pasos de su padre y se dedicó al paisajismo antes que a la animación.​'),
+(5, 'Hiroyuki', 'Morita', '1964-06-26', 'Japonesa','Hiroyuki Morita es un director y animador. Ha trabajado en películas como Sueños, de Akira Kurosawa y Lupin III. De su época en Studio Ghibli destacan El viaje de Chihiro, Neko no Ongaeshi y El castillo en el cielo. Fue director de Bokurano, serie de anime basada en un manga del mangaka Mohiro Kitō.'),
+(6, 'Tomomi', 'Mochizuki', '1958-12-31', 'Japonesa','Tomomi Mochizuki es un director, animador, guionista y guionista gráfico de anime japonés.​​ A veces trabaja bajo el seudónimo Gō Sakamoto como guionista y director.​ Ingresó a Ajia-do Animation Works, donde comenzó como animador y luego se convirtió en director de escena y director general.​'),
+(7, 'Yoshifumi', 'Kondo', '1950-03-31', 'Japonesa','Yoshifumi Kondō fue a animador japonés, destacando sus trabajos Studio Ghibli en sus últimos años. Nació en Gosen, Prefectura de Niigata, Japón. Trabajó como director de animación en Ana de lasTejas Verdes, Sherlock Hound, Majo no Takkyūbin, Recuerdos del ayer y La princesa Mononoke.');
 
 
 

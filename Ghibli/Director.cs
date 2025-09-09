@@ -6,5 +6,6 @@ public class Director
     public required string Nombre { get; set; }
     public required string Apellido { get; set; }
     public required string nacionalidad { get; set; }
+    public required string descripcion { get; set; }
     public DateTime FechaNacimiento { get; set; }
 }

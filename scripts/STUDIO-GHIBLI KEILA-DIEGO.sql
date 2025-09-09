@@ -7,7 +7,8 @@ create table Director(
  Apellido varchar(20),
  id_Director int AUTO_INCREMENT,
  Fecha_nacimiento date,
- nacionalidad varchar(20), 
+ nacionalidad varchar(20),
+ descripcion varchar(400),
  
  constraint pk_Director primary key(id_director)
  );

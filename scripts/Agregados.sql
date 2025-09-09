@@ -12,10 +12,10 @@ end &&
 
 
 drop PROCEDURE if EXISTS directorAG&&
-CREATE PROCEDURE directorAG(out unidDirector int, unnombre VARCHAR(20),unapellido VARCHAR(20), unanacionalidad VARCHAR(20), unaFecha DATETIME)
+CREATE PROCEDURE directorAG(out unidDirector int, unnombre VARCHAR(20),unapellido VARCHAR(20), unanacionalidad VARCHAR(20), unaFecha DATETIME, unadescripcion VARCHAR(400))
 Begin
-	INSERT into Director (id_Director, nombre, Apellido, nacionalidad, Fecha_nacimiento)
-	VALUES (unidDirector , unnombre , unapellido , unanacionalidad , unaFecha);
+	INSERT into Director (id_Director, nombre, Apellido, nacionalidad, Fecha_nacimiento, descripcion)
+	VALUES (unidDirector , unnombre , unapellido , unanacionalidad , unaFecha, unadescripcion);
 	SET unidDirector = LAST_INSERT_ID();
 
 end&&

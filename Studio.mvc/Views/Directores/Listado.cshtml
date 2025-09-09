@@ -2,7 +2,33 @@
     ViewData["Title"] = "Directores Page";
 }
 
-<div class="text-center">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
     <h1 class="display-4">Directores</h1>
     <h3>Listado</h3>
+
+    <table>
+        <thead>
+            <th>Directores</th>
+            <th>Acciones</th>
+        </thead>
+        <tbody>
+            @foreach(var repo in Model)
+            {
+                <tr>
+                    <th><a asp-action="Detalle" asp-route-Id="@repo.idDirector">@repo.Nombre @repo.Apellido</a></th>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
+</body>
+</html>
+
+

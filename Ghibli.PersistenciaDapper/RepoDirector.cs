@@ -9,7 +9,7 @@ namespace Ghibli.PersistenciaDapper;
 public class RepoDirector : RepoBase, IRepoDirector
 {
     static readonly string _listadoDirectores =
-        @"SELECT id_Director AS idDirector, nombre, Apellido, nacionalidad, Fecha_nacimiento as FechaNacimiento
+        @"SELECT id_Director AS idDirector, nombre, Apellido, nacionalidad, Fecha_nacimiento as FechaNacimiento, descripcion
         FROM    Director";
     static readonly string _detalleDirector = _listadoDirectores + @"
         WHERE id_Director = @idDirector
@@ -29,6 +29,7 @@ public class RepoDirector : RepoBase, IRepoDirector
         parametros.Add("@unapellido", director.Apellido);
         parametros.Add("@unanacionalidad", director.nacionalidad);
         parametros.Add("@unaFecha", director.FechaNacimiento);
+        parametros.Add("@unadescripcion", director.descripcion);
         
         Conexion.Execute("directorAG", parametros);
        
@@ -61,7 +62,8 @@ public class RepoDirector : RepoBase, IRepoDirector
         parametros.Add("@unapellido", director.Apellido);
         parametros.Add("@unanacionalidad", director.nacionalidad);
         parametros.Add("@unaFecha", director.FechaNacimiento);
-        
+        parametros.Add("@unadescripcion", director.descripcion);
+
         await Conexion.ExecuteAsync("directorAG", parametros);
        
         //Obtengo el valor de parametro de tipo salida

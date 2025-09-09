@@ -1,0 +1,54 @@
+@{
+    ViewData["Title"] = "Directores Page";
+
+    string mes=meses();
+
+    string meses()
+    {
+        string x="";
+        switch(Model.FechaNacimiento.ToString("MM"))
+        {
+            case "01": x= "Enero";
+            break;
+            case "02": x= "Febrero";
+            break;
+            case "03": x= "Marzo";
+            break;
+            case "04": x= "Abril";
+            break;
+            case "05": x= "Mayo";
+            break;
+            case "06": x= "Junio";
+            break;
+            case "07": x= "Julio";
+            break;
+            case "08": x= "Agosto";
+            break;
+            case "09": x= "Septiembre";
+            break;
+            case "10": x= "Octubre";
+            break;
+            case "11": x= "Noviembre";
+            break;
+            case "12": x= "Diciembre";
+            break;
+        }
+        return x;
+    }
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hola</title>
+</head>
+<body>
+    <h3>@Model.Nombre @Model.Apellido</h3>
+    
+    <p>Nacio el @Model.FechaNacimiento.ToString("dd") de @mes del @Model.FechaNacimiento.ToString("yyyy")</p>
+    <p>Es de nacionalidad <strong>@Model.nacionalidad</strong></p>
+    <p>@Model.descripcion </p>
+</body>
+</html>
