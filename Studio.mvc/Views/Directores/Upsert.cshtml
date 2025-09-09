@@ -1,0 +1,78 @@
+@using Directores;
+@model Director;
+@{
+    ViewData["Title"] = "Directores Page";
+    var texto = Model.idDirector == 0 ? "Agregar Director" : "Modificar Director";
+}
+
+<div>
+    @if(Model.idDirector==0)
+    {
+        <h2>Agregar Director</h2>
+    }
+    else{
+        <h2>Modificar Director n° @Model.idDirector </h2>
+    }
+</div>
+
+<form asp-controller="Directores" asp-action="Upsert" method="post">
+    <div asp-validation-summary="All"></div>
+    <div><input type="hidden" asp-for="@Model.idDirector" /></div>
+    
+    <div class="row g-2 align-items-center">
+        <div class="col-auto">
+            <label asp-for="Nombre" class="col-form-label">Nombre</label>
+        </div>
+        <div class="col-auto">
+            <input asp-for="Nombre" class="form-control" />
+        </div>
+    </div>
+
+    <div class="row g-2 align-items-center">
+        <div class="col-auto">
+            <label asp-for="Apellido" class="col-form-label">Apellido</label>
+        </div>
+        <div class="col-auto">
+            <input asp-for="Apellido" class="form-control" />
+        </div>
+    </div>
+
+    <div class="row g-2 align-items-center"></div>
+        <div class="col-auto">
+            <label asp-for="descripcion" class="col-form-label">Descripcion</label>
+        </div>
+        <div class="col-auto">
+            <input asp-for="descripcion" class="form-control" />
+        </div>
+    </div>
+
+    <div class="row g-2 align-items-center">
+        <div class="col-auto">
+            <label asp-for="FechaNacimiento" class="col-form-label">Nacimiento</label>
+        </div>
+        <div class="col-auto">
+            <input type="date" asp-for="FechaNacimiento" class="form-control">
+        </div>
+    
+    <div class="row g-2 align-items-center">
+        <div class="col-auto"></div>
+            <select asp-for="nacionalidad" class="form-select">
+                <option selected="selected" value="" disabled>Seleccione un pais</option>
+                <option selected="selected" value="Japonesa" >Japonesa</option>
+                <option selected="selected" value="Estadounidense" >Estadounidense</option>
+            </select>
+        </div>
+    </div>
+    </div>
+
+    <div class="col-auto">
+        @if (Model.idDirector == 0)
+        {
+            <button type="submit" class="btn btn-primary">@texto</button>
+        }
+        else
+        {
+            <button type="submit" class="btn btn-warning">@texto</button>
+        }
+    </div>
+</form>

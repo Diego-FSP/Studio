@@ -88,4 +88,25 @@ public class RepoDirector : RepoBase, IRepoDirector
     {
         throw new NotImplementedException();
     }
+
+    public Director Modificar(Director elemento)
+    {
+        throw new NotImplementedException();
+    }
+
+    public async Task ModificarAsync(Director elemento)
+    {
+        var parametros = new DynamicParameters();
+        parametros.Add("@unidDirector", direction: ParameterDirection.Output);
+        parametros.Add("@unnombre", elemento.Nombre);
+        parametros.Add("@unapellido", elemento.Apellido);
+        parametros.Add("@unanacionalidad", elemento.nacionalidad);
+        parametros.Add("@unaFecha", elemento.FechaNacimiento);
+        parametros.Add("@unadescripcion", elemento.descripcion);
+
+        await Conexion.ExecuteAsync("directorUP", parametros);
+       
+        //Obtengo el valor de parametro de tipo salida
+        elemento.idDirector = parametros.Get<int>("@unidDirector");
+    }
 }

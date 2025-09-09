@@ -1,8 +1,6 @@
-using System.Diagnostics;
+using Directores;
 using Ghibli.Persistencia;
-using Ghibli.PersistenciaDapper;
 using Microsoft.AspNetCore.Mvc;
-using Studio.mvc.Models;
 
 namespace Studio.mvc.Controllers;
 
@@ -29,5 +27,57 @@ public class DirectoresController : Controller
 
         return View(director);
     }
+
+    [HttpGet]
+    public async Task<IActionResult> Alta()
+    {
+        var director = new Director()
+        {
+            idDirector = 0,
+            Nombre = "Nombre",
+            Apellido = "Apellido",
+            nacionalidad = "Nacionalidad",
+            descripcion = "Descripcion",
+            FechaNacimiento = new DateTime(2000, 1, 10)
+        };
+        return View("Upsert", director);
+    }
+    
+    [HttpPost]
+    public async Task<IActionResult> Modificar(int? id)
+    {
+        if (id is null || id == 0)
+            return NotFound();
+
+        var director = await repo.DetalleAsync(id.GetValueOrDefault());
+
+        if (director is null)
+            return NotFound();
+
+        return View("Upsert", director);
+    }
+
+
+    [HttpPost]
+    public async Task<IActionResult> Upsert(Director director)
+    {
+        if (!ModelState.IsValid)
+        {
+            return View("Upsert", director);
+        }
+
+        if (director.idDirector == 0)
+        {
+            director.idDirector = 1;
+            await repo.AltaAsync(director);
+        }
+        else
+        {
+            await repo.ModificarAsync(director);
+        }
+        return RedirectToAction(nameof(Listado));
+    }
+    
+
 }
 /* */

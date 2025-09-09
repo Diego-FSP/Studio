@@ -20,6 +20,21 @@ Begin
 
 end&&
 
+drop PROCEDURE if EXISTS directorUP&&
+CREATE PROCEDURE directorUP(out unidDirector int, unnombre VARCHAR(20),unapellido VARCHAR(20), unanacionalidad VARCHAR(20), unaFecha DATETIME, unadescripcion VARCHAR(400))
+Begin
+	update directores
+	set	nombre= unnombre,
+		Apellido= unapellido,
+        id_Director= unidDirector,
+        Fecha_nacimiento= unaFecha,
+        nacionalidad= unanacionalidad,
+        descripcion= unadescripcion
+	where id_Director= unidDirector;
+
+end&&
+
+
 -- 2.- agregarO pelicula
 drop procedure if exists agregarP&&
 CREATE PROCEDURE agregarP	(out unidpelicula int, unidestudio int, unidirector int, unnombre varchar(100), unfechaestreno date, unfechacreacion date, unDuracion varchar(20), ungenero varchar(20), unpresupuesto double, uncalificacion varchar(20), unprogramastilo varchar(20))

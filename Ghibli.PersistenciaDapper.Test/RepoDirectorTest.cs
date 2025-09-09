@@ -31,6 +31,7 @@ public class RepoDirectorTest : TestBase
             Nombre = "Guillermo",
             Apellido = "Del Toro",
             nacionalidad = "Peru",
+            descripcion = "hola",
             FechaNacimiento = new DateTime(2011, 6, 10)
         };
 
@@ -68,6 +69,7 @@ public class RepoDirectorTest : TestBase
             Nombre = "Guillermo Async",
             Apellido = "Del Toro Async",
             nacionalidad = "Mexico",
+            descripcion= "hola",
             FechaNacimiento = new DateTime(2011, 6, 10)
         };
 
