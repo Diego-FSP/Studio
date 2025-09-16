@@ -12,23 +12,24 @@ end &&
 
 
 drop PROCEDURE if EXISTS directorAG&&
-CREATE PROCEDURE directorAG(out unidDirector int, unnombre VARCHAR(20),unapellido VARCHAR(20), unanacionalidad VARCHAR(20), unaFecha DATETIME, unadescripcion VARCHAR(400))
+CREATE PROCEDURE directorAG(out unidDirector int, unnombre VARCHAR(20),unapellido VARCHAR(20), unanacionalidad VARCHAR(20), unaFecha DATETIME, unadescripcion VARCHAR(400),unIMG varchar(400))
 Begin
-	INSERT into Director (id_Director, nombre, Apellido, nacionalidad, Fecha_nacimiento, descripcion)
-	VALUES (unidDirector , unnombre , unapellido , unanacionalidad , unaFecha, unadescripcion);
+	INSERT into Director (id_Director, nombre, Apellido, nacionalidad, Fecha_nacimiento, descripcion, IMG)
+	VALUES (unidDirector , unnombre , unapellido , unanacionalidad , unaFecha, unadescripcion, unIMG);
 	SET unidDirector = LAST_INSERT_ID();
 
 end&&
 
 drop PROCEDURE if EXISTS directorUP&&
-CREATE PROCEDURE directorUP(unidDirector int, unnombre VARCHAR(20),unapellido VARCHAR(20), unanacionalidad VARCHAR(20), unaFecha DATETIME, unadescripcion VARCHAR(400))
+CREATE PROCEDURE directorUP(unidDirector int, unnombre VARCHAR(20),unapellido VARCHAR(20), unanacionalidad VARCHAR(20), unaFecha DATETIME, unadescripcion VARCHAR(400),unIMG varchar(400))
 Begin
 	update director
 	set	nombre= unnombre,
 		Apellido= unapellido,
         Fecha_nacimiento= unaFecha,
         nacionalidad= unanacionalidad,
-        descripcion= unadescripcion
+        descripcion= unadescripcion,
+        IMG = unIMG
 	where id_Director= unidDirector;
 end&&
 

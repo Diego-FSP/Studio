@@ -1,3 +1,5 @@
+using Microsoft.VisualBasic;
+
 namespace Directores;
 
 public class Director
@@ -7,5 +9,6 @@ public class Director
     public required string Apellido { get; set; }
     public required string nacionalidad { get; set; }
     public required string descripcion { get; set; }
+    public required string IMG{ get; set; }
     public DateTime FechaNacimiento { get; set; }
 }

@@ -9,7 +9,7 @@ namespace Ghibli.PersistenciaDapper;
 public class RepoDirector : RepoBase, IRepoDirector
 {
     static readonly string _listadoDirectores =
-        @"SELECT id_Director AS idDirector, nombre, Apellido, nacionalidad, Fecha_nacimiento as FechaNacimiento, descripcion
+        @"SELECT id_Director AS idDirector, nombre, Apellido, nacionalidad, Fecha_nacimiento as FechaNacimiento, descripcion, IMG
         FROM    Director";
     static readonly string _detalleDirector = _listadoDirectores + @"
         WHERE id_Director = @idDirector
@@ -30,7 +30,7 @@ public class RepoDirector : RepoBase, IRepoDirector
         parametros.Add("@unanacionalidad", director.nacionalidad);
         parametros.Add("@unaFecha", director.FechaNacimiento);
         parametros.Add("@unadescripcion", director.descripcion);
-        
+        parametros.Add("@unIMG", director.IMG);
         Conexion.Execute("directorAG", parametros);
        
         //Obtengo el valor de parametro de tipo salida
@@ -63,7 +63,7 @@ public class RepoDirector : RepoBase, IRepoDirector
         parametros.Add("@unanacionalidad", director.nacionalidad);
         parametros.Add("@unaFecha", director.FechaNacimiento);
         parametros.Add("@unadescripcion", director.descripcion);
-
+        parametros.Add("@unIMG", director.IMG);
         await Conexion.ExecuteAsync("directorAG", parametros);
        
         //Obtengo el valor de parametro de tipo salida
@@ -103,7 +103,7 @@ public class RepoDirector : RepoBase, IRepoDirector
         parametros.Add("@unanacionalidad", elemento.nacionalidad);
         parametros.Add("@unaFecha", elemento.FechaNacimiento);
         parametros.Add("@unadescripcion", elemento.descripcion);
-
+        parametros.Add("@unIMG", elemento.IMG);
         await Conexion.ExecuteAsync("directorUP", parametros);
        
         //Obtengo el valor de parametro de tipo salida

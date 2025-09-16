@@ -38,7 +38,8 @@ public class DirectoresController : Controller
             Apellido = "Apellido",
             nacionalidad = "Nacionalidad",
             descripcion = "Descripcion",
-            FechaNacimiento = new DateTime(2000, 1, 10)
+            FechaNacimiento = new DateTime(2000, 1, 10),
+            IMG = "https://i.pinimg.com/originals/53/2a/27/532a270caf5b324c887edd98a5e706d5.gif"
         };
         return View("Upsert", director);
     }

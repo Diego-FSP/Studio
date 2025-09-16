@@ -9,7 +9,7 @@ create table Director(
  Fecha_nacimiento date,
  nacionalidad varchar(20),
  descripcion varchar(400),
- 
+ IMG varchar(400),
  constraint pk_Director primary key(id_director)
  );
 create table Actor_voz(

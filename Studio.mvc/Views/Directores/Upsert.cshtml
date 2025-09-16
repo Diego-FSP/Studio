@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Directores Page";
     var texto = Model.idDirector == 0 ? "Agregar Director" : "Modificar Director";
+    var URL=Model.IMG;
 }
 
 <div>
@@ -53,7 +54,15 @@
         <div class="col-auto">
             <input type="date" asp-for="FechaNacimiento" class="form-control">
         </div>
-    
+
+        <div class="row g-2 align-items-center"></div>
+        <div class="col-auto">
+            <label asp-for="IMG" class="col-form-label">Imagen</label>
+        </div>
+        <div class="col-auto">
+            <input asp-for="IMG" class="form-control"/>
+            <img class="ImgDirectores" src="@Model.IMG" alt="">
+        </div>
     <div class="row g-2 align-items-center">
         <div class="col-auto"></div>
             <select asp-for="nacionalidad" class="form-select">
