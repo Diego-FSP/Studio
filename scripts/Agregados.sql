@@ -23,10 +23,9 @@ end&&
 drop PROCEDURE if EXISTS directorUP&&
 CREATE PROCEDURE directorUP(out unidDirector int, unnombre VARCHAR(20),unapellido VARCHAR(20), unanacionalidad VARCHAR(20), unaFecha DATETIME, unadescripcion VARCHAR(400))
 Begin
-	update directores
+	update director
 	set	nombre= unnombre,
 		Apellido= unapellido,
-        id_Director= unidDirector,
         Fecha_nacimiento= unaFecha,
         nacionalidad= unanacionalidad,
         descripcion= unadescripcion

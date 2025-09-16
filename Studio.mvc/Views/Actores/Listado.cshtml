@@ -11,20 +11,20 @@
     <title>Document</title>
 </head>
 <body>
-    <h1 class="display-4">Directores</h1>
+    <h1 class="display-4">Actores</h1>
     <h3>Listado</h3>
 
     <table class="ListadoTabla">
         <thead>
-            <th>Directores</th>
+            <th>Actores</th>
             <th>Acciones</th>
         </thead>
         <tbody>
             @foreach(var repo in Model)
             {
                 <tr>
-                    <th><a asp-action="Detalle" asp-route-Id="@repo.idDirector">@repo.Nombre @repo.Apellido</a></th>
-                    <th><a asp-action="Modificar" asp-route-Id="@repo.idDirector">Modificar</a></th>
+                    <th><a asp-action="Detalle" asp-route-Id="@repo.IdActor">@repo.Nombre @repo.Apellido</a></th>
+                    <th><a>Modificar</a></th>
                 </tr>
             }
         </tbody>
@@ -32,5 +32,3 @@
 </div>
 </body>
 </html>
-
-

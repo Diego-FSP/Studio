@@ -97,7 +97,7 @@ public class RepoDirector : RepoBase, IRepoDirector
     public async Task ModificarAsync(Director elemento)
     {
         var parametros = new DynamicParameters();
-        parametros.Add("@unidDirector", direction: ParameterDirection.Output);
+        parametros.Add("@unidDirector", elemento.idDirector);
         parametros.Add("@unnombre", elemento.Nombre);
         parametros.Add("@unapellido", elemento.Apellido);
         parametros.Add("@unanacionalidad", elemento.nacionalidad);

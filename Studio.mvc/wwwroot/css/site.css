@@ -20,3 +20,8 @@ html {
 body {
   margin-bottom: 60px;
 }
+.ListadoTabla{
+  a{
+    color: rgb(20, 20, 4);
+  }
+}

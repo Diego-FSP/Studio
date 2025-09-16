@@ -43,13 +43,13 @@ public class DirectoresController : Controller
         return View("Upsert", director);
     }
     
-    [HttpPost]
-    public async Task<IActionResult> Modificar(int? id)
+    [HttpGet]
+    public async Task<IActionResult> Modificar(int id)
     {
-        if (id is null || id == 0)
+        if (id == 0)
             return NotFound();
 
-        var director = await repo.DetalleAsync(id.GetValueOrDefault());
+        var director = await repo.DetalleAsync(id);
 
         if (director is null)
             return NotFound();
