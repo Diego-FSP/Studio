@@ -136,7 +136,7 @@ values	('Anonimo','Desconocido',999,'https://encrypted-tbn0.gstatic.com/images?q
 		('Paco', 'Mauri',122,''),
 		('César', 'Garduza',123,''),
 		('Julián', 'Lavat',124,''),
-		('Rafael', 'Escalante',125,''),
+		('Rafael', 'Escalante',125,''),-- DESDE AQUI 
 		('Esteban', 'Desco',126,''),
 		('Lorena', 'Cantú',127,''),
 		('Daniel', 'Valladares',128,''),
