@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Directores Page";
     var texto = Model.idDirector == 0 ? "Agregar Director" : "Modificar Director";
-    var URL=Model.IMG;
+
 }
 
 <div>
@@ -60,8 +60,18 @@
             <label asp-for="IMG" class="col-form-label">Imagen</label>
         </div>
         <div class="col-auto">
-            <input asp-for="IMG" class="form-control"/>
-            <img class="ImgDirectores" src="@Model.IMG" alt="">
+            <input id="URLIMG" asp-for="IMG" class="form-control"/>
+            <img class="ImgDirectores" id="IMGRsultado" src="@Model.IMG" alt="">
+            
+            <script>
+        let enlace= document.getElementById("URLIMG")
+        let img= document.getElementById("IMGRsultado")
+        
+        enlace.addEventListener("keyup", function mostrar()
+        {
+            img.src=enlace.value
+        })
+        </script>
         </div>
     <div class="row g-2 align-items-center">
         <div class="col-auto"></div>
