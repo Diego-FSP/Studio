@@ -178,7 +178,8 @@ begin
 					from Actor_voz
                     where id_actor= NEW.id_actor)) then
                     SIGNAL SQLSTATE '45000'
-					SET MESSAGE_TEXT = 'No existe el actor';
+					SET MESSAGE_TEXT = new.id_personaje;
+                    -- 'No existe el actor'
     END IF;
 end &&
 -- 2.-si ya existe ese actor
