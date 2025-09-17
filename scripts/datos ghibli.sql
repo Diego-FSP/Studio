@@ -136,7 +136,7 @@ values	('Anonimo','Desconocido',999,'https://encrypted-tbn0.gstatic.com/images?q
 		('Paco', 'Mauri',122,''),
 		('César', 'Garduza',123,''),
 		('Julián', 'Lavat',124,''),
-		('Rafael', 'Escalante',125,''),-- DESDE AQUI 
+		('Rafael', 'Escalante',125,'https://static.wikia.nocookie.net/doblaje/images/4/48/RafaelEscalanteFotoPerfil2.png/revision/latest/scale-to-width/360?cb=20250528040053&path-prefix=es'),-- DESDE AQUI 
 		('Esteban', 'Desco',126,''),
 		('Lorena', 'Cantú',127,''),
 		('Daniel', 'Valladares',128,''),
