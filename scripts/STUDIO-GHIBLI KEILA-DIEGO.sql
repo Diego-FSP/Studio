@@ -16,6 +16,7 @@ create table Actor_voz(
  nombre varchar(20),
  Apellido  varchar(20), 
  id_actor int AUTO_INCREMENT,
+ IMG varchar(400),
  constraint pk_Actor_voz primary key(id_actor)
 );
 
