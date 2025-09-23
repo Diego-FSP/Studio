@@ -28,7 +28,8 @@ public class RepoPersonajeTest : TestBase
         {
             Nombre = "Guillermo",
             Apellido = "Franchella",
-            IdActor = 122
+            IdActor = 122,
+            IMG = ""
         };
         var guillermo = new Personaje()
         {
@@ -69,7 +70,8 @@ public class RepoPersonajeTest : TestBase
         {
             Nombre = "GuillermoAsync",
             Apellido = "FranchellaAsync",
-            IdActor = 1
+            IdActor = 1,
+            IMG = ""
         };
         var guillermo = new Personaje()
         {
@@ -99,5 +101,21 @@ public class RepoPersonajeTest : TestBase
         Assert.NotEmpty(personajes);
         //Pregunto por rubros que se dan de alta en "scripts/bd/MySQL/03 Inserts.sql"
         Assert.Contains(personajes, c => c.Nombre == "Haru Yoshioka" && c.idPersonaje == 270);
+    }
+
+    [Fact]
+    public async Task PersonajesDeAsync()
+    {
+        var guill = new ActorVoz()
+        {
+            Nombre = "GuillermoAsync",
+            Apellido = "FranchellaAsync",
+            IdActor = 1,
+            IMG = ""
+        };
+        var personajes = await _repoPersonaje.PersonajesDeAsync(guill);
+        Assert.NotEmpty(personajes);
+        //Pregunto por rubros que se dan de alta en "scripts/bd/MySQL/03 Inserts.sql"
+        Assert.Contains(personajes, c => c.Nombre == "Niña" && c.idPersonaje == 152);
     }
 }

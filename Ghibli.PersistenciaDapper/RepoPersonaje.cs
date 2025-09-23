@@ -18,6 +18,12 @@ public class RepoPersonaje : RepoBase, IRepoPersonajes
         FROM    Personajes
         WHERE id_pelicula =";
 
+    static readonly string _listadoPersonajesfromActor =
+        @"SELECT P.id_personaje AS idPersonaje, P.Nombre, P.id_pelicula AS idPelicula
+        FROM    Personajes P
+        inner join personaje_voz PV ON P.id_personaje = PV.id_personaje
+        WHERE PV.id_actor = @idActor";
+
     static readonly string _detallePersonajes = _listadoPersonajes + @"
     where id_personaje = @idPersonaje
     limit 1";
@@ -122,6 +128,15 @@ public class RepoPersonaje : RepoBase, IRepoPersonajes
     public Task<IEnumerable<Personaje>> ListarfromAsync()
     {
         throw new NotImplementedException();
+    }
+
+    public async Task<IEnumerable<Personaje>> PersonajesDeAsync(ActorVoz actorVoz)
+    {
+        var id = actorVoz.IdActor;
+        var personajes = await Conexion.QueryFirstAsync<IEnumerable<Personaje>>(
+            _listadoPersonajesfromActor,
+            new { idActor = id });
+        return personajes;
     }
 }
 

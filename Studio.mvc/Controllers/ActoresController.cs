@@ -1,6 +1,7 @@
-using Directores;
 using Ghibli.Persistencia;
 using Microsoft.AspNetCore.Mvc;
+using Actores;
+using Personajes;
 
 namespace Studio.mvc.Controllers;
 
@@ -14,7 +15,7 @@ public class ActoresController : Controller
         var Actores = await repo.ListarAsync();
         return View(Actores);
     }
-    
+
     public async Task<IActionResult> Detalle(int? id)
     {
         if (id is null || id == 0)

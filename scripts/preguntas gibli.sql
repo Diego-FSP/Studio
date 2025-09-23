@@ -41,3 +41,9 @@ group by P.id_pelicula;
 select PE.nombre 'Peliculas', PE.presupuesto, PE.calificacion
 from peliculas PE;
 
+
+
+SELECT P.id_personaje AS idPersonaje, P.Nombre, P.id_pelicula AS idPelicula
+        FROM    Personajes P
+        inner join personaje_voz PV ON P.id_personaje = PV.id_personaje
+        WHERE PV.id_actor =1;

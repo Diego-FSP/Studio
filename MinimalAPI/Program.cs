@@ -2,6 +2,7 @@ using Ghibli.PersistenciaDapper;
 using Actores;
 using Peli;
 using Directores;
+using Personajes;
 using System.Data;
 using MySqlConnector;
 using Scalar.AspNetCore;
@@ -18,6 +19,7 @@ builder.Services.AddScoped<IDbConnection>(sp => new MySqlConnection(connectionSt
 builder.Services.AddScoped<IRepoActor, RepoActor>();
 builder.Services.AddScoped<IRepoPelicula, RepoPelicula>();
 builder.Services.AddScoped<IRepoDirector, RepoDirector>();
+builder.Services.AddScoped<IRepoPersonajes, RepoPersonaje>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -100,7 +102,7 @@ app.MapDelete("/Pelicula/{id}", async (int id, IRepoPelicula pelicula) =>
 //_______________________________________________________________________________________________________
 
 app.MapGet("/Director", async (IRepoDirector repo) =>
-    await repo.ListarAsync()); 
+    await repo.ListarAsync());
 
 app.MapPost("/Director/", async (Director nuevo, IRepoDirector repo) =>
 {
@@ -108,4 +110,7 @@ app.MapPost("/Director/", async (Director nuevo, IRepoDirector repo) =>
     return Results.Created($"/Director/{nuevo.idDirector}", nuevo);
 });
 
-app.Run();
+//_______________________________________________________________________________________________________
+//----------------------------------------PERSONAJES-----------------------------------------------------
+//_______________________________________________________________________________________________________
+
