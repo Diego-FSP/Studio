@@ -17,7 +17,7 @@ VALUES (1, 'Studio Ghibli', '1985-06-15', 'Koganei, Tokyo, Japan');
 insert into Actor_voz (nombre, Apellido, id_actor, IMG)
 values	('Anonimo','Desconocido',999,'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9NZiFSoUVcsOwsFR_QLZnXWcSYT04ufZidA&s'),
 		('Midred', 'Barrera', 1,'https://static.wikia.nocookie.net/doblaje/images/5/54/Mildred-Barrera-ActrizDeDob.jpg/revision/latest/scale-to-width/360?cb=20210525163152&path-prefix=es'),
-		('Moises','Palacios',2,'https://static.wikia.nocookie.net/disney/images/e/ea/Moisespalacios.jpg/revision/latest?cb=20200518031115&path-prefix=es'),
+		('Moises','Palacios',2,'https://static.wikia.nocookie.net/doblaje/images/f/f9/307184098_10227289696084433_6926684771454288398_n.jpg/revision/latest/scale-to-width/360?cb=20221120021759&path-prefix=es'),
         ('Hector','Miranda',3,'https://www.cancioneros.com/fotos/ep009807_1.jpg'),
         ('Juan','Alfonso Carralero',4,'https://static.wikia.nocookie.net/doblaje/images/0/07/Juan_Alfonso_Carralero.png/revision/latest?cb=20230505134530&path-prefix=es'),
         ('Mariana','Filio',5,'https://yt3.googleusercontent.com/ytc/AIdro_lCPhjPARrZHdy_DAVCNaPftFS9JuWN1sTca39oyomKgPc=s900-c-k-c0x00ffffff-no-rj'),

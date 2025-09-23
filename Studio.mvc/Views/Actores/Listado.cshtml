@@ -7,8 +7,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="wwwroot/css/Listas.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="~/css/Listas.css"> <!-- Corregido -->
+    <title>@ViewData["Title"]</title>
 </head>
 <body>
     <h1 class="display-4">Actores</h1>
@@ -16,21 +16,30 @@
 
     <table class="ListadoTabla">
         <thead>
-            <th>Perfil</th>
-            <th>Actores</th>
-            <th>Acciones</th>
+            <tr>
+                <th>Perfil</th>
+                <th>Actores</th>
+                <th>Acciones</th>
+            </tr>
         </thead>
         <tbody>
             @foreach(var repo in Model)
             {
                 <tr>
-                    <th><img src="@repo.IMG" class="ImgDirectores" alt=""></th>
-                    <th><a asp-action="Detalle" asp-route-Id="@repo.IdActor">@repo.Nombre @repo.Apellido</a></th>
-                    <th><a>Modificar</a></th>
+                    <td>
+                        <img src="@(repo.IMG)" class="ImgDirectores" alt="Imagen de @repo.Nombre">
+                    </td>
+                    <td>
+                        <a asp-action="Detalle" asp-route-Id="@repo.IdActor">
+                            @repo.Nombre @repo.Apellido
+                        </a>
+                    </td>
+                    <td>
+                        <a asp-action="Modificar" asp-route-Id="@repo.IdActor">Modificar</a>
+                    </td>
                 </tr>
             }
         </tbody>
     </table>
-</div>
 </body>
 </html>
