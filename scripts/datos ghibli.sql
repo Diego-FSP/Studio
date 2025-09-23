@@ -168,7 +168,7 @@ values	('Anonimo','Desconocido',999,'https://encrypted-tbn0.gstatic.com/images?q
 		('Ana Teresa', 'Ávila',154,'https://static.wikia.nocookie.net/doblaje/images/e/e7/TereTamayo2024.jpg/revision/latest?cb=20241125060741&path-prefix=es'),
 		('Rebeca', 'Manríquez',155,'https://static.wikia.nocookie.net/doblaje/images/4/4c/Rebeca_11.png/revision/latest/scale-to-width/360?cb=20190301101638&path-prefix=es'),
 		('Liliana', 'Barba',156,'https://static.wikia.nocookie.net/doblaje/images/b/b0/Lili_Barba.jpg/revision/latest?cb=20161229060325&path-prefix=es'),
-		('Susana', 'Moreno',157,''),
+		('Susana', 'Moreno',157,'https://www.google.com/url?sa=i&url=https%3A%2F%2Fdoblaje.fandom.com%2Fes%2Fwiki%2FSusana_Moreno&psig=AOvVaw3EbhKIgbgxPovE-tiUuPSE&ust=1758712338693000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCPCymayd7o8DFQAAAAAdAAAAABAK'),
         ('Susana', 'Romero',158,''),
 		('Gerardo', 'Vásquez',159,''),
 		('Marc', 'Winslow',160,''),
