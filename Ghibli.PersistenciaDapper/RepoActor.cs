@@ -8,7 +8,7 @@ namespace Ghibli.PersistenciaDapper;
 public class RepoActor : RepoBase, IRepoActor
 {
     static readonly string _listadoActores =
-        @"SELECT id_actor AS IdActor, nombre, apellido
+        @"SELECT id_actor AS IdActor, nombre, apellido, IMG
         FROM    Actor_voz";
 
     static readonly string _detalleActor = _listadoActores + @"
@@ -59,6 +59,7 @@ public class RepoActor : RepoBase, IRepoActor
 
         //Preparo los parametros del Stored Procedure
         var parametros = new DynamicParameters();
+        parametros.Add("@unIMG", actor.IMG);
         parametros.Add("@unnombre", actor.Nombre);
         parametros.Add("@unapellido", actor.Apellido);
         parametros.Add("@unidactor", direction: ParameterDirection.Output);

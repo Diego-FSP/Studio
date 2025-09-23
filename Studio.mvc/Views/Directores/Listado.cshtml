@@ -24,7 +24,7 @@
             @foreach(var repo in Model)
             {
                 <tr>
-                    <th><img class="ImgDirectores"img src="@repo.IMG" alt=""></th>
+                    <th><img class="ImgDirectores" src="@repo.IMG" alt=""></th>
                     <th><a asp-action="Detalle" asp-route-Id="@repo.idDirector">@repo.Nombre @repo.Apellido</a></th>
                     <th><a asp-action="Modificar" asp-route-Id="@repo.idDirector">Modificar</a></th>
                 </tr>

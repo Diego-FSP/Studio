@@ -1,5 +1,5 @@
 @{
-    ViewData["Title"] = "Directores Page";
+    ViewData["Title"] = "Actores Page";
 }
 
 <!DOCTYPE html>
@@ -16,6 +16,7 @@
 
     <table class="ListadoTabla">
         <thead>
+            <th>Perfil</th>
             <th>Actores</th>
             <th>Acciones</th>
         </thead>
@@ -23,6 +24,7 @@
             @foreach(var repo in Model)
             {
                 <tr>
+                    <th><img src="@repo.IMG" class="ImgDirectores" alt=""></th>
                     <th><a asp-action="Detalle" asp-route-Id="@repo.IdActor">@repo.Nombre @repo.Apellido</a></th>
                     <th><a>Modificar</a></th>
                 </tr>

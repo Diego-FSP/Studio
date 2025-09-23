@@ -87,10 +87,10 @@ begin
 end &&
 
 drop procedure if exists nuevoActor&&
-create procedure nuevoActor (unnombre varchar(20), unapellido varchar(20), out unidactor int)
+create procedure nuevoActor (unIMG varchar(400) ,unnombre varchar(20), unapellido varchar(20), out unidactor int)
 begin
-	insert into Actor_voz (nombre, apellido, id_actor)
-    values	(unnombre, unapellido, unidactor);
+	insert into Actor_voz (nombre, apellido, id_actor, IMG)
+    values	(unnombre, unapellido, unidactor, unIMG);
 	SET unidactor = LAST_INSERT_ID();
 end &&
 
