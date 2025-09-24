@@ -30,8 +30,9 @@ public class RepoStudioTest : TestBase
             Nombre = "Guillermo",
             Apellido = "Franchella",
             nacionalidad = "Peru",
-            FechaNacimiento = new DateTime(2011, 6, 10)
-
+            FechaNacimiento = new DateTime(2011, 6, 10),
+            IMG = " ",
+            descripcion=" "
         };
 
         var D = new Studio()
@@ -74,8 +75,9 @@ public class RepoStudioTest : TestBase
             Nombre = "Guillermo",
             Apellido = "Franchella",
             nacionalidad = "Peru",
-            FechaNacimiento = new DateTime(2011, 6, 10)
-
+            FechaNacimiento = new DateTime(2011, 6, 10),
+            IMG = " ",
+            descripcion=" "
         };
 
         var D = new Studio()

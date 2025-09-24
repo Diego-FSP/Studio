@@ -27,11 +27,13 @@ public class RepoPeliculaTest : TestBase
     {
         var guillermo = new Director()
         {
-            idDirector= 8,
+            idDirector = 8,
             Nombre = "Guillermo",
             Apellido = "Franchella",
-            nacionalidad="Peru",
-            FechaNacimiento= new DateTime(2011, 6, 10)
+            nacionalidad = "Peru",
+            FechaNacimiento = new DateTime(2011, 6, 10),
+            IMG = "",
+            descripcion=""
         };
 
         var nino = new Pelicula()
@@ -77,11 +79,13 @@ public class RepoPeliculaTest : TestBase
     {
         var guillermo = new Director()
         {
-            idDirector= 8,
+            idDirector = 8,
             Nombre = "Guillermo",
             Apellido = "Franchella",
-            nacionalidad="Peru",
-            FechaNacimiento= new DateTime(2011, 6, 10)
+            nacionalidad = "Peru",
+            FechaNacimiento = new DateTime(2011, 6, 10),
+            IMG = "de",
+            descripcion=""
         };
 
         var nino = new Pelicula()

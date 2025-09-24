@@ -27,7 +27,8 @@ public class RepoActorTest : TestBase
         {
             Nombre = "Guillermo",
             Apellido = "Del Toro",
-            IdActor= 1
+            IdActor = 1,
+            IMG=" "
         };
 
         _repoActor.Alta(guillermo);
@@ -59,7 +60,8 @@ public class RepoActorTest : TestBase
         {
             Nombre = "GuillermoAsync",
             Apellido = "Del ToroAsync",
-            IdActor= 1
+            IdActor = 1,
+            IMG=""
         };
 
         await _repoActor.AltaAsync(guillermo);

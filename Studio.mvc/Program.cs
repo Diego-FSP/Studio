@@ -16,6 +16,7 @@ builder.Services.AddScoped<IDbConnection>(sp => new MySqlConnection(connectionSt
 builder.Services.AddScoped<IRepoActor, RepoActor>();
 builder.Services.AddScoped<IRepoPelicula, RepoPelicula>();
 builder.Services.AddScoped<IRepoDirector, RepoDirector>();
+builder.Services.AddScoped<IRepoPersonajes, RepoPersonaje>();
 
 
 var app = builder.Build();

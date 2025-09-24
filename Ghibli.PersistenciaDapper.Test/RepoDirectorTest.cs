@@ -32,7 +32,8 @@ public class RepoDirectorTest : TestBase
             Apellido = "Del Toro",
             nacionalidad = "Peru",
             descripcion = "hola",
-            FechaNacimiento = new DateTime(2011, 6, 10)
+            FechaNacimiento = new DateTime(2011, 6, 10),
+            IMG = " "
         };
 
         _repoDirector.Alta(guillermo);
@@ -69,8 +70,9 @@ public class RepoDirectorTest : TestBase
             Nombre = "Guillermo Async",
             Apellido = "Del Toro Async",
             nacionalidad = "Mexico",
-            descripcion= "hola",
-            FechaNacimiento = new DateTime(2011, 6, 10)
+            descripcion = "hola",
+            FechaNacimiento = new DateTime(2011, 6, 10),
+            IMG=" "
         };
 
         await _repoDirector.AltaAsync(guillermo);

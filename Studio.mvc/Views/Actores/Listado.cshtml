@@ -1,3 +1,6 @@
+@using Actores
+@model IEnumerable<ActorVoz>
+
 @{
     ViewData["Title"] = "Actores Page";
 }
@@ -23,19 +26,19 @@
             </tr>
         </thead>
         <tbody>
-            @foreach(var repo in Model)
+            @foreach(var actor in Model)
             {
                 <tr>
                     <td>
-                        <img src="@(repo.IMG)" class="ImgPerfil" alt="Imagen de @repo.Nombre">
+                        <img src="@(actor.IMG)" class="ImgPerfil" alt="Imagen de @actor.Nombre">
                     </td>
                     <td>
-                        <a asp-action="Detalle" asp-route-Id="@repo.IdActor">
-                            @repo.Nombre @repo.Apellido
+                        <a asp-controller= "Personajes" asp-action="DetalleActor" asp-route-id="@actor.IdActor">
+                            @actor.Nombre @actor.Apellido
                         </a>
                     </td>
                     <td>
-                        <a asp-action="Modificar" asp-route-Id="@repo.IdActor">Modificar</a>
+                        <a asp-action="Modificar" asp-route-Id="@actor.IdActor">Modificar</a>
                     </td>
                 </tr>
             }
