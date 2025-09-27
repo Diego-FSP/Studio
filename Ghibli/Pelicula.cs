@@ -11,8 +11,6 @@ public class Pelicula
 
     public DateTime FechaEstreno { get; set; }
 
-    public DateTime FechaCreacion { get; set; }
-
     public required string Duracion { get; set; }
 
     public required string Genero { get; set; }
@@ -21,7 +19,7 @@ public class Pelicula
 
     public int Presupuesto { get; set; }
 
-    public required string ProgramaEstilo { get; set; }
+    public required string IMG { get; set; }
 
     public int idStudio { get; set; }
 

@@ -6,26 +6,26 @@ using Personajes;
 
 namespace Studio.mvc.Controllers;
 
-    public class PersonajesController : Controller
-    {
-        IRepoPersonajes repoPersonaje;
-        IRepoActor repoActor;
-        public PersonajesController(IRepoPersonajes repoPersonaje, IRepoActor repoActor)
+public class PersonajesController : Controller
+{
+    IRepoPersonajes repoPersonaje;
+    IRepoActor repoActor;
+    public PersonajesController(IRepoPersonajes repoPersonaje, IRepoActor repoActor)
             => (this.repoPersonaje, this.repoActor) = (repoPersonaje, repoActor);
 
-        public async Task<IActionResult> DetalleActor(int? idActor)
-        {
-            if (idActor is null || idActor == 0)
-                return NotFound();
+    public async Task<IActionResult> DetalleActor(int? idActor)
+    {
+        if (idActor is null || idActor == 0)
+            return NotFound();
 
-            var actores = await repoActor.DetalleAsync(idActor.GetValueOrDefault());
+        var actores = await repoActor.DetalleAsync(idActor.GetValueOrDefault());
 
-            if (actores is null)
-                return NotFound();
+        if (actores is null)
+            return NotFound();
 
-            return View();
-        }
+        return View();
     }
+}
 
 
 

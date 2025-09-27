@@ -11,7 +11,7 @@ namespace Ghibli.PersistenciaDapper;
 public class RepoPelicula : RepoBase, IRepoPelicula
 {
     static readonly string _listadoPeliculas =
-        @"SELECT id_pelicula AS IdPelicula, nombre as Nombre, fecha_estreno AS FechaEstreno, fecha_creacion AS FechaCreacion, Duracion, genero AS Genero, calificacion AS Calificacion, presupuesto AS Presupuesto, Programa_stilo AS ProgramaEstilo, id_estudio AS idStudio
+        @"SELECT id_pelicula AS IdPelicula, nombre as Nombre, fecha_estreno AS FechaEstreno, Duracion, genero AS Genero, calificacion AS Calificacion, presupuesto AS Presupuesto, IMG, id_estudio AS idStudio
         FROM    peliculas";
     
     static readonly string _detallepelicula = _listadoPeliculas + @"
@@ -42,12 +42,11 @@ public class RepoPelicula : RepoBase, IRepoPelicula
         parametros.Add("@unidirector", pelicula.director.idDirector);
         parametros.Add("@unnombre", pelicula.Nombre);
         parametros.Add("@unfechaestreno", pelicula.FechaEstreno);
-        parametros.Add("@unfechacreacion", pelicula.FechaCreacion);
         parametros.Add("@unDuracion", pelicula.Duracion);
         parametros.Add("@ungenero",pelicula.Genero);
         parametros.Add("@unpresupuesto",pelicula.Presupuesto);
         parametros.Add("@uncalificacion",pelicula.Calificacion);
-        parametros.Add("@unprogramastilo",pelicula.ProgramaEstilo);
+        parametros.Add("@unprogramastilo",pelicula.IMG);
         parametros.Add("@unidpelicula", direction: ParameterDirection.Output);
     
         
@@ -82,12 +81,11 @@ public class RepoPelicula : RepoBase, IRepoPelicula
         parametros.Add("@unidirector", pelicula.director.idDirector);
         parametros.Add("@unnombre", pelicula.Nombre);
         parametros.Add("@unfechaestreno", pelicula.FechaEstreno);
-        parametros.Add("@unfechacreacion", pelicula.FechaCreacion);
         parametros.Add("@unDuracion", pelicula.Duracion);
         parametros.Add("@ungenero",pelicula.Genero);
         parametros.Add("@unpresupuesto",pelicula.Presupuesto);
         parametros.Add("@uncalificacion",pelicula.Calificacion);
-        parametros.Add("@unprogramastilo",pelicula.ProgramaEstilo);
+        parametros.Add("@unprogramastilo",pelicula.IMG);
         parametros.Add("@unidpelicula", direction: ParameterDirection.Output);
     
         
@@ -114,7 +112,7 @@ public class RepoPelicula : RepoBase, IRepoPelicula
 
         return pelicula;
     }
-
+//
     public async Task<IEnumerable<Pelicula>> ListarAsync()
     {
         var peliculas = await Conexion.QueryAsync<Pelicula>(_listadoPeliculas);

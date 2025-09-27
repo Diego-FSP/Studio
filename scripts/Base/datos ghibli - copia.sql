@@ -257,30 +257,30 @@ values	('Anonimo','Desconocido',999,'https://encrypted-tbn0.gstatic.com/images?q
 
 --  EL PROGRAMA USADO  EN TODOS LOS INSERT DE PELÍCULAS
 
-Insert into peliculas (id_pelicula, id_estudio, id_director, nombre, fecha_estreno, fecha_creacion, Duracion, genero, presupuesto, calificacion, Programa_stilo) 
-VALUES (1, 1, 5, 'Haru el reino de los gatos', '2002-07-19', '2002-01-15', '120 minutos', 'Animación/Fantasía', 50000000, 8.5, 'Software1'),
-  (2, 1, 4, 'Cuentos de terramar', '2006-07-29', '2006-02-10', '115 minutos', 'Animación/Aventura', 60000000, 7.8, 'Software2'),
-  (3, 1, 1, 'Totoro', '1988-04-16', '1987-09-01', '86 minutos', 'Animación/Familia', 30000000, 8.3, 'Software3'),
-  (4, 1, 1, 'Ponyo', '2008-07-19', '2008-03-02', '101 minutos', 'Animación/Fantasía', 70000000, 7.9, 'Software4'),
-  (5, 1, 6, 'Puedo escuchar el mar', '1993-05-05', '1992-10-15', '72 minutos', 'Animación/Drama', 25000000, 7.6, 'Software5'),
-  (6, 1, 3, 'Arrietty y el mundo de los diminutos', '2010-07-17', '2010-02-05', '94 minutos', 'Animación/Aventura', 45000000, 7.7, 'Software6'),
-  (7, 1, 4, 'La colina de las amapolas', '2011-07-16', '2011-02-10', '91 minutos', 'Animación/Drama', 47000000, 7.8, 'Software7'),
-  (8, 1, 1, 'El viento se levanta', '2013-07-20', '2013-03-02', '126 minutos', 'Animación/Drama', 62000000, 8.0, 'Software8'),
-  (9, 1, 2, 'El cuento de la princesa Kaguya', '2013-11-23', '2013-09-01', '137 minutos', 'Animación/Drama', 67000000, 8.2, 'Software9'),
-  (10, 1, 2, 'Pompoko', '1994-06-13', '1994-01-05', '119 minutos', 'Animación/Comedia', 35000000, 7.4, 'Software10'),
-  (11, 1, 3, 'El recuerdo de Marnie', '2014-07-19', '2014-01-15', '103 minutos', 'Animación/Drama', 55000000, 8.1, 'Software11'),
-  (12, 1, 1, 'El castillo en el cielo ', '1986-08-02', '1986-02-10', '125 minutos', 'Animación/Aventura', 60000000, 8.0, 'Software12'),
-  (13, 1, 1, 'Kiki la aprendiz de bruja', '1989-07-29', '1989-02-05', '102 minutos', 'Animación/Aventura', 50000000, 7.9, 'Software13'),
-  (14, 1, 1, 'Porco Rosso', '1992-07-18', '1992-01-15', '94 minutos', 'Animación/Aventura', 48000000, 7.8, 'Software14'),
-  (15, 1, 1, 'Nausicaä del valle del viento', '1984-03-11', '1983-09-01', '117 minutos', 'Animación/Aventura', 45000000, 8.1, 'Software15'),
-  (16, 1, 2, 'La tumba de las luciérnagas', '1988-04-16', '1988-02-10', '89 minutos', 'Animación/Drama', 35000000, 8.5, 'Software16'),
-  (17, 1, 2, 'Recuerdos del ayer', '1991-07-20', '1991-03-02', '118 minutos', 'Animación/Drama', 47000000, 8.2, 'Software17'),
-  (18, 1, 7, 'Susurros del corazón', '1995-07-15', '1995-01-15', '111 minutos', 'Animación/Drama', 50000000, 8.0, 'Software18'),
-  (19, 1, 1, 'La princesa Mononoke', '1997-07-12', '1997-02-10', '134 minutos', 'Animación/Aventura', 80000000, 8.4, 'Software19'),
-  (20, 1, 2, 'Mis vecinos Yamada', '1999-07-17', '1999-02-05', '104 minutos', 'Animación/Comedia', 55000000, 7.7, 'Software20'),
-  (21, 1, 1, 'El viaje de Chihiro', '2001-07-20', '2001-03-02', '125 minutos', 'Animación/Fantasía', 90000000, 8.6, 'Software21'),
-  (22, 1, 1, 'El castillo ambulante', '2004-09-05', '2004-04-01', '119 minutos', 'Animación/Aventura', 70000000, 8.2, 'Software22'),
-  (23, 1, 4, 'Earwig y la bruja', '2020-12-30', '2020-08-15', '82 minutos', 'Animación/Fantasía', 60000000, 6.0, 'Software23');
+Insert into peliculas (id_pelicula, id_estudio, id_director, nombre, fecha_estreno, Duracion, genero, presupuesto, calificacion, IMG) 
+VALUES (1, 1, 5, 'Haru el reino de los gatos', '2002-07-19', '120 minutos', 'Animación/Fantasía', 50000000, 8.5, 'https://i.pinimg.com/originals/a1/03/58/a10358a53abadec62a0bf58a300c79e2.jpg'),
+  (2, 1, 4, 'Cuentos de terramar', '2006-07-29', '115 minutos', 'Animación/Aventura', 60000000, 7.8, 'https://image.tmdb.org/t/p/original/odkqZPwoH3xWMHsu3PM1IuR1t9e.jpg'),
+  (3, 1, 1, 'Totoro'                              , '1988-04-16', '86 minutos', 'Animación/Familia', 30000000, 8.3, 'https://i.pinimg.com/originals/86/ee/f8/86eef8f82aac1fa84fa2b767c8b5804f.jpg'),
+  (4, 1, 1, 'Ponyo'                               , '2008-07-19', '101 minutos', 'Animación/Fantasía', 70000000, 7.9, 'https://www.themoviedb.org/t/p/original/yp8vEZflGynlEylxEesbYasc06i.jpg'),
+  (5, 1, 6, 'Puedo escuchar el mar'               , '1993-05-05', '72 minutos', 'Animación/Drama', 25000000, 7.6, 'https://www.ecartelera.com/carteles/6800/6819/007.jpg'),
+  (6, 1, 3, 'Arrietty y el mundo de los diminutos', '2010-07-17', '94 minutos', 'Animación/Aventura', 45000000, 7.7, 'https://images.justwatch.com/poster/796293/s718/arrietty-y-el-mundo-de-los-diminutos.%7Bformat%7D'),
+  (7, 1, 4, 'La colina de las amapolas'           , '2011-07-16', '91 minutos', 'Animación/Drama', 47000000, 7.8, 'https://pics.filmaffinity.com/From_Up_on_Poppy_Hill-641262830-large.jpg'),
+  (8, 1, 1, 'El viento se levanta'                , '2013-07-20', '126 minutos', 'Animación/Drama', 62000000, 8.0, 'https://i0.wp.com/zinemaniacos.com/wp-content/uploads/2016/05/wind-rises-poster.jpg?w=1800&ssl=1'),
+  (9, 1, 2, 'El cuento de la princesa Kaguya'     , '2013-11-23', '137 minutos', 'Animación/Drama', 67000000, 8.2, 'https://mundoeducarte.es/wp-content/uploads/2024/05/dxpV1ekMmtwyFghH1r5p1KdehBw-scaled.jpg'),
+  (10, 1, 2, 'Pompoko'                            , '1994-06-13', '119 minutos', 'Animación/Comedia', 35000000, 7.4, 'https://tse3.mm.bing.net/th/id/OIP.hAHgzLOyacZj9uRbZm_IQAHaLH?rs=1&pid=ImgDetMain&o=7&rm=3'),
+  (11, 1, 3, 'El recuerdo de Marnie'              , '2014-01-15', '103 minutos', 'Animación/Drama', 55000000, 8.1, 'https://tse3.mm.bing.net/th/id/OIP.DewsXsOyo5747LTpP1jiRAHaKo?rs=1&pid=ImgDetMain&o=7&rm=3'),
+  (12, 1, 1, 'El castillo en el cielo'           , '1986-02-10', '125 minutos', 'Animación/Aventura', 60000000, 8.0, 'https://3.bp.blogspot.com/-kYB5OtvpGj8/WCiexWZrx9I/AAAAAAAAiIY/plaSkF0Dtz8U-V2ohiLTtpLR0R-9LwqVACLcB/s1600/01.jpg'),
+  (13, 1, 1, 'Kiki la aprendiz de bruja'          , '1989-07-29', '102 minutos', 'Animación/Aventura', 50000000, 7.9, 'https://www.fantasymundo.com/wp-content/uploads/2019/12/Nicky-la-aprendiz-de-bruja_Nocturna_PORTADA-1148x1536.jpg'),
+  (14, 1, 1, 'Porco Rosso'                        , '1992-07-18', '94 minutos', 'Animación/Aventura', 48000000, 7.8, 'https://th.bing.com/th/id/R.30469a00aa4b3ddbda34a84fed52fa14?rik=9%2bfQlTXU%2fwBvOw&riu=http%3a%2f%2f2.bp.blogspot.com%2f-FQB3319-_ZM%2fUCEz_vbxWBI%2fAAAAAAAAK4M%2fbKEHPIByFB8%2fs1600%2fPorco%2bRosso%2b(1992)%2b1.jpg&ehk=L779ccJpO7Ui79dwAkSFi6UufXOAlQ8aV9ey3ZyN6TU%3d&risl=&pid=ImgRaw&r=0'),
+  (15, 1, 1, 'Nausicaä del valle del viento'      , '1984-03-11', '117 minutos', 'Animación/Aventura', 45000000, 8.1, 'https://tse4.mm.bing.net/th/id/OIP.JquZlFkBGudTuog0MniXpgHaKl?rs=1&pid=ImgDetMain&o=7&rm=3'),
+  (16, 1, 2, 'La tumba de las luciérnagas'        , '1988-04-16',  '89 minutos', 'Animación/Drama', 35000000, 8.5, 'https://tse4.mm.bing.net/th/id/OIP.P2eXg5VCGplLgxghCyKk4AHaLH?rs=1&pid=ImgDetMain&o=7&rm=3'),
+  (17, 1, 2, 'Recuerdos del ayer'                 , '1991-07-20', '118 minutos', 'Animación/Drama', 47000000, 8.2, 'https://tse1.mm.bing.net/th/id/OIP.2jOQSuSuv4OG69PerbEAHgHaKk?rs=1&pid=ImgDetMain&o=7&rm=3'),
+  (18, 1, 7, 'Susurros del corazón'               , '1995-07-15', '111 minutos', 'Animación/Drama', 50000000, 8.0, 'https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/styles/gallery_big/public/media/image/2017/02/susurros-corazon_0.jpg?itok=LlMbkfYq'),
+  (19, 1, 1, 'La princesa Mononoke'               , '1997-07-12', '134 minutos', 'Animación/Aventura', 80000000, 8.4, 'https://i.pinimg.com/originals/9f/dc/2d/9fdc2da3e286acb2c1ad7734ff11fc59.jpg'),
+  (20, 1, 2, 'Mis vecinos Yamada'                 , '1999-07-17', '104 minutos', 'Animación/Comedia', 55000000, 7.7, 'https://m.media-amazon.com/images/M/MV5BZTA3Y2FjZDItZmZlOC00NGI0LWEwNTItNTE0ZTQ5NTJkZjJlXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg'),
+  (21, 1, 1, 'El viaje de Chihiro'                , '2001-07-20', '125 minutos', 'Animación/Fantasía', 90000000, 8.6, 'https://www.themoviedb.org/t/p/original/laXrmaTRuroArSPfsGlvTbeWxVA.jpg'),
+  (22, 1, 1, 'El castillo ambulante'              , '2004-09-05', '119 minutos', 'Animación/Aventura', 70000000, 8.2, 'https://tse3.mm.bing.net/th/id/OIP.x6Or0DsyanMeVtpY6WTI3gHaLH?rs=1&pid=ImgDetMain&o=7&rm=3'),
+  (23, 1, 4, 'Earwig y la bruja'                  , '2020-12-30', '82 minutos', 'Animación/Fantasía', 60000000, 6.0, 'https://th.bing.com/th/id/R.f5909030408ff8c330829f05f847deb8?rik=kPtb3p8PxglvAA&pid=ImgRaw&r=0');
 
 
 Insert into Personajes(id_personaje, id_pelicula, Nombre)

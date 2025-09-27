@@ -1,0 +1,25 @@
+@{
+    ViewData["Title"] = "Peliculas Page";
+}
+
+<body>
+    <h1 class="display-4">Pelicula</h1>
+    <h3>Listado</h3>
+
+    
+    <div class="Muestra">
+        @foreach(var repo in Model)
+        {
+            <div class="Casilla">
+                <a  asp-action="Detalle" asp-route-id="@repo.IdPelicula">
+                        <img src="@repo.IMG" alt="">
+                        </a>
+                <a  asp-action="Detalle" asp-route-id="@repo.IdPelicula">
+                            @repo.Nombre
+                        </a>
+                <a asp-action="Modificar" asp-route-Id="@repo.IdPelicula">Modificar</a>
+            </div>
+        }
+    </div>
+    
+</body>

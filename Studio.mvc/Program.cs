@@ -17,6 +17,7 @@ builder.Services.AddScoped<IRepoActor, RepoActor>();
 builder.Services.AddScoped<IRepoPelicula, RepoPelicula>();
 builder.Services.AddScoped<IRepoDirector, RepoDirector>();
 builder.Services.AddScoped<IRepoPersonajes, RepoPersonaje>();
+builder.Services.AddScoped<IRepoPelicula, RepoPelicula>();
 
 
 var app = builder.Build();

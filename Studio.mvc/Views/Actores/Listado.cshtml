@@ -33,7 +33,7 @@
                         <img src="@(actor.IMG)" class="ImgPerfil" alt="Imagen de @actor.Nombre">
                     </td>
                     <td>
-                        <a asp-controller= "Personajes" asp-action="DetalleActor" asp-route-id="@actor.IdActor">
+                        <a  asp-action="Detalle" asp-route-id="@actor.IdActor">
                             @actor.Nombre @actor.Apellido
                         </a>
                     </td>
