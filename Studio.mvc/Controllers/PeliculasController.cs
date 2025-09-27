@@ -13,4 +13,17 @@ public class PeliculasController : Controller
         var peliculas = await repoPelicula.ListarAsync();
         return View(peliculas);
     }
+
+    public async Task<IActionResult> Detalle(int? id)
+    {
+        if (id is null || id == 0)
+            return NotFound();
+
+        var pelicula = await repoPelicula.DetalleAsync(id.GetValueOrDefault());
+
+        if (pelicula is null)
+            return NotFound();
+
+        return View(pelicula);
+    }
 }
