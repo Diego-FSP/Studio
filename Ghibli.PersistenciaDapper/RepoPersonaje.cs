@@ -10,18 +10,18 @@ namespace Ghibli.PersistenciaDapper;
 public class RepoPersonaje : RepoBase, IRepoPersonajes
 {
     static readonly string _listadoPersonajes =
-        @"SELECT id_personaje AS idPersonaje, Nombre, id_pelicula AS idPelicula
+        @"SELECT id_personaje AS idPersonaje, Nombre, id_pelicula AS idPelicula, IMG
         FROM    Personajes";
 
     static readonly string _listadoPersonajesfrom =
-        @"SELECT id_personaje AS idPersonaje, Nombre, id_pelicula AS idPelicula
+        @"SELECT id_personaje AS idPersonaje, Nombre, id_pelicula AS idPelicula, IMG
         FROM    Personajes
         WHERE id_pelicula =";
 
     
         
     static readonly string _listadoPersonajesfromActor =
-        @"SELECT P.id_personaje AS idPersonaje, P.Nombre, P.id_pelicula AS idPelicula
+        @"SELECT P.id_personaje AS idPersonaje, P.Nombre, P.id_pelicula AS idPelicula, IMG
         FROM    Personajes P
         inner join personaje_voz PV ON P.id_personaje = PV.id_personaje
         WHERE PV.id_actor = @idActor";
@@ -29,7 +29,7 @@ public class RepoPersonaje : RepoBase, IRepoPersonajes
     static readonly string _detallePersonajes = _listadoPersonajes + @"
     where id_personaje = @idPersonaje
     limit 1";
-
+//
     static readonly string _Actor =
     @"Select id_actor
     from personaje_voz
@@ -48,6 +48,7 @@ public class RepoPersonaje : RepoBase, IRepoPersonajes
         parametros.Add("@unidpersonaje", direction: ParameterDirection.Output);
         parametros.Add("@unidpelicula", personaje.idPelicula);
         parametros.Add("@unnombre", personaje.Nombre);
+        parametros.Add("@unIMG", personaje.IMG);
         var parametrosR = new DynamicParameters();
         parametrosR.Add("@actor", personaje.Actor.IdActor);
         parametrosR.Add("@personaje", personaje.idPersonaje);
@@ -83,6 +84,7 @@ public class RepoPersonaje : RepoBase, IRepoPersonajes
         parametros.Add("@unidpersonaje", direction: ParameterDirection.Output);
         parametros.Add("@unidpelicula", personaje.idPelicula);
         parametros.Add("@unnombre", personaje.Nombre);
+        parametros.Add("@unIMG", personaje.IMG);
         var parametrosR = new DynamicParameters();
         parametrosR.Add("@actor", personaje.Actor.IdActor);
         parametrosR.Add("@personaje", personaje.idPersonaje);

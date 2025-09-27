@@ -71,10 +71,10 @@ END&&
 
 
 drop procedure if exists agregarPer&&
-CREATE procedure agregarPer(out unidpersonaje int, unidpelicula int, unnombre varchar(40))
+CREATE procedure agregarPer(out unidpersonaje int, unidpelicula int, unnombre varchar(40), unIMG varchar(400))
 begin
-	insert INTO Personajes (id_personaje, id_pelicula, nombre)
-					values (unidpersonaje, unidpelicula, unnombre);
+	insert INTO Personajes (id_personaje, id_pelicula, nombre, IMG)
+					values (unidpersonaje, unidpelicula, unnombre, unIMG);
 					SET unidpersonaje = LAST_INSERT_ID();
 end&&
 

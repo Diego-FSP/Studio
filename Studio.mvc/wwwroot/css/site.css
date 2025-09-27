@@ -23,7 +23,8 @@ img.ImgPerfil{
 #info{
   display: flex;
   #datos{
-    margin-left: 25%;
+    margin-left: 10%;
+    width: 60%;
   }
 }
 

@@ -7,21 +7,21 @@
     <div id="info">
         <img id="Poster" src="@Model.IMG" alt="">
         <div id="datos">
+            <p><strong>Calificacion: </strong>@Model.Calificacion</p>
             <p><strong>Genero: </strong>@Model.Genero</p>
-            <p><strong>Presupuesto: </strong>@Model.Presupuesto</p>
+            <p><strong>Presupuesto: </strong>$@Model.Presupuesto</p>
             <p><strong>Duracion: </strong>@Model.Duracion</p>
-            <p><strong>Fecha de Estreno: </strong>@Model.FechaEstreno</p>
-            <div id="Director">
-                <p>Director: @Model.director.Nombre @Model.director.Apellido </p>
-                <img id="IMGDirector" src="@Model.director.IMG" alt="">
+            <p><strong>Fecha de Estreno: </strong>@Model.FechaEstreno.ToString("dd/MM/yyyy")</p>
+            <div id="Director" style="display: flex;">
+                <p><strong>Director: </strong>@Model.director.Nombre @Model.director.Apellido </p>
+                <img class="ImgPerfil" style="margin-left: 50px;" src="@Model.director.IMG" alt="">
             </div>
         </div>
     </div>
-
+    <h3 style="margin-top: 100px;">Personajes</h3>
     <table>
     <thead>
             <tr>
-                <th>Perfil</th>
                 <th>Personajes</th>
                 <th>Actores</th>
             </tr>
@@ -30,9 +30,8 @@
             @foreach(var repo in Model.Personajes)
             {
                 <tr>
-                    <th><img class="ImgPerfil" src="" alt=""></th>
-                    <th><label for="">@repo.Nombre</label></th>
-                    <th><label for=""><img src="@repo.Actor.IMG" alt="">  @repo.Actor.Nombre @repo.Actor.Apellido</label></th>
+                    <th><img class="ImgPerfil" src="@repo.IMG" alt=""> <label for="">@repo.Nombre</label></th>
+                    <th><label for=""><img class="ImgPerfil" src="@repo.Actor.IMG" alt="">  @repo.Actor.Nombre @repo.Actor.Apellido</label></th>
                 </tr>
             }
         </tbody>
