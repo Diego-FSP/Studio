@@ -136,9 +136,7 @@ public class RepoPersonaje : RepoBase, IRepoPersonajes
 
     public async Task<IEnumerable<Personaje>> PersonajesDeAsync(ActorVoz actorVoz)
     {
-        var personajes = await Conexion.QueryAsync<Personaje>(
-            _listadoPersonajesfromActor,
-            new { idActor = actorVoz.IdActor });
+        var personajes = await Conexion.QueryAsync<Personaje>(_listadoPersonajesfromActor, new { idActor = actorVoz.IdActor });
         return personajes;
     }
 }

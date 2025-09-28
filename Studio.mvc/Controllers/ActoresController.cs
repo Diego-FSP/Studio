@@ -1,12 +1,18 @@
 using Ghibli.Persistencia;
 using Microsoft.AspNetCore.Mvc;
+using Studio.mvc.ViewModel;
 
 namespace Studio.mvc.Controllers;
 
 public class ActoresController : Controller
 {
     IRepoActor repo;
-    public ActoresController(IRepoActor actores) => repo = actores;
+    IRepoPersonajes repoPersonajes;
+    public ActoresController(IRepoActor actores, IRepoPersonajes personajes)
+    {
+        repo = actores;
+        repoPersonajes = personajes;
+    }
 
     public async Task<IActionResult> Listado()
     {
@@ -14,17 +20,44 @@ public class ActoresController : Controller
         return View(actores);
     }
 
+    [HttpGet]
     public async Task<IActionResult> Detalle(int? id)
     {
         if (id is null || id == 0)
             return NotFound();
 
-        var actores = await repo.DetalleAsync(id.GetValueOrDefault());
+        var actor = await repo.DetalleAsync(id.GetValueOrDefault());
 
-        if (actores is null)
+        if (actor is null)
             return NotFound();
 
-        return View(actores);
+        VMActoresPer vmActoresPer = new VMActoresPer(actor);
+        await vmActoresPer.traerPersonajes(repoPersonajes);
+        return View(vmActoresPer);
     }
 
 }
+
+/*
+<table class="ListadoTabla">
+        <thead>
+            <tr>
+                <th>IMG</th>
+                <th>personaje</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var personaje in Model.personajes)
+            {
+                <tr>
+                    <td>
+                        <img src="@personaje.IMG" class="ImgPerfil" alt="Imagen de @personaje.Nombre">
+                    </td>
+                    <td>
+                        <label for="">@personaje.Nombre</label>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+*/

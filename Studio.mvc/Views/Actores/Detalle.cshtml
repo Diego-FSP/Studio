@@ -3,7 +3,31 @@
 }
 
 <body>
-    <h3>@Model.Nombre @Model.Apellido</h3>
-    <img src="@Model.IMG"> </img>
-    <iframe asp-controller="" src="" frameborder="0"></iframe>
+    <div style="display: flex;">
+        <div>
+            <h3>@Model.actor.Nombre @Model.actor.Apellido</h3>
+            <img class="ImgPerfil" src="@Model.actor.IMG"> </img>
+        </div>
+        <table class="ListadoTabla" style="margin-left: 10%;">
+            <thead>
+                <tr>
+                    <th>IMG</th>
+                    <th>personaje</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var personaje in Model.personajes)
+                {
+                    <tr>
+                        <td>
+                            <img src="@personaje.IMG" class="ImgPerfil" alt="Imagen de @personaje.Nombre">
+                        </td>
+                        <td>
+                            <label for="">@personaje.Nombre</label>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 </body>

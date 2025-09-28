@@ -1,0 +1,56 @@
+@using Peli;
+@using Studio.mvc.ViewModel
+@model VMPeliculaDP
+@{
+    ViewData["Title"] = "Peliculas Page";
+    var texto = Model.pelicula.IdPelicula == 0 ? "Agregar pelicula" : "Modificar Pelicula";
+    int count=0;
+}
+
+<form asp-asp-controller="Peliculas" asp-action="Upsert" method="post">
+<div>
+    <div>
+        <label>Nombre </label>
+        <input asp-for="pelicula.Nombre" class="form-control">
+    </div>
+    <div>
+        <label for="">Fecha de Estreno</label>
+        <input type="date" asp-for="pelicula.FechaEstreno" id="">
+    </div>
+    <div>
+        <label for="">Duracion: </label>
+        <input type="text">
+    </div>
+    <div>
+        <label for="">Director</label>
+        <select asp-for="pelicula.director" id="">
+        @foreach(var director in @Model.directores)
+        {
+            <option value="@director"> <img class="ImgPerfil" src="@director.IMG"> @director.Nombre @director.Apellido</option>
+        }
+        </select>
+    </div>
+    <div>
+        <label>Personajes</label>
+        @foreach(var personaje in @Model.pelicula.Personajes)
+        {        
+            <div>
+                <input asp-for="pelicula.Personajes[@count].Nombre" type="text">
+                <input asp-for="pelicula.Personajes[@count].IMG" type="text">
+            </div>
+            @(count++)
+        }
+    </div>
+</div>
+
+<div class="col-auto">
+        @if (Model.pelicula.IdPelicula == 0)
+        {
+            <button type="submit" class="btn btn-primary">@texto</button>
+        }
+        else
+        {
+            <button type="submit" class="btn btn-warning">@texto</button>
+        }
+    </div>
+</form>
