@@ -4,7 +4,6 @@
 @{
     ViewData["Title"] = "Peliculas Page";
     var texto = Model.pelicula.IdPelicula == 0 ? "Agregar pelicula" : "Modificar Pelicula";
-    int count=0;
 }
 
 <form asp-asp-controller="Peliculas" asp-action="Upsert" method="post">
@@ -18,8 +17,32 @@
         <input type="date" asp-for="pelicula.FechaEstreno" id="">
     </div>
     <div>
+        <label for="">Calificacion:</label>
+        <input type="number" asp-for="Calificacion" id="calificacionid">
+        <script>
+            let cal= document.getElementById("calificacionid")
+        
+            cal.addEventListener("keyup", function limite()
+            {
+                if(cal.value<0)
+                cal.value=0;
+                if(cal.value>10)
+                cal.value=10
+            })
+        </script>
+    </div>
+    <div>
         <label for="">Duracion: </label>
-        <input type="text">
+        <input asp-for="Duracion" type="number">
+    </div>
+    <div>
+        <label for="">Genero</label>
+        <select asp-for="pelicula.Genero" id="">
+            <option value="Comedia">Comedia</option>
+            <option value="Terror">Terror</option>
+            <option value="Aventura">Aventura</option>
+            <option value="Fantasia">Fantasia</option>
+        </select>
     </div>
     <div>
         <label for="">Director</label>
@@ -31,16 +54,21 @@
         </select>
     </div>
     <div>
-        <label>Personajes</label>
-        @foreach(var personaje in @Model.pelicula.Personajes)
-        {        
-            <div>
-                <input asp-for="pelicula.Personajes[@count].Nombre" type="text">
-                <input asp-for="pelicula.Personajes[@count].IMG" type="text">
-            </div>
-            @(count++)
-        }
+        <label for="">Poster</label>
+        <input id="URLIMG" asp-for="pelicula.IMG" class="form-control"/>
+        <img class="ImgDirectores" id="IMGRsultado" src="@Model.pelicula.IMG" alt="">
+            
+        <script>
+            let enlace= document.getElementById("URLIMG")
+            let img= document.getElementById("IMGRsultado")
+        
+            enlace.addEventListener("keyup", function mostrar()
+            {
+                img.src=enlace.value
+            })
+        </script>
     </div>
+
 </div>
 
 <div class="col-auto">

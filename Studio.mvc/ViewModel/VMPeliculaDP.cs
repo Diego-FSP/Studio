@@ -13,7 +13,10 @@ public class VMPeliculaDP
     public Pelicula pelicula;
     public IEnumerable<Director> directores { get; set; } = [];
     public IEnumerable<Personaje> Personajes { get; set; } = [];
+    public int Duracion;
+    public int Calificacion;
 
+    public VMPeliculaDP() { }
     public VMPeliculaDP(Pelicula peli)
     {
         pelicula = peli;

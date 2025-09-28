@@ -51,12 +51,14 @@ public class PeliculasController : Controller
         var pelicula = new Pelicula()
         {
             IdPelicula = 0,
+            idStudio = 0,
             Nombre = "Nombre",
             Duracion = "Duracion",
             Genero = "Genero",
             Calificacion = "",
             IMG = "https://i.pinimg.com/originals/53/2a/27/532a270caf5b324c887edd98a5e706d5.gif",
-            director = director
+            director = director,
+            FechaEstreno = new DateTime(2000,1,10)
         };
         VMPeliculaDP vmPelicula= new VMPeliculaDP(pelicula);
         await vmPelicula.traerDirectores(repoDirector);
@@ -65,17 +67,20 @@ public class PeliculasController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> Upsert(Pelicula pelicula)
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Upsert(VMPeliculaDP vmPelicula)
     {
         if (!ModelState.IsValid)
         {
-            return View("Upsert", pelicula);
+            return View("Upsert", vmPelicula);
         }
 
-        if (pelicula.IdPelicula == 0)
+        if (vmPelicula.pelicula.IdPelicula == 0)
         {
-            pelicula.IdPelicula = 1;
-            await repoPelicula.AltaAsync(pelicula);
+            vmPelicula.pelicula.IdPelicula = 1;
+            vmPelicula.pelicula.Duracion = vmPelicula.Duracion + " minutos";
+            vmPelicula.pelicula.Calificacion = vmPelicula.Calificacion + "/10";
+            await repoPelicula.AltaAsync(vmPelicula.pelicula);
         }
         else
         {
