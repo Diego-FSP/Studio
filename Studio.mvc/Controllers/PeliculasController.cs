@@ -1,4 +1,3 @@
-using Directores;
 using Ghibli.Persistencia;
 using Microsoft.AspNetCore.Mvc;
 using Peli;
@@ -38,31 +37,9 @@ public class PeliculasController : Controller
     [HttpGet]
     public async Task<IActionResult> Alta()
     {
-        var director = new Director()
-        {
-            idDirector = 0,
-            Nombre = "Nombre",
-            Apellido = "Apellido",
-            nacionalidad = "Nacionalidad",
-            descripcion = "Descripcion",
-            FechaNacimiento = new DateTime(2000, 1, 10),
-            IMG = "https://i.pinimg.com/originals/53/2a/27/532a270caf5b324c887edd98a5e706d5.gif"
-        };
-        var pelicula = new Pelicula()
-        {
-            IdPelicula = 0,
-            idStudio = 0,
-            Nombre = "Nombre",
-            Duracion = "Duracion",
-            Genero = "Genero",
-            Calificacion = "",
-            IMG = "https://i.pinimg.com/originals/53/2a/27/532a270caf5b324c887edd98a5e706d5.gif",
-            director = director,
-            FechaEstreno = new DateTime(2000,1,10)
-        };
-        VMPeliculaDP vmPelicula= new VMPeliculaDP(pelicula);
+        
+        VMPeliculaDP vmPelicula= new VMPeliculaDP();
         await vmPelicula.traerDirectores(repoDirector);
-        vmPelicula.agregarPersonaje(await vmPelicula.crearPersonaje(pelicula.IdPelicula));
         return View("Upsert", vmPelicula);
     }
 
@@ -75,12 +52,23 @@ public class PeliculasController : Controller
             return View("Upsert", vmPelicula);
         }
 
-        if (vmPelicula.pelicula.IdPelicula == 0)
+        if (vmPelicula.IdPelicula == 0)
         {
-            vmPelicula.pelicula.IdPelicula = 1;
-            vmPelicula.pelicula.Duracion = vmPelicula.Duracion + " minutos";
-            vmPelicula.pelicula.Calificacion = vmPelicula.Calificacion + "/10";
-            await repoPelicula.AltaAsync(vmPelicula.pelicula);
+            var pelicula = new Pelicula()
+            {
+                IdPelicula= 1,
+                Nombre = vmPelicula.Nombre,
+                idStudio = 1,
+                FechaEstreno = vmPelicula.FechaEstreno,
+                Duracion= vmPelicula.Duracion,
+                Genero= vmPelicula.Genero,
+                Calificacion= vmPelicula.Calificacion,
+                Presupuesto= vmPelicula.Presupuesto,
+                IMG= vmPelicula.IMG,
+                director= vmPelicula.director
+            };
+            pelicula.director.idDirector = vmPelicula.idDirector;
+            await repoPelicula.AltaAsync(pelicula);
         }
         else
         {

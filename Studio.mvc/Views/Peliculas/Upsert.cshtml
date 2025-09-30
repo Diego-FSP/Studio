@@ -3,41 +3,33 @@
 @model VMPeliculaDP
 @{
     ViewData["Title"] = "Peliculas Page";
-    var texto = Model.pelicula.IdPelicula == 0 ? "Agregar pelicula" : "Modificar Pelicula";
+    var texto = Model.IdPelicula == 0 ? "Agregar pelicula" : "Modificar Pelicula";
 }
 
-<form asp-asp-controller="Peliculas" asp-action="Upsert" method="post">
+
+
+<form asp-controller="Peliculas" asp-action="Upsert" method="post">
+<div asp-validation-summary="All"></div>
 <div>
     <div>
         <label>Nombre </label>
-        <input asp-for="pelicula.Nombre" class="form-control">
+        <input asp-for="Nombre" class="form-control">
     </div>
     <div>
         <label for="">Fecha de Estreno</label>
-        <input type="date" asp-for="pelicula.FechaEstreno" id="">
+        <input type="date" asp-for="FechaEstreno" id="">
     </div>
     <div>
         <label for="">Calificacion:</label>
-        <input type="number" asp-for="Calificacion" id="calificacionid">
-        <script>
-            let cal= document.getElementById("calificacionid")
-        
-            cal.addEventListener("keyup", function limite()
-            {
-                if(cal.value<0)
-                cal.value=0;
-                if(cal.value>10)
-                cal.value=10
-            })
-        </script>
+        <input type="text" asp-for="Calificacion" id="calificacionid">
     </div>
     <div>
         <label for="">Duracion: </label>
-        <input asp-for="Duracion" type="number">
+        <input asp-for="Duracion" type="text">
     </div>
     <div>
         <label for="">Genero</label>
-        <select asp-for="pelicula.Genero" id="">
+        <select asp-for="Genero" id="">
             <option value="Comedia">Comedia</option>
             <option value="Terror">Terror</option>
             <option value="Aventura">Aventura</option>
@@ -46,17 +38,17 @@
     </div>
     <div>
         <label for="">Director</label>
-        <select asp-for="pelicula.director" id="">
-        @foreach(var director in @Model.directores)
-        {
-            <option value="@director"> <img class="ImgPerfil" src="@director.IMG"> @director.Nombre @director.Apellido</option>
-        }
+        <select asp-items="Model.Directores" asp-for="idDirector" id="">
         </select>
     </div>
     <div>
+    <label for="">Presupuesto</label>
+    <input asp-for="Presupuesto" type="number">
+    </div>
+    <div>
         <label for="">Poster</label>
-        <input id="URLIMG" asp-for="pelicula.IMG" class="form-control"/>
-        <img class="ImgDirectores" id="IMGRsultado" src="@Model.pelicula.IMG" alt="">
+        <input id="URLIMG" asp-for="IMG" class="form-control"/>
+        <img class="ImgPerfil" id="IMGRsultado" src="@Model.IMG" alt="">
             
         <script>
             let enlace= document.getElementById("URLIMG")
@@ -72,7 +64,7 @@
 </div>
 
 <div class="col-auto">
-        @if (Model.pelicula.IdPelicula == 0)
+        @if (Model.IdPelicula == 0)
         {
             <button type="submit" class="btn btn-primary">@texto</button>
         }
