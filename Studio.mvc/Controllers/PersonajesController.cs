@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using Actores;
 using Ghibli.Persistencia;
+using Ghibli.PersistenciaDapper;
 using Microsoft.AspNetCore.Mvc;
 using Personajes;
 
@@ -10,20 +11,11 @@ public class PersonajesController : Controller
 {
     IRepoPersonajes repoPersonaje;
     IRepoActor repoActor;
-    public PersonajesController(IRepoPersonajes repoPersonaje, IRepoActor repoActor)
-            => (this.repoPersonaje, this.repoActor) = (repoPersonaje, repoActor);
 
-    public async Task<IActionResult> DetalleActor(int? idActor)
+    public PersonajesController(IRepoPersonajes per, IRepoActor actor)
     {
-        if (idActor is null || idActor == 0)
-            return NotFound();
-
-        var actores = await repoActor.DetalleAsync(idActor.GetValueOrDefault());
-
-        if (actores is null)
-            return NotFound();
-
-        return View();
+        repoPersonaje = per;
+        repoActor = actor;
     }
 }
 
@@ -32,20 +24,5 @@ public class PersonajesController : Controller
 
 
 /*
-class Lista
-    {
-        ActorVoz actor;
-        IEnumerable<Personaje> personajes;
 
-        public Lista(ActorVoz a, IEnumerable<Personaje> p)
-        {
-            actor = a;
-            personajes = p;
-        }
-
-    }
-
-    if (actor is null)
-                return NotFound();            
-            var personajes = await repoPersonaje.PersonajesDeAsync(actor);
 */

@@ -64,7 +64,7 @@ BEGIN
 		presupuesto=unpresupuesto, 
 		calificacion=uncalificacion, 
 		IMG = unIMG
-	where id_pelicula=unidpelicula;
+	where id_pelicula = unidpelicula;
 END&&
 
 drop procedure if exists eliminarP&&
