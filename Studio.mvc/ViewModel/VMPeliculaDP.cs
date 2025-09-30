@@ -2,12 +2,13 @@ using Actores;
 using Directores;
 using Ghibli.Persistencia;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Peli;
 using Personajes;
 
 namespace Studio.mvc.ViewModel;
 public class VMPeliculaDP
 {
-    public int IdPelicula = 0;
+    public int IdPelicula  { get; set; }
 
     public string Nombre { get; set; }
 
@@ -33,6 +34,7 @@ public class VMPeliculaDP
 
     public VMPeliculaDP()
     {
+        IdPelicula = 0;
         director = new Director()
         {
             idDirector = 0,
@@ -43,6 +45,21 @@ public class VMPeliculaDP
             IMG = "de",
             descripcion = "FGFG"
         };
+    }
+
+    public VMPeliculaDP(Pelicula pelicula)
+    {
+        IdPelicula = pelicula.IdPelicula;
+        Nombre = pelicula.Nombre;
+        FechaEstreno = pelicula.FechaEstreno;
+        Duracion = pelicula.Duracion;
+        Genero = pelicula.Genero;
+        Calificacion = pelicula.Calificacion;
+        Presupuesto = pelicula.Presupuesto;
+        IMG = pelicula.IMG;
+        idStudio = 1;
+        director = pelicula.director;
+        Personajes = pelicula.Personajes;
     }
 
     public async Task traerDirectores(IRepoDirector repoDirector)

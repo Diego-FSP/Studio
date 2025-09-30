@@ -3,13 +3,21 @@
 @model VMPeliculaDP
 @{
     ViewData["Title"] = "Peliculas Page";
-    var texto = Model.IdPelicula == 0 ? "Agregar pelicula" : "Modificar Pelicula";
 }
 
-
+<div>
+    @if(Model.IdPelicula==0)
+    {
+        <h2>Agregar Pelicula</h2>
+    }
+    else{
+        <h2>Modificar Pelicula n° @Model.IdPelicula </h2>
+    }
+</div>
 
 <form asp-controller="Peliculas" asp-action="Upsert" method="post">
 <div asp-validation-summary="All"></div>
+<div><input type="hidden" asp-for="@Model.IdPelicula" /></div>
 <div>
     <div>
         <label>Nombre </label>
@@ -66,11 +74,11 @@
 <div class="col-auto">
         @if (Model.IdPelicula == 0)
         {
-            <button type="submit" class="btn btn-primary">@texto</button>
+            <button type="submit" class="btn btn-primary">Agregar Pelicula</button>
         }
         else
         {
-            <button type="submit" class="btn btn-warning">@texto</button>
+            <button type="submit" class="btn btn-warning">Modificar Pelicula n°@Model.IdPelicula</button>
         }
     </div>
 </form>

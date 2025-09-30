@@ -128,4 +128,27 @@ public class RepoPelicula : RepoBase, IRepoPelicula
     {
         throw new NotImplementedException();
     }
+
+    public Pelicula Modificar(Pelicula elemento)
+    {
+        throw new NotImplementedException();
+    }
+
+    public async Task ModificarAsync(Pelicula elemento)
+    {
+        var parametros = new DynamicParameters();
+        parametros.Add("@unidestudio", elemento.idStudio);
+        parametros.Add("@unidirector", elemento.director.idDirector);
+        parametros.Add("@unnombre", elemento.Nombre);
+        parametros.Add("@unfechaestreno", elemento.FechaEstreno);
+        parametros.Add("@unDuracion", elemento.Duracion);
+        parametros.Add("@ungenero", elemento.Genero);
+        parametros.Add("@unpresupuesto", elemento.Presupuesto);
+        parametros.Add("@uncalificacion", elemento.Calificacion);
+        parametros.Add("@unIMG", elemento.IMG);
+        parametros.Add("@unidpelicula", elemento.IdPelicula);
+        await Conexion.ExecuteAsync("actualizarPL", parametros);
+        
+        elemento.IdPelicula = parametros.Get<int>("@unidpelicula");
+    }
 }

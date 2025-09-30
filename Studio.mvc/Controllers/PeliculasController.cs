@@ -43,6 +43,15 @@ public class PeliculasController : Controller
         return View("Upsert", vmPelicula);
     }
 
+    [HttpGet]
+    public async Task<IActionResult> Modificar(int? id)
+    {
+        var pelicula = await repoPelicula.DetalleAsync(id.GetValueOrDefault());
+        VMPeliculaDP vmPelicula= new VMPeliculaDP(pelicula);
+        await vmPelicula.traerDirectores(repoDirector);
+        return View("Upsert", vmPelicula);
+    }
+
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Upsert(VMPeliculaDP vmPelicula)
@@ -56,23 +65,36 @@ public class PeliculasController : Controller
         {
             var pelicula = new Pelicula()
             {
-                IdPelicula= 1,
+                IdPelicula = 1,
                 Nombre = vmPelicula.Nombre,
                 idStudio = 1,
                 FechaEstreno = vmPelicula.FechaEstreno,
-                Duracion= vmPelicula.Duracion,
-                Genero= vmPelicula.Genero,
-                Calificacion= vmPelicula.Calificacion,
-                Presupuesto= vmPelicula.Presupuesto,
-                IMG= vmPelicula.IMG,
-                director= vmPelicula.director
+                Duracion = vmPelicula.Duracion,
+                Genero = vmPelicula.Genero,
+                Calificacion = vmPelicula.Calificacion,
+                Presupuesto = vmPelicula.Presupuesto,
+                IMG = vmPelicula.IMG,
+                director = vmPelicula.director
             };
             pelicula.director.idDirector = vmPelicula.idDirector;
             await repoPelicula.AltaAsync(pelicula);
-        }
-        else
+        }else
         {
-            //
+            var pelicula = new Pelicula()
+            {
+                IdPelicula = vmPelicula.IdPelicula,
+                Nombre = vmPelicula.Nombre,
+                idStudio = 1,
+                FechaEstreno = vmPelicula.FechaEstreno,
+                Duracion = vmPelicula.Duracion,
+                Genero = vmPelicula.Genero,
+                Calificacion = vmPelicula.Calificacion,
+                Presupuesto = vmPelicula.Presupuesto,
+                IMG = vmPelicula.IMG,
+                director = vmPelicula.director
+            };
+            pelicula.director.idDirector = vmPelicula.idDirector;
+            await repoPelicula.ModificarAsync(pelicula);
         }
         return RedirectToAction(nameof(Listado));
     }

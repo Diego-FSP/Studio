@@ -51,6 +51,22 @@ BEGIN
 					
 END&&
 
+drop procedure if exists actualizarPL&&
+CREATE PROCEDURE actualizarPL	(unidpelicula int, unidestudio int, unidirector int, unnombre varchar(100), unfechaestreno date, unDuracion varchar(20), ungenero varchar(20), unpresupuesto double, uncalificacion varchar(20), unIMG varchar(400))
+BEGIN
+	update peliculas	
+	set id_estudio=unidestudio, 
+		id_director=unidirector, 
+		nombre=unnombre, 
+		fecha_estreno=unfechaestreno, 
+		Duracion=unDuracion, 
+		genero=ungenero, 
+		presupuesto=unpresupuesto, 
+		calificacion=uncalificacion, 
+		IMG = unIMG
+	where id_pelicula=unidpelicula;
+END&&
+
 drop procedure if exists eliminarP&&
 CREATE PROCEDURE eliminarP(unidpelicula int)
 BEGIN
