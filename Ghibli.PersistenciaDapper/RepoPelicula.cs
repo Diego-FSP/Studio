@@ -1,10 +1,7 @@
 using System.Data;
 using Dapper;
-using Actores;
 using Ghibli.Persistencia;
 using Peli;
-using System.Threading.Tasks;
-using Microsoft.VisualBasic;
 
 namespace Ghibli.PersistenciaDapper;
 
@@ -46,12 +43,11 @@ public class RepoPelicula : RepoBase, IRepoPelicula
         parametros.Add("@ungenero",pelicula.Genero);
         parametros.Add("@unpresupuesto",pelicula.Presupuesto);
         parametros.Add("@uncalificacion",pelicula.Calificacion);
-        parametros.Add("@unprogramastilo",pelicula.IMG);
+        parametros.Add("@unIMG",pelicula.IMG);
         parametros.Add("@unidpelicula", direction: ParameterDirection.Output);
     
         
         Conexion.Execute("agregarP", parametros);
-       
         //Obtengo el valor de parametro de tipo salida
         pelicula.IdPelicula = parametros.Get<int>("@unidpelicula");
     }
@@ -85,12 +81,11 @@ public class RepoPelicula : RepoBase, IRepoPelicula
         parametros.Add("@ungenero",pelicula.Genero);
         parametros.Add("@unpresupuesto",pelicula.Presupuesto);
         parametros.Add("@uncalificacion",pelicula.Calificacion);
-        parametros.Add("@unprogramastilo",pelicula.IMG);
+        parametros.Add("@unIMG",pelicula.IMG);
         parametros.Add("@unidpelicula", direction: ParameterDirection.Output);
     
         
         await Conexion.ExecuteAsync("agregarP", parametros);
-       
         //Obtengo el valor de parametro de tipo salida
         pelicula.IdPelicula = parametros.Get<int>("@unidpelicula");
     }
@@ -101,11 +96,11 @@ public class RepoPelicula : RepoBase, IRepoPelicula
             _detallepelicula,
             new {idPelicula = idPelicula});
 
-        int AUX = await Conexion.QueryFirstOrDefaultAsync<int>(_Director,
+        int idDirector = await Conexion.QueryFirstOrDefaultAsync<int>(_Director,
         new {idPelicula = idPelicula});
 
         RepoDirector repoDirector = new RepoDirector(conex);
-        pelicula.director = await repoDirector.DetalleAsync(AUX);
+        pelicula.director = await repoDirector.DetalleAsync(idDirector);
 
         RepoPersonaje repoPersonaje = new RepoPersonaje(conex);
         pelicula.Personajes = (List<Personajes.Personaje>)await repoPersonaje.ListarfromAsync(idPelicula);
@@ -132,5 +127,28 @@ public class RepoPelicula : RepoBase, IRepoPelicula
     public Task<IEnumerable<Pelicula>> ListarfromAsync(int id)
     {
         throw new NotImplementedException();
+    }
+
+    public Pelicula Modificar(Pelicula elemento)
+    {
+        throw new NotImplementedException();
+    }
+
+    public async Task ModificarAsync(Pelicula elemento)
+    {
+        var parametros = new DynamicParameters();
+        parametros.Add("@unidestudio", elemento.idStudio);
+        parametros.Add("@unidirector", elemento.director.idDirector);
+        parametros.Add("@unnombre", elemento.Nombre);
+        parametros.Add("@unfechaestreno", elemento.FechaEstreno);
+        parametros.Add("@unDuracion", elemento.Duracion);
+        parametros.Add("@ungenero", elemento.Genero);
+        parametros.Add("@unpresupuesto", elemento.Presupuesto);
+        parametros.Add("@uncalificacion", elemento.Calificacion);
+        parametros.Add("@unIMG", elemento.IMG);
+        parametros.Add("@unidpelicula", elemento.IdPelicula);
+        await Conexion.ExecuteAsync("actualizarPL", parametros);
+        
+        elemento.IdPelicula = parametros.Get<int>("@unidpelicula");
     }
 }

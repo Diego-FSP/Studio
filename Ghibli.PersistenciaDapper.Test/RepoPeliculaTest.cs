@@ -42,12 +42,11 @@ public class RepoPeliculaTest : TestBase
             Nombre = "Niño y la Garza",
             idStudio = 1,
             FechaEstreno = new DateTime(2011, 6, 10),
-            FechaCreacion = new DateTime(2011, 6, 10),
             Duracion= "2.h",
             Genero= "Animacion",
             Calificacion= "9.2",
             Presupuesto= 110002,
-            ProgramaEstilo= "usaweew",
+            IMG= "usaweew",
             director= guillermo
         };
 
@@ -79,27 +78,26 @@ public class RepoPeliculaTest : TestBase
     {
         var guillermo = new Director()
         {
-            idDirector = 8,
+            idDirector = 3,
             Nombre = "Guillermo",
             Apellido = "Franchella",
             nacionalidad = "Peru",
             FechaNacimiento = new DateTime(2011, 6, 10),
             IMG = "de",
-            descripcion=""
+            descripcion="FGFG"
         };
 
         var nino = new Pelicula()
         {
-            IdPelicula= 122,
+            IdPelicula= 1,
             Nombre = "El Niño y la Garza",
             idStudio = 1,
             FechaEstreno = new DateTime(2011, 6, 10),
-            FechaCreacion = new DateTime(2011, 6, 10),
             Duracion= "2.h",
             Genero= "Anime",
             Calificacion= "9.2",
             Presupuesto= 110002,
-            ProgramaEstilo= "usaweew",
+            IMG= "usaweew",
             director= guillermo
         };
 

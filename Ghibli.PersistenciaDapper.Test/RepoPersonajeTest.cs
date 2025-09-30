@@ -36,7 +36,8 @@ public class RepoPersonajeTest : TestBase
             Nombre = "Hachiko",
             idPelicula = 2,
             idPersonaje = 1,
-            Actor = guill
+            Actor = guill,
+            IMG = ""
         };
 
         _repoPersonaje.Alta(guillermo);
@@ -78,7 +79,8 @@ public class RepoPersonajeTest : TestBase
             Nombre = "HachikoAsync",
             idPelicula = 2,
             idPersonaje = 1,
-            Actor = guill
+            Actor = guill,
+            IMG= ""
         };
 
         await _repoPersonaje.AltaAsync(guillermo);
