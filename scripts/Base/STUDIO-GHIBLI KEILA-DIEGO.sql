@@ -38,6 +38,7 @@ Duracion    varchar(20),
 genero  varchar(20), 
 presupuesto double, 
 calificacion varchar(20),
+Trailer varchar(100),
 IMG varchar(400),  
 constraint PK_puliculas primary key(id_pelicula, genero),
 constraint fk_peliculas_Estudio foreign key(id_estudio)

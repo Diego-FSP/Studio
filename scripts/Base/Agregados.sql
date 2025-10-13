@@ -36,23 +36,23 @@ end&&
 
 -- 2.- agregarO pelicula
 drop procedure if exists agregarP&&
-CREATE PROCEDURE agregarP	(out unidpelicula int, unidestudio int, unidirector int, unnombre varchar(100), unfechaestreno date, unDuracion varchar(20), ungenero varchar(20), unpresupuesto double, uncalificacion varchar(20), unIMG varchar(400))
+CREATE PROCEDURE agregarP	(out unidpelicula int, unidestudio int, unidirector int, unnombre varchar(100), unfechaestreno date, unDuracion varchar(20), ungenero varchar(20), unpresupuesto double, uncalificacion varchar(20), unTrailer varchar(100),  unIMG varchar(400))
 BEGIN
-	INSERT INTO peliculas	(id_pelicula, id_estudio, id_director, nombre, fecha_estreno, Duracion, genero, presupuesto, calificacion, IMG)
-					VALUES (unidpelicula, unidestudio, unidirector, unnombre, unfechaestreno, unDuracion, ungenero, unpresupuesto, uncalificacion, unIMG);
+	INSERT INTO peliculas	(id_pelicula, id_estudio, id_director, nombre, fecha_estreno, Duracion, genero, presupuesto, calificacion, Trailer, IMG)
+					VALUES (unidpelicula, unidestudio, unidirector, unnombre, unfechaestreno, unDuracion, ungenero, unpresupuesto, uncalificacion, unTrailer, unIMG);
 					SET unidpelicula = LAST_INSERT_ID();
 END&&
 
 drop procedure if exists agregarPL&&
-CREATE PROCEDURE agregarPL	(unidpelicula int, unidestudio int, unidirector int, unnombre varchar(100), unfechaestreno date, unDuracion varchar(20), ungenero varchar(20), unpresupuesto double, uncalificacion varchar(20), unIMG varchar(400))
+CREATE PROCEDURE agregarPL	(unidpelicula int, unidestudio int, unidirector int, unnombre varchar(100), unfechaestreno date, unDuracion varchar(20), ungenero varchar(20), unpresupuesto double, uncalificacion varchar(20), unTrailer varchar(100), unIMG varchar(400))
 BEGIN
-	INSERT INTO peliculas	(id_pelicula, id_estudio, id_director, nombre, fecha_estreno, Duracion, genero, presupuesto, calificacion, IMG)
-					VALUES (unidpelicula, unidestudio, unidirector, unnombre, unfechaestreno, unDuracion, ungenero, unpresupuesto, uncalificacion, unIMG);
+	INSERT INTO peliculas	(id_pelicula, id_estudio, id_director, nombre, fecha_estreno, Duracion, genero, presupuesto, calificacion, Trailer, IMG)
+					VALUES (unidpelicula, unidestudio, unidirector, unnombre, unfechaestreno, unDuracion, ungenero, unpresupuesto, uncalificacion, unTrailer, unIMG);
 					
 END&&
 
 drop procedure if exists actualizarPL&&
-CREATE PROCEDURE actualizarPL	(unidpelicula int, unidestudio int, unidirector int, unnombre varchar(100), unfechaestreno date, unDuracion varchar(20), ungenero varchar(20), unpresupuesto double, uncalificacion varchar(20), unIMG varchar(400))
+CREATE PROCEDURE actualizarPL	(unidpelicula int, unidestudio int, unidirector int, unnombre varchar(100), unfechaestreno date, unDuracion varchar(20), ungenero varchar(20), unpresupuesto double, uncalificacion varchar(20), unTrailer varchar(100), unIMG varchar(400))
 BEGIN
 	update peliculas	
 	set id_estudio=unidestudio, 
@@ -62,7 +62,8 @@ BEGIN
 		Duracion=unDuracion, 
 		genero=ungenero, 
 		presupuesto=unpresupuesto, 
-		calificacion=uncalificacion, 
+		calificacion=uncalificacion,
+        Trailer= unTrailer,
 		IMG = unIMG
 	where id_pelicula = unidpelicula;
 END&&

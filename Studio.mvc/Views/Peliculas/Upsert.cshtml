@@ -20,7 +20,7 @@
 <div><input type="hidden" asp-for="@Model.IdPelicula" /></div>
 <div>
     <div>
-        <label>Nombre </label>
+        <label>Nombre: </label>
         <input asp-for="Nombre" class="form-control">
     </div>
     <div>
@@ -28,7 +28,7 @@
         <input type="date" asp-for="FechaEstreno" id="">
     </div>
     <div>
-        <label for="">Calificacion:</label>
+        <label for="">Calificacion: </label>
         <input type="text" asp-for="Calificacion" id="calificacionid">
     </div>
     <div>
@@ -36,7 +36,7 @@
         <input asp-for="Duracion" type="text">
     </div>
     <div>
-        <label for="">Genero</label>
+        <label for="">Genero: </label>
         <select asp-for="Genero" id="">
             <option value="Comedia">Comedia</option>
             <option value="Terror">Terror</option>
@@ -45,18 +45,18 @@
         </select>
     </div>
     <div>
-        <label for="">Director</label>
+        <label for="">Director: </label>
         <select asp-items="Model.Directores" asp-for="idDirector" id="">
         </select>
     </div>
     <div>
-    <label for="">Presupuesto</label>
+    <label for="">Presupuesto: </label>
     <input asp-for="Presupuesto" type="number">
     </div>
-    <div>
-        <label for="">Poster</label>
+    <div id="ModimgP">
+        <label for="">Poster: </label>
         <input id="URLIMG" asp-for="IMG" class="form-control"/>
-        <img class="ImgPerfil" id="IMGRsultado" src="@Model.IMG" alt="">
+        <img id="IMGRsultado" src="@Model.IMG" alt="Imagen no detectada">
             
         <script>
             let enlace= document.getElementById("URLIMG")

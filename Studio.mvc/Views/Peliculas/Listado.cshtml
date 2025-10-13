@@ -1,5 +1,5 @@
 @{
-    ViewData["Title"] = "Peliculas Page";
+    ViewData["Title"] = "Peliculas";
 }
 
 <body>
@@ -12,8 +12,19 @@
         {
             <div class="Casilla">
                 <a  asp-action="Detalle" asp-route-id="@repo.IdPelicula">
-                        <img src="@repo.IMG" alt="">
+                        <div class="CuadroPeli" id="@("p"+repo.IdPelicula)"></div>
                         </a>
+                        <style>
+                        #@("p"+repo.IdPelicula){
+                            background-image: image-set("@repo.IMG");
+                            background-size: 100% 100%;
+                        }
+                        #@("p"+repo.IdPelicula):hover{
+                            background-size: 120% 120%;
+                            background-position: 40% 40%;
+                        }
+                        
+                        </style>
                 <a  asp-action="Detalle" asp-route-id="@repo.IdPelicula">
                             @repo.Nombre
                         </a>
@@ -21,5 +32,6 @@
             </div>
         }
     </div>
+
     
 </body>

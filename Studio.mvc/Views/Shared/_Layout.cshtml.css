@@ -2,11 +2,8 @@
 for details on configuring this project to bundle and minify static web assets. */
 
 ul.ListaI{
-  background-color: rgba(38, 255, 183, 0.247);
-  box-shadow: 0px 0px 30px rgba(38, 255, 183, 0.63);
   display: block;
   margin-right: 100px;
-  color: cadetblue;
 }
 
 
@@ -51,6 +48,7 @@ a {
   background-color: #1b6ec2;
   border-color: #1861ac;
 }
+
 
 .border-top {
   border-top: 1px solid #e5e5e5;

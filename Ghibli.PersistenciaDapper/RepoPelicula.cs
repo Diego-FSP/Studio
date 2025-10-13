@@ -8,7 +8,7 @@ namespace Ghibli.PersistenciaDapper;
 public class RepoPelicula : RepoBase, IRepoPelicula
 {
     static readonly string _listadoPeliculas =
-        @"SELECT id_pelicula AS IdPelicula, nombre as Nombre, fecha_estreno AS FechaEstreno, Duracion, genero AS Genero, calificacion AS Calificacion, presupuesto AS Presupuesto, IMG, id_estudio AS idStudio
+        @"SELECT id_pelicula AS IdPelicula, nombre as Nombre, fecha_estreno AS FechaEstreno, Duracion, genero AS Genero, calificacion AS Calificacion, presupuesto AS Presupuesto, Trailer, IMG, id_estudio AS idStudio
         FROM    peliculas";
     
     static readonly string _detallepelicula = _listadoPeliculas + @"
@@ -43,6 +43,7 @@ public class RepoPelicula : RepoBase, IRepoPelicula
         parametros.Add("@ungenero",pelicula.Genero);
         parametros.Add("@unpresupuesto",pelicula.Presupuesto);
         parametros.Add("@uncalificacion",pelicula.Calificacion);
+        parametros.Add("@unTrailer",pelicula.Trailer);
         parametros.Add("@unIMG",pelicula.IMG);
         parametros.Add("@unidpelicula", direction: ParameterDirection.Output);
     
@@ -81,6 +82,7 @@ public class RepoPelicula : RepoBase, IRepoPelicula
         parametros.Add("@ungenero",pelicula.Genero);
         parametros.Add("@unpresupuesto",pelicula.Presupuesto);
         parametros.Add("@uncalificacion",pelicula.Calificacion);
+        parametros.Add("@unTrailer",pelicula.Trailer);
         parametros.Add("@unIMG",pelicula.IMG);
         parametros.Add("@unidpelicula", direction: ParameterDirection.Output);
     
@@ -145,6 +147,7 @@ public class RepoPelicula : RepoBase, IRepoPelicula
         parametros.Add("@ungenero", elemento.Genero);
         parametros.Add("@unpresupuesto", elemento.Presupuesto);
         parametros.Add("@uncalificacion", elemento.Calificacion);
+        parametros.Add("@unTrailer",elemento.Trailer);
         parametros.Add("@unIMG", elemento.IMG);
         parametros.Add("@unidpelicula", elemento.IdPelicula);
         await Conexion.ExecuteAsync("actualizarPL", parametros);

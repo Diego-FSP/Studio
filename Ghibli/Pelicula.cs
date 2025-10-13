@@ -20,7 +20,7 @@ public class Pelicula
     public int Presupuesto { get; set; }
 
     public required string IMG { get; set; }
-
+    public string Trailer { get; set; }
     public int idStudio { get; set; }
 
     public required Director director { get; set; }
