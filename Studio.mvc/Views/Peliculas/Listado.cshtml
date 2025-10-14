@@ -6,6 +6,9 @@
     <h1 class="display-4">Pelicula</h1>
     <h3>Listado</h3>
 
+
+    <label >Buscador:</label>
+    <input id="Buscador" type="text">
     
     <div class="Muestra">
         @foreach(var repo in Model)
@@ -32,6 +35,26 @@
             </div>
         }
     </div>
-
+    
+    <script>
+        let Buscador= document.getElementById("Buscador")
+        
+        Buscador.addEventListener("keyup", function filtro()
+        {
+            listado = document.getElementsByClassName("Casilla")
+            for(f=0;f<listado.length;f++)
+            {
+                texto=listado[f].textContent
+                if(texto.includes(Buscador.value))
+                {
+                    listado[f].style.display = 'flex';
+                }
+                else
+                {
+                    listado[f].style.display = 'none';
+                }
+            }
+        })
+    </script>
     
 </body>
