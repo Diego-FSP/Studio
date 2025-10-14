@@ -102,7 +102,13 @@ public class RepoPersonaje : RepoBase, IRepoPersonajes
             _detallePersonajes,
             new { idPersonaje = idPersonaje });
 
-        
+
+        RepoActor repoActor = new RepoActor(Conexion);
+
+        int aux = await Conexion.QueryFirstOrDefaultAsync<int>(_Actor,
+            new { idPersonaje = personaje.idPersonaje });
+
+            personaje.Actor = (await repoActor.DetalleAsync(aux))!;
 
         return personaje;
     }
@@ -138,6 +144,16 @@ public class RepoPersonaje : RepoBase, IRepoPersonajes
     {
         var personajes = await Conexion.QueryAsync<Personaje>(_listadoPersonajesfromActor, new { idActor = actorVoz.IdActor });
         return personajes;
+    }
+
+    public Personaje Modificar(Personaje elemento)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task ModificarAsync(Personaje elemento)
+    {
+        throw new NotImplementedException();
     }
 }
 

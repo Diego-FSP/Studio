@@ -37,6 +37,16 @@ img.ImgPerfil{
   margin-left: 25px;
 }
 
+.itemPersonaje{
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  margin-left: 25px;
+  img{
+    width: 90%;
+  }
+}
+
 .CuadroPeli:hover{
   animation: mover normal 0.3s;
 }

@@ -1,0 +1,33 @@
+@using Personajes
+@{
+    ViewData["Title"] = "Personajes Page";
+}
+
+<body>
+    <div id="Contenido">
+        <div id="per">
+            <h2>@Model.Nombre</h2>
+            <img src="@Model.IMG"  alt="">
+        </div>
+        <div>
+            <label>Actor: @Model.Actor.Nombre @Model.Actor.Apellido</label>
+            <img src="@Model.Actor.IMG" alt="">
+        </div>
+    </div>
+    <style>
+    #Contenido{
+        display: flex;
+        #per{
+            width: 60%;
+            img{
+                height: 400px;
+            }
+        }
+
+        div+div{
+            margin-left: 10%;
+            width: 30%;
+        }
+    }
+    </style>
+</body>
