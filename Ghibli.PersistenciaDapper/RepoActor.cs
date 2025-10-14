@@ -18,6 +18,8 @@ public class RepoActor : RepoBase, IRepoActor
     string _Eliminar =
     @"DELETE FROM actor_voz
     WHERE id_actor=";
+
+    
     public RepoActor(IDbConnection conexion)
         : base(conexion) { }
     //METODOS NO ASINCRONICOS____________________________________________________________________________________________________________________
@@ -97,6 +99,24 @@ public class RepoActor : RepoBase, IRepoActor
     public Task<IEnumerable<ActorVoz>> ListarfromAsync(int id)
     {
         throw new NotImplementedException();
+    }
+
+    public ActorVoz Modificar(ActorVoz elemento)
+    {
+        throw new NotImplementedException();
+    }
+
+    public async Task ModificarAsync(ActorVoz elemento)
+    {
+        var parametros = new DynamicParameters();
+        parametros.Add("@unIMG", elemento.IMG);
+        parametros.Add("@unnombre", elemento.Nombre);
+        parametros.Add("@unapellido", elemento.Apellido);
+        parametros.Add("@unidactor", elemento.IdActor);
+
+        await Conexion.ExecuteAsync("ActualizarActor", parametros);
+        //Obtengo el valor de parametro de tipo salida
+        elemento.IdActor = parametros.Get<int>("@unidactor");
     }
 }
 

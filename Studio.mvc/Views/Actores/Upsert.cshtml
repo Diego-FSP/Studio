@@ -1,0 +1,56 @@
+@using Studio.mvc.ViewModel
+@model ActorVoz
+@{
+    ViewData["Title"] = "Actores Page";
+}
+@using Actores;
+
+<div>
+    @if(Model.IdActor==0)
+    {
+        <h2>Agregar Actor</h2>
+    }
+    else{
+        <h2>Modificar Actor n° @Model.IdActor </h2>
+    }
+</div>
+
+<form asp-controller="Actores" asp-action="Upsert" method="post">
+<div asp-validation-summary="All"></div>
+<div><input type="hidden" asp-for="@Model.IdActor" /></div>
+<div>
+    <div>
+        <label>Nombre: </label>
+        <input asp-for="Nombre" class="form-control">
+    </div>
+    <div>
+        <label>Apellido: </label>
+        <input asp-for="Apellido" class="form-control">
+    </div>
+    <div id="ModimgP">
+        <label for="">Perfil: </label>
+        <input id="URLIMG" asp-for="IMG" class="form-control"/>
+        <img id="IMGRsultado" src="@Model.IMG" alt="Imagen no detectada">
+            
+        <script>
+            let enlace= document.getElementById("URLIMG")
+            let img= document.getElementById("IMGRsultado")
+        
+            enlace.addEventListener("keyup", function mostrar()
+            {
+                img.src=enlace.value
+            })
+        </script>
+    </div>
+</div>
+<div class="col-auto">
+        @if (Model.IdActor == 0)
+        {
+            <button type="submit" class="btn btn-primary">Agregar Actor</button>
+        }
+        else
+        {
+            <button type="submit" class="btn btn-warning">Modificar Actor n°@Model.IdActor</button>
+        }
+</div>
+</form>

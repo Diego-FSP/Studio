@@ -111,6 +111,16 @@ begin
 	SET unidactor = LAST_INSERT_ID();
 end &&
 
+drop procedure if exists ActualizarActor&&
+create procedure ActualizarActor (unIMG varchar(400) ,unnombre varchar(20), unapellido varchar(20), unidactor int)
+begin
+	update actor_voz
+    set nombre= unnombre,
+		Apellido=unapellido,
+        IMG= unIMG
+        where id_actor=unidactor;
+end &&
+
 -- nuevo no preguntes por que pero es necesario... creo.
 DROP PROCEDURE if EXISTS NStudio&&
 CREATE PROCEDURE NStudio(out unidstudio int, unnombre VARCHAR(20), unfechafundacion date, unubicacion VARCHAR(20))

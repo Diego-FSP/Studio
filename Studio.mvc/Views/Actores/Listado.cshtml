@@ -16,33 +16,42 @@
 <body>
     <h1 class="display-4">Actores</h1>
     <h3>Listado</h3>
+    <input id="Buscador" type="text">
 
-    <table class="ListadoTabla">
-        <thead>
-            <tr>
-                <th>Perfil</th>
-                <th>Actores</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
+    <div class="Muestra">
             @foreach(var actor in Model)
             {
-                <tr>
-                    <td>
+                <div class="ItemActor">
+                    <a  asp-action="Detalle" asp-route-id="@actor.IdActor">
                         <img src="@(actor.IMG)" class="ImgPerfil" alt="Imagen de @actor.Nombre">
-                    </td>
-                    <td>
-                        <a  asp-action="Detalle" asp-route-id="@actor.IdActor">
-                            @actor.Nombre @actor.Apellido
-                        </a>
-                    </td>
-                    <td>
-                        <a asp-action="Modificar" asp-route-Id="@actor.IdActor">Modificar</a>
-                    </td>
-                </tr>
+                    </a>
+                    <a  asp-action="Detalle" asp-route-id="@actor.IdActor">
+                        @actor.Nombre @actor.Apellido
+                    </a>
+                    <a asp-action="Modificar" asp-route-id="@actor.IdActor">Modificar</a>
+                </div>
             }
-        </tbody>
-    </table>
+    </div>
+
+    <script>
+        let Buscador= document.getElementById("Buscador")
+        
+        Buscador.addEventListener("keyup", function filtro()
+        {
+            listado = document.getElementsByClassName("ItemActor")
+            for(f=0;f<listado.length;f++)
+            {
+                texto=listado[f].textContent
+                if(texto.includes(Buscador.value))
+                {
+                    listado[f].style.display = 'flex';
+                }
+                else
+                {
+                    listado[f].style.display = 'none';
+                }
+            }
+        })
+    </script>
 </body>
 </html>

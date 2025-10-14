@@ -21,7 +21,7 @@ values	('Anonimo','Desconocido',999,'https://encrypted-tbn0.gstatic.com/images?q
         ('Hector','Miranda',3,'https://www.cancioneros.com/fotos/ep009807_1.jpg'),
         ('Juan','Alfonso Carralero',4,'https://assets.mycast.io/actor_images/actor-juan-alfonso-carralero-476898_large.jpg?1657209196'),
         ('Mariana','Filio',5,'https://yt3.googleusercontent.com/ytc/AIdro_lCPhjPARrZHdy_DAVCNaPftFS9JuWN1sTca39oyomKgPc=s900-c-k-c0x00ffffff-no-rj'),
-        ('Gabriel','Ortiz',6,'https://cdn.milenio.com/uploads/media/2023/12/12/gabriel-ortiz-actor-doblaje-importante.jpg'),
+        ('Gabriel','Ortiz',6,'https://www.am.com.mx/u/fotografias/m/2023/12/14/f638x638-542443_600610_4529.jpg'),
         ('Eduardo','Fonseca',7,'https://tse3.mm.bing.net/th/id/OIP.dB2sKiN5IQeZRPLpFc4k6gAAAA?rs=1&pid=ImgDetMain&o=7&rm=3'),
         ('Gerardo','Garcia',8,'https://tse1.mm.bing.net/th/id/OIP.0L3cxv0KaRNg_qLizrqzBwHaJQ?rs=1&pid=ImgDetMain&o=7&rm=3'),
         ('Magda','Giner',9,'https://mx.web.img3.acsta.net/pictures/20/11/25/00/21/0009286.jpg'),

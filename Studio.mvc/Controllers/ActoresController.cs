@@ -1,3 +1,4 @@
+using Actores;
 using Ghibli.Persistencia;
 using Microsoft.AspNetCore.Mvc;
 using Studio.mvc.ViewModel;
@@ -36,28 +37,50 @@ public class ActoresController : Controller
         return View(vmActoresPer);
     }
 
-}
+    [HttpGet]
+    public IActionResult Alta()
+    {
+        var actor = new ActorVoz()
+        {
+            Nombre = "Nombre",
+            Apellido = "Apellido",
+            IdActor = 0,
+            IMG = ""
+        };
+        return View("Upsert", actor);
+    }
 
-/*
-<table class="ListadoTabla">
-        <thead>
-            <tr>
-                <th>IMG</th>
-                <th>personaje</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach(var personaje in Model.personajes)
-            {
-                <tr>
-                    <td>
-                        <img src="@personaje.IMG" class="ImgPerfil" alt="Imagen de @personaje.Nombre">
-                    </td>
-                    <td>
-                        <label for="">@personaje.Nombre</label>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-*/
+    [HttpGet]
+    public async Task<IActionResult> ModificarAsync(int? id)
+    {
+        if (id == 0)
+            return NotFound();
+
+        var actor = await repo.DetalleAsync(id.GetValueOrDefault());
+
+        if (actor is null)
+            return NotFound();
+
+        return View("Upsert", actor);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Upsert(ActorVoz actor)
+    {
+        if (!ModelState.IsValid)
+        {
+            return View("Upsert", actor);
+        }
+
+        if (actor.IdActor == 0)
+        {
+            actor.IdActor = 1;
+            await repo.AltaAsync(actor);
+        }
+        else
+        {
+            await repo.ModificarAsync(actor);
+        }
+        return RedirectToAction(nameof(Listado));
+    }
+}

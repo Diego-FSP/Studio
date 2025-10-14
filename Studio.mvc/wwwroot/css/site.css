@@ -29,14 +29,21 @@ img.ImgPerfil{
   }
 }
 
+.ItemActor{
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin-left: 25px;
+}
+
 .CuadroPeli:hover{
   animation: mover normal 0.3s;
 }
 
 @keyframes mover{
 0%{
-  background-size: 100% 100%;
   background-position: 0% 0%;
+  background-size: 100% 100%;
 }
 50%{
   background-position: 40% 40%;  
@@ -97,4 +104,7 @@ body {
   img{
     width: 20%;
   }
+}
+#IMGRsultado{
+  margin-left: 5%;
 }
