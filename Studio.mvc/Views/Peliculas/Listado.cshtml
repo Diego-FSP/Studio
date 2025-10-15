@@ -45,7 +45,7 @@
             for(f=0;f<listado.length;f++)
             {
                 texto=listado[f].textContent
-                if(texto.includes(Buscador.value))
+                if(texto.includes(Buscador.value) || (texto.toLowerCase()).includes(Buscador.value))
                 {
                     listado[f].style.display = 'flex';
                 }
