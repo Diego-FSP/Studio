@@ -51,7 +51,7 @@ create table Personajes(
 id_personaje int not null AUTO_INCREMENT,
 id_pelicula int,
 Nombre varchar(40),
-IMG varchar(400),
+IMG varchar(9000),
 constraint PK_personajes primary key(id_personaje),
  constraint fk_personajes_peliculas foreign key(id_pelicula)
  references  peliculas (id_pelicula)
