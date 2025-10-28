@@ -3,6 +3,17 @@
 @model VMPersonaje
 @{
     ViewData["Title"] = "Peliculas Page";
+
+    string poster(){
+        string p="";
+        foreach(var peli in Model.peliculas)
+        {
+            if(peli.IdPelicula == Model.idPelicula)
+            p=peli.IMG;
+        }
+
+        return p;
+    }
 }
 
 <div>
@@ -25,9 +36,18 @@
         </div>
         <div>
             <label for="">Pelicula: </label>
-            <select asp-items="Model.Peliculas" asp-for="idPelicula" id="">
+            <select asp-items="Model.Peliculas" asp-for="idPelicula" onchange="mostrarposter()">
                     <option selected="selected" value="" disabled>Seleccione una Pelicula</option>
             </select>
+            <img src="" alt="" id="imgpeli">
+
+            <script>
+                imgPeli= document.getElementById("imgpeli")
+                
+                function mostrarposter(){
+                    
+                }
+            </script>
         </div>
         <div>
             <label for="">Actor: </label>

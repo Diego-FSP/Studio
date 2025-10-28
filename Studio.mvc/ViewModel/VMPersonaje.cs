@@ -19,6 +19,7 @@ public class VMPersonaje
     public ActorVoz actor;
     public Pelicula pelicula;
 
+    public IEnumerable<Pelicula> peliculas { get; set; }
     public VMPersonaje()
     {
         var guill = new ActorVoz()
@@ -61,7 +62,7 @@ public class VMPersonaje
 
     public async Task traerPeliculas(IRepoPelicula repoPelicula)
     {
-        IEnumerable<Pelicula> peliculas = await repoPelicula.ListarAsync();
+        peliculas = await repoPelicula.ListarAsync();
         Peliculas = new SelectList(peliculas,
                                     dataTextField: nameof(Pelicula.Nombre),
                                     dataValueField: nameof(Pelicula.IdPelicula));
