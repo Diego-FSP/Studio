@@ -11,9 +11,9 @@ public class VMPersonaje
     public SelectList? Actores { get; set; }
     public SelectList? Peliculas { get; set; }
 
-    public int idPersonaje = 0;
-    public int idPelicula = 0;
-    public int idActor = 0;
+    public int idPersonaje { get; set; }
+    public int idPelicula { get; set; }
+    public int idActor { get; set; }
     public string Nombre { get; set; }
     public string IMG { get; set; }
     public ActorVoz actor;
@@ -34,6 +34,22 @@ public class VMPersonaje
         actor = guill;
         IMG = "";
     }
+
+    public Personaje DevolverPer()
+    {
+        actor.IdActor = idActor;
+        var personaje = new Personaje()
+        {
+            Nombre = Nombre,
+            idPelicula = idPelicula,
+            idPersonaje = idPersonaje,
+            Actor = actor,
+            IMG = IMG
+        };
+
+        return personaje;
+    }
+
     public VMPersonaje(Personaje personaje)
     {
         Nombre = personaje.Nombre;

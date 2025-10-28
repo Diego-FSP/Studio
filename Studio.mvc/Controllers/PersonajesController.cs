@@ -61,16 +61,8 @@ public class PersonajesController : Controller
 
         if (vMPersonaje.idPersonaje == 0)
         {
-            vMPersonaje.actor.IdActor = vMPersonaje.idActor;
-            var personaje = new Personaje()
-            {
-                Nombre = vMPersonaje.Nombre,
-                idPelicula = vMPersonaje.pelicula.IdPelicula,
-                idPersonaje = vMPersonaje.idPersonaje,
-                Actor = vMPersonaje.actor,
-                IMG = vMPersonaje.IMG
-            };
-            await repoPersonaje.AltaAsync(personaje);
+            
+            await repoPersonaje.AltaAsync(vMPersonaje.DevolverPer());
         }else
         {
             var personaje = new Personaje()

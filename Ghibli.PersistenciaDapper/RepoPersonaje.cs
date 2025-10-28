@@ -49,15 +49,16 @@ public class RepoPersonaje : RepoBase, IRepoPersonajes
         parametros.Add("@unidpelicula", personaje.idPelicula);
         parametros.Add("@unnombre", personaje.Nombre);
         parametros.Add("@unIMG", personaje.IMG);
-        var parametrosR = new DynamicParameters();
-        parametrosR.Add("@actor", personaje.Actor.IdActor);
-        parametrosR.Add("@personaje", personaje.idPersonaje);
         //parametros.Add("actor", personaje.Actor);
 
         Conexion.Execute("agregarPer", parametros);
+        personaje.idPersonaje = parametros.Get<int>("@unidpersonaje");
+
+        var parametrosR = new DynamicParameters();
+        parametrosR.Add("@actor", personaje.Actor.IdActor);
+        parametrosR.Add("@personaje", parametros.Get<int>("@unidpersonaje"));
         Conexion.Execute("asignarAP", parametrosR);
         //Obtengo el valor de parametro de tipo salida
-        personaje.idPersonaje = parametros.Get<int>("@unidpersonaje");
     }
 
     public Personaje? Detalle(int idPersonaje)
