@@ -13,6 +13,7 @@ public class VMPersonaje
 
     public int idPersonaje = 0;
     public int idPelicula = 0;
+    public int idActor = 0;
     public string Nombre { get; set; }
     public string IMG { get; set; }
     public ActorVoz actor;

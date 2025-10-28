@@ -1,0 +1,66 @@
+@using Personajes;
+@using Studio.mvc.ViewModel
+@model VMPersonaje
+@{
+    ViewData["Title"] = "Peliculas Page";
+}
+
+<div>
+    @if(Model.idPersonaje==0)
+    {
+        <h2>Agregar Personaje</h2>
+    }
+    else{
+        <h2>Modificar Personaje n° @Model.idPersonaje </h2>
+    }
+</div>
+
+<form asp-controller="Personaje" asp-action="Upsert" method="post">
+    <div asp-validation-summary="All"></div>
+    <div><input type="hidden" asp-for="@Model.idPersonaje" /></div>
+    <div>
+        <div>
+            <label>Nombre: </label>
+            <input asp-for="Nombre" class="form-control">
+        </div>
+        <div>
+            <label for="">Pelicula: </label>
+            <select asp-items="Model.Peliculas" asp-for="idPelicula" id="">
+                    <option selected="selected" value="" disabled>Seleccione una Pelicula</option>
+            </select>
+        </div>
+        <div>
+            <label for="">Actor: </label>
+            <select asp-items="Model.Actores" asp-for="idActor" id="">
+                    <option selected="selected" value="" disabled>Seleccione un Actor</option>
+            </select>
+        </div>
+
+        <div id="ModimgP">
+            <label for="">Perfil: </label>
+            <input id="URLIMG" asp-for="IMG" class="form-control"/>
+            <img id="IMGRsultado" src="@Model.IMG" alt="Imagen no detectada">
+                
+            <script>
+                let enlace= document.getElementById("URLIMG")
+                let img= document.getElementById("IMGRsultado")
+            
+                enlace.addEventListener("keyup", function mostrar()
+                {
+                    img.src=enlace.value
+                })
+            </script>
+        </div>
+    </div>
+
+    <div class="col-auto">
+        @if (Model.idPersonaje == 0)
+        {
+            <button type="submit" class="btn btn-primary">Agregar Personaje</button>
+        }
+        else
+        {
+            <button type="submit" class="btn btn-warning">Modificar Personaje n°@Model.idPersonaje</button>
+        }
+    </div>
+</form>

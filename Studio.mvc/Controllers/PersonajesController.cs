@@ -61,6 +61,7 @@ public class PersonajesController : Controller
 
         if (vMPersonaje.idPersonaje == 0)
         {
+            vMPersonaje.actor.IdActor = vMPersonaje.idActor;
             var personaje = new Personaje()
             {
                 Nombre = vMPersonaje.Nombre,
