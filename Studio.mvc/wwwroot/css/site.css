@@ -119,3 +119,19 @@ body {
 #IMGRsultado{
   margin-left: 5%;
 }
+
+.ImgPosterP{
+  width: 300px;
+  display: none;
+  img{
+    width: 90%;
+  }
+  p{
+    display: none;
+  }
+}
+
+.Conjunto{
+  display: flex;
+  margin: auto;
+}

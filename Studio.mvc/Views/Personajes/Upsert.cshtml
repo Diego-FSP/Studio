@@ -4,16 +4,7 @@
 @{
     ViewData["Title"] = "Peliculas Page";
 
-    string poster(){
-        string p="";
-        foreach(var peli in Model.peliculas)
-        {
-            if(peli.IdPelicula == Model.idPelicula)
-            p=peli.IMG;
-        }
-
-        return p;
-    }
+    int contador=0;
 }
 
 <div>
@@ -29,24 +20,50 @@
 <form asp-controller="Personajes" asp-action="Upsert" method="post">
     <div asp-validation-summary="All"></div>
     <div><input type="hidden" asp-for="@Model.idPersonaje" /></div>
+    <div><input type="hidden" asp-for="@Model.ListadoPeliculas" /></div>
     <div>
         <div>
             <label>Nombre: </label>
             <input asp-for="Nombre" class="form-control">
         </div>
-        <div>
+        <div class="Conjunto">
             <label for="">Pelicula: </label>
-            <select asp-items="Model.Peliculas" asp-for="idPelicula" onchange="mostrarposter()">
+            <select asp-items="Model.Peliculas" asp-for="idPelicula" id="ImputPeli">
                     <option selected="selected" value="" disabled>Seleccione una Pelicula</option>
             </select>
-            <img src="" alt="" id="imgpeli">
+
+            @foreach(var peli in Model.ListadoPeliculas)
+            {
+                <div class="ImgPosterP">
+                    <img src="@peli.IMG" alt=""  id="@("Pimg"+contador)" >
+                    <p><strong>@peli.IdPelicula</strong></p>
+                </div>
+                contador++;
+            }
+            @{contador=0;}
 
             <script>
-                imgPeli= document.getElementById("imgpeli")
-                
-                function mostrarposter(){
-                    
+                let posters= document.getElementsByClassName("ImgPosterP");
+                let imputP= document.getElementById("ImputPeli")
+
+                imputP.addEventListener('change', function ()
+                {
+                    valor= this.value;
+                    console.log(valor)
+
+                    for(p=0; p< posters.length; p++)
+                    {
+                        if(parseInt(posters[p].textContent) == (valor))
+                        {
+                            posters[p].style.display = 'flex';
+                        }
+                        else
+                        {
+                            posters[p].style.display = 'none';
+                        }
+                    }
                 }
+                )
             </script>
         </div>
         <div>
@@ -84,3 +101,41 @@
         }
     </div>
 </form>
+
+@{
+    /*
+    @foreach(var peli in Model.peliculas)
+            {
+                <div class="ImgPosterP">
+                    <img src="@peli.IMG" alt=""  id="@("Pimg"+contador)" >
+                    <p><strong>@peli.IdPelicula</strong></p>
+                </div>
+                contador++;
+            }
+            @{contador=0;}
+
+            <script>
+                let posters= document.getElementsByClassName("ImgPosterP");
+                let imputP= document.getElementById("ImputPeli")
+
+                imputP.addEventListener('change', function ()
+                {
+                    valor= this.value;
+                    console.log(valor)
+
+                    for(p=0; p< posters.length; p++)
+                    {
+                        if(parseInt(posters[p].textContent) == (valor))
+                        {
+                            posters[p].style.display = 'flex';
+                        }
+                        else
+                        {
+                            posters[p].style.display = 'none';
+                        }
+                    }
+                }
+                )
+            </script>
+    */
+}
