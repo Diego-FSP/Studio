@@ -21,13 +21,14 @@
     <div asp-validation-summary="All"></div>
     <div><input type="hidden" asp-for="@Model.idPersonaje" /></div>
     <div><input type="hidden" asp-for="@Model.ListadoPeliculas" /></div>
+    <div><input type="hidden" asp-for="@Model.ListadoActores" /></div>
     <div>
         <div>
             <label>Nombre: </label>
             <input asp-for="Nombre" class="form-control">
         </div>
         <div class="Conjunto">
-            <label for="">Pelicula: </label>
+            <label for="">Pelicula:  |</label>
             <select asp-items="Model.Peliculas" asp-for="idPelicula" id="ImputPeli">
                     <option selected="selected" value="" disabled>Seleccione una Pelicula</option>
             </select>
@@ -66,11 +67,47 @@
                 )
             </script>
         </div>
-        <div>
-            <label for="">Actor: </label>
-            <select asp-items="Model.Actores" asp-for="idActor" id="">
+        <div class="Conjunto">
+            <label for=""> Actor:         |</label>
+            <select asp-items="Model.Actores" asp-for="idActor" id="ImputActor">
                     <option selected="selected" value="" disabled>Seleccione un Actor</option>
             </select>
+
+            @foreach(var actor in Model.ListadoActores)
+            {
+                <div class="ImgActorP" data-valor="@actor.IdActor">
+                    <div>
+                        <img src="@actor.IMG" alt=""  id="@("Pimg"+contador)" >
+                    </div>
+                </div>
+                contador++;
+            }
+            @{contador=0;}
+
+            <script>
+                let actores= document.getElementsByClassName("ImgActorP");
+                let imputA= document.getElementById("ImputActor")
+
+                imputA.addEventListener('change', function ds()
+                {
+                    valor= this.value;
+                    console.log(valor)
+
+                    for(p=0; p< actores.length; p++)
+                    {
+                        if(parseInt(actores[p].dataset.valor) == (valor))
+                        {
+                            actores[p].style.display = 'flex';
+                        }
+                        else
+                        {
+                            actores[p].style.display = 'none';
+                        }
+                    }
+                }
+                )
+            </script>
+
         </div>
 
         <div id="ModimgP">
@@ -104,34 +141,37 @@
 
 @{
     /*
-    @foreach(var peli in Model.peliculas)
+    @foreach(var actor in Model.ListadoActores)
             {
-                <div class="ImgPosterP">
-                    <img src="@peli.IMG" alt=""  id="@("Pimg"+contador)" >
-                    <p><strong>@peli.IdPelicula</strong></p>
+                <div class="ImgActorP">
+                    <div>
+                        <img src="@actor.IMG" alt=""  id="@("Pimg"+contador)" >
+                        <p>@actor.Nombre @actor.Apellido</p>
+                    </div>
+                    <p><strong>@actor.IdActor</strong></p>
                 </div>
                 contador++;
             }
             @{contador=0;}
 
             <script>
-                let posters= document.getElementsByClassName("ImgPosterP");
-                let imputP= document.getElementById("ImputPeli")
+                let actores= document.getElementsByClassName("ImgActorP");
+                let imputA= document.getElementById("ImputActor")
 
-                imputP.addEventListener('change', function ()
+                imputA.addEventListener('change', function ()
                 {
                     valor= this.value;
                     console.log(valor)
 
-                    for(p=0; p< posters.length; p++)
+                    for(p=0; p< actores.length; p++)
                     {
-                        if(parseInt(posters[p].textContent) == (valor))
+                        if(parseInt(actores[p].textContent) == (valor))
                         {
-                            posters[p].style.display = 'flex';
+                            actores[p].style.display = 'flex';
                         }
                         else
                         {
-                            posters[p].style.display = 'none';
+                            actores[p].style.display = 'none';
                         }
                     }
                 }

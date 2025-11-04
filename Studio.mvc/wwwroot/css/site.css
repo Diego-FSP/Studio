@@ -131,7 +131,18 @@ body {
   }
 }
 
+.ImgActorP{
+  width: 300px;
+  display: none;
+  img{
+    width: 90%;
+  }
+  p{
+    display: none;
+  }
+}
+
 .Conjunto{
   display: flex;
-  margin: auto;
+  margin: 10px 10px;
 }
