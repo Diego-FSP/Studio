@@ -22,11 +22,9 @@
     <div class="Muestra">
             @foreach(var actor in Model)
             {
-                <div class="ItemActor">
+                <div class="CasillaG">
                     <a  asp-action="Detalle" asp-route-id="@actor.IdActor">
-                        <img src="@(actor.IMG)" class="ImgPerfil" alt="Imagen de @actor.Nombre">
-                    </a>
-                    <a  asp-action="Detalle" asp-route-id="@actor.IdActor">
+                        <div class="Mimg"><img src="@(actor.IMG)" class="ImgPerfil" alt="Imagen de @actor.Nombre"></div>
                         @actor.Nombre @actor.Apellido
                     </a>
                     <a asp-action="Modificar" asp-route-id="@actor.IdActor">Modificar</a>

@@ -14,23 +14,18 @@
     <h1 class="display-4">Directores</h1>
     <h3>Listado</h3>
 
-    <table class="ListadoTabla">
-        <thead>
-            <th>img</th>
-            <th>Directores</th>
-            <th>Acciones</th>
-        </thead>
-        <tbody>
-            @foreach(var repo in Model)
-            {
-                <tr>
-                    <th><img class="ImgPerfil" src="@repo.IMG" alt=""></th>
-                    <th><a asp-action="Detalle" asp-route-Id="@repo.idDirector">@repo.Nombre @repo.Apellido</a></th>
-                    <th><a asp-action="Modificar" asp-route-Id="@repo.idDirector">Modificar</a></th>
-                </tr>
-            }
-        </tbody>
-    </table>
+    <div class="Muestra">
+        @foreach(var dir in Model)
+        {
+            <div class="CasillaG">
+                <a asp-action="Detalle" asp-route-Id="@dir.idDirector">
+                    <div class="Mimg"><img src="@dir.IMG" alt=""></div>
+                    <p>@dir.Nombre @dir.Apellido</p>
+                </a>
+                <a asp-action="Modificar" asp-route-Id="@dir.idDirector">Modificar</a>
+            </div>
+        }
+    </div>
 </div>
 </body>
 </html>

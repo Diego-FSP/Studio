@@ -20,71 +20,68 @@
     <div asp-validation-summary="All"></div>
     <div><input type="hidden" asp-for="@Model.idDirector" /></div>
     
-    <div class="row g-2 align-items-center">
-        <div class="col-auto">
-            <label asp-for="Nombre" class="col-form-label">Nombre</label>
+    <div >
+        <div >
+            <label asp-for="Nombre" >Nombre</label>
         </div>
-        <div class="col-auto">
-            <input asp-for="Nombre" class="form-control" />
-        </div>
-    </div>
-
-    <div class="row g-2 align-items-center">
-        <div class="col-auto">
-            <label asp-for="Apellido" class="col-form-label">Apellido</label>
-        </div>
-        <div class="col-auto">
-            <input asp-for="Apellido" class="form-control" />
+        <div >
+            <input asp-for="Nombre" class="form-control"/>
         </div>
     </div>
 
-    <div class="row g-2 align-items-center"></div>
-        <div class="col-auto">
-            <label asp-for="descripcion" class="col-form-label">Descripcion</label>
+    <div >
+        <div class="">
+            <label asp-for="Apellido" class="">Apellido</label>
         </div>
-        <div class="col-auto">
-            <input asp-for="descripcion" class="form-control" />
+        <div class="">
+            <input asp-for="Apellido"  class="form-control"/>
         </div>
     </div>
 
-    <div class="row g-2 align-items-center">
-        <div class="col-auto">
-            <label asp-for="FechaNacimiento" class="col-form-label">Nacimiento</label>
+    <div></div>
+        <div>
+            <label asp-for="descripcion">Descripcion</label>
         </div>
-        <div class="col-auto">
-            <input type="date" asp-for="FechaNacimiento" class="form-control">
+        <div class="">
+            <input asp-for="descripcion" class="descripcion" />
+        </div>
+        <div class="">
+            <label asp-for="FechaNacimiento" class="">Nacimiento</label>
+            <input type="date" asp-for="FechaNacimiento" class="">
         </div>
 
-        <div class="row g-2 align-items-center"></div>
-        <div class="col-auto">
-            <label asp-for="IMG" class="col-form-label">Imagen</label>
-        </div>
-        <div class="col-auto">
-            <input id="URLIMG" asp-for="IMG" class="form-control"/>
-            <img class="ImgDirectores" id="IMGRsultado" src="@Model.IMG" alt="">
-            
-            <script>
-        let enlace= document.getElementById("URLIMG")
-        let img= document.getElementById("IMGRsultado")
-        
-        enlace.addEventListener("keyup", function mostrar()
-        {
-            img.src=enlace.value
-        })
-        </script>
-        </div>
-    <div class="row g-2 align-items-center">
-        <div class="col-auto"></div>
-            <select asp-for="nacionalidad" class="form-select">
+        <div>
+            <label for="">Nacionalidad</label>
+            <select asp-for="nacionalidad" class="">
                 <option selected="selected" value="" disabled>Seleccione un pais</option>
                 <option selected="selected" value="Japonesa" >Japonesa</option>
                 <option selected="selected" value="Estadounidense" >Estadounidense</option>
             </select>
         </div>
-    </div>
+        
+        <div>
+            <label asp-for="IMG" class="">Imagen</label>
+        </div>
+        <div id="ModimgP">
+            <input id="URLIMG" asp-for="IMG" class=""/>
+            <img class="ImgDirectores" id="IMGRsultado" src="@Model.IMG" alt="">
+            
+            <script>
+                let enlace= document.getElementById("URLIMG")
+                let img= document.getElementById("IMGRsultado")
+            
+            enlace.addEventListener("keyup", function mostrar()
+            {
+                img.src=enlace.value
+            })
+            </script>
+        </div>
     </div>
 
-    <div class="col-auto">
+    <div>
+    </div>
+
+    <div class="">
         @if (Model.idDirector == 0)
         {
             <button type="submit" class="btn btn-primary">@texto</button>

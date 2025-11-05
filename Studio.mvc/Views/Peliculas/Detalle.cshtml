@@ -6,19 +6,22 @@
     <h1>@Model.Nombre</h1>
     <div id="info">
         <img id="Poster" src="@Model.IMG" alt="">
-        <div id="datos">
-            <p><strong>Calificacion: </strong>@Model.Calificacion</p>
-            <p><strong>Genero: </strong>@Model.Genero</p>
-            <p><strong>Presupuesto: </strong>$@Model.Presupuesto</p>
-            <p><strong>Duracion: </strong>@Model.Duracion</p>
-            <p><strong>Fecha de Estreno: </strong>@Model.FechaEstreno.ToString("dd/MM/yyyy")</p>
-            <div id="Director" style="display: flex;">
+        <div id="datos" style="display: flex;">
+            <div>
                 <p><strong>Director: </strong>@Model.director.Nombre @Model.director.Apellido </p>
+                <p><strong>Calificacion: </strong>@Model.Calificacion</p>
+                <p><strong>Genero: </strong>@Model.Genero</p>
+                <p><strong>Presupuesto: </strong>$@Model.Presupuesto</p>
+                <p><strong>Duracion: </strong>@Model.Duracion</p>
+                <p><strong>Fecha de Estreno: </strong>@Model.FechaEstreno.ToString("dd/MM/yyyy")</p>
+                <p><strong>Trailer: </strong></p>
+                <iframe src="https://www.youtube.com/embed/@Model.Trailer" frameborder="0"></iframe>
+            </div>
+            <div id="Director" >
                 <img class="ImgPerfil" style="margin-left: 50px;" src="@Model.director.IMG" alt="">
             </div>
         </div>
     </div>
-    <iframe src="https://www.youtube.com/embed/@Model.Trailer" frameborder="0"></iframe>
     <h3 style="margin-top: 100px;">Personajes</h3>
     <table>
     <thead>
