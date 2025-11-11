@@ -59,6 +59,7 @@ public class VMPersonaje
         idPersonaje = personaje.idPersonaje;
         actor = personaje.Actor;
         IMG = personaje.IMG;
+        idActor = personaje.Actor.IdActor;
     }
 
     public async Task traerPeliculas(IRepoPelicula repoPelicula)

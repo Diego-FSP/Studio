@@ -47,7 +47,9 @@
                     let posters= document.getElementsByClassName("ImgPosterP");
                     let imputP= document.getElementById("ImputPeli")
 
-                    imputP.addEventListener('change', function ()
+                    imputP.addEventListener('change', mostrarPelicula())
+
+                    function mostrarPelicula()
                     {
                         valor= this.value;
                         console.log(valor)
@@ -64,7 +66,6 @@
                             }
                         }
                     }
-                    )
                 </script>
             </div>
             <div class="Conjunto">
@@ -89,7 +90,9 @@
                     let actores= document.getElementsByClassName("ImgActorP");
                     let imputA= document.getElementById("ImputActor")
 
-                    imputA.addEventListener('change', function ds()
+                    imputA.addEventListener('change', mostrarActor())
+                    
+                    function mostrarActor()
                     {
                         valor= this.value;
                         console.log(valor)
@@ -106,7 +109,6 @@
                             }
                         }
                     }
-                    )
                 </script>
 
             </div>
@@ -125,6 +127,7 @@
                 {
                     img.src=enlace.value
                 })
+
             </script>
         </div>
     </div>

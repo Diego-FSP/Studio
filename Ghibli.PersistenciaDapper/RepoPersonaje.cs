@@ -153,9 +153,17 @@ public class RepoPersonaje : RepoBase, IRepoPersonajes
         throw new NotImplementedException();
     }
 
-    public Task ModificarAsync(Personaje elemento)
+    public async Task ModificarAsync(Personaje elemento)
     {
-        throw new NotImplementedException();
+        var parametros = new DynamicParameters();
+        parametros.Add("@unidpersonaje", direction: ParameterDirection.Output);
+        parametros.Add("@unidpelicula", elemento.idPelicula);
+        parametros.Add("@unnombre", elemento.Nombre);
+        parametros.Add("@unIMG", elemento.IMG);
+        parametros.Add("@unidActor", elemento.Actor.IdActor);
+        
+        await Conexion.ExecuteAsync("actualizarPer", parametros);
+        
     }
 }
 

@@ -96,12 +96,20 @@ begin
 end&&
 
 drop procedure if exists actualizarPer&&
-CREATE procedure actualizarPer(out unidpersonaje int, unidpelicula int, unnombre varchar(40), unIMG varchar(400))
+CREATE procedure actualizarPer(unidpersonaje int, unidpelicula int, unnombre varchar(100), unIMG varchar(400), unidActor int)
 begin
-	insert INTO Personajes (id_personaje, id_pelicula, nombre, IMG)
-					values (unidpersonaje, unidpelicula, unnombre, unIMG);
-					SET unidpersonaje = LAST_INSERT_ID();
+	update 	personajes
+	set id_pelicula = unidpelicula,
+		Nombre = unnombre,
+        IMG = unIMG
+	where id_personaje = unidpersonaje;
+    
+    
+	update 	personaje_voz
+	set id_actor = unidActor
+	where id_personaje = unidpersonaje;
 end&&
+
 
 -- 3.-Asignar personajes con actores
 drop procedure if exists asignarAP&&

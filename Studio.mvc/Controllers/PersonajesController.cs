@@ -50,6 +50,23 @@ public class PersonajesController : Controller
         return View("Upsert", vMPersonaje);
     }
 
+    [HttpGet]
+    public async Task<IActionResult> Modificar(int? id)
+    {
+        if (id is null || id == 0)
+            return NotFound();
+
+        var personaje = await repoPersonaje.DetalleAsync(id.GetValueOrDefault());
+
+        if (personaje is null)
+            return NotFound();
+
+        VMPersonaje vmpersonaje = new VMPersonaje(personaje);
+        await vmpersonaje.traerPeliculas(repoPelicula);
+        await vmpersonaje.traerActores(repoActor);
+        return View("Upsert", vmpersonaje);
+    }
+
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Upsert(VMPersonaje vMPersonaje)
@@ -65,15 +82,7 @@ public class PersonajesController : Controller
             await repoPersonaje.AltaAsync(vMPersonaje.DevolverPer());
         }else
         {
-            var personaje = new Personaje()
-            {
-                Nombre = vMPersonaje.Nombre,
-                idPelicula = vMPersonaje.pelicula.IdPelicula,
-                idPersonaje = vMPersonaje.idPersonaje,
-                Actor = vMPersonaje.actor,
-                IMG = vMPersonaje.IMG
-            };
-            await repoPersonaje.ModificarAsync(personaje);
+            await repoPersonaje.ModificarAsync(vMPersonaje.DevolverPer());
         }
         return RedirectToAction(nameof(Listado));
     }
