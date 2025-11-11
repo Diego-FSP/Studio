@@ -74,6 +74,10 @@ img.ImgPerfil{
 #datos{
   margin-left: 10%;
   width: 60%;
+  iframe{
+    width: 350px;
+    height: 250px;
+  }
 }
 
 .CasillaG{
@@ -93,13 +97,26 @@ img.ImgPerfil{
 }
 
 .Mimg img{
-    display: block;
     height: 100%;
     width: 100%;
     display: flex;
     object-fit:cover;
-    display:block;
+    display:flex;
   }
+
+.Mimg:hover img{
+  height: 120%;
+  animation: hoverImg normal 0.3s;
+}
+
+@keyframes hoverImg{
+  0%{
+    height: 100%;
+  }
+  100%{
+    height: 120%;
+  }
+}
 
 #Poster{
     width: 300px;
@@ -187,4 +204,10 @@ body {
   img{
     width: 90%;
   }
+}
+
+body{
+}
+.colorL{
+
 }

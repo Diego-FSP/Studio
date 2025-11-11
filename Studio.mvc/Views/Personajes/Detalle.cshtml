@@ -9,7 +9,7 @@
             <h2>@Model.Nombre</h2>
             <img src="@Model.IMG"  alt="">
         </div>
-        <div>
+        <div id="act">
             <label>Actor: @Model.Actor.Nombre @Model.Actor.Apellido</label>
             <img src="@Model.Actor.IMG" alt="">
         </div>
@@ -24,9 +24,12 @@
             }
         }
 
-        div+div{
+        #act{
             margin-left: 10%;
             width: 30%;
+            img{
+                width: 100%;
+            }
         }
     }
     </style>

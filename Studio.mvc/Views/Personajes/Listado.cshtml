@@ -13,9 +13,9 @@
     <div class="Muestra">
         @foreach(var repo in Model)
         {
-            <div class="itemPersonaje">
+            <div class="CasillaG">
                 <a asp-action="Detalle" asp-route-id="@repo.idPersonaje">
-                    <img class="" src="@repo.IMG" alt="">
+                    <div class="Mimg"><img class="" src="@repo.IMG" alt=""></div>
                     <label>@repo.Nombre</label>
                 </a>
 
@@ -29,7 +29,7 @@
         
         Buscador.addEventListener("keyup", function filtro()
         {
-            listado = document.getElementsByClassName("itemPersonaje")
+            listado = document.getElementsByClassName("CasillaG")
             for(f=0;f<listado.length;f++)
             {
                 texto=listado[f].textContent

@@ -15,37 +15,40 @@
                 <p><strong>Duracion: </strong>@Model.Duracion</p>
                 <p><strong>Fecha de Estreno: </strong>@Model.FechaEstreno.ToString("dd/MM/yyyy")</p>
                 <p><strong>Trailer: </strong></p>
-                <iframe src="https://www.youtube.com/embed/@Model.Trailer" frameborder="0"></iframe>
+                <iframe 
+                    src="https://www.youtube.com/embed/@Model.Trailer" 
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen
+                ></iframe>
             </div>
             <div id="Director" >
                 <img class="ImgPerfil" style="margin-left: 50px;" src="@Model.director.IMG" alt="">
             </div>
         </div>
     </div>
-    <h3 style="margin-top: 100px;">Personajes</h3>
-    <table>
-    <thead>
+    
+    <table class="tabla">
+        <thead>
             <tr>
                 <th>Personajes</th>
                 <th>Actores</th>
             </tr>
         </thead>
-    <tbody>
+        <tbody>
             @foreach(var repo in Model.Personajes)
             {
                 <tr>
-                    <th><img class="ImgPerfil" src="@repo.IMG" alt=""> <label for="">@repo.Nombre</label></th>
-                    <th><label style="display: flex;"><div class="CuadroImg" id="@("e"+repo.idPersonaje)" ></div>  @repo.Actor.Nombre @repo.Actor.Apellido</label></th>
-                    <style>
-                        #@("e"+repo.idPersonaje){
-                            background-image: image-set("@repo.Actor.IMG");
-                            background-size: 100%;
-                        }
-                        #@("e"+repo.idPersonaje):hover{
-                            background-size: 120%;
-                            background-position: 40% 40%;
-                        }
-                    </style>
+                    <th class="celda"> 
+                        <div class="ImgTabla"> <img  src="@repo.IMG" alt=""></div> 
+                        <label for="">@repo.Nombre</label>
+                    </th>
+                    <th class="celda">
+                        <div class="ImgTabla"><img src="@repo.Actor.IMG" alt=""></div>
+                        <label >@repo.Actor.Nombre @repo.Actor.Apellido</label>
+                    </th>
+                    
+                    
                 </tr>
             }
         </tbody>
@@ -55,6 +58,29 @@
 
     .Poster{
         box-shadow: 0px 0px 10px image-set("@Model.IMG");
+    }
+    .tabla{
+        width: 75%;
+        .celda{
+            height: 300px;
+            width: 50%;
+        }
+    }
+    .ImgTabla{
+        width: 100%;
+        height: 80%;
+        overflow:hidden;
+        position:relative
+    }
+    .ImgTabla img{
+        height: 100%;
+        width: 100%;
+        display: flex;
+        object-fit:cover;
+        display:flex;
+    }
+    thead{
+        font-size: 130%;
     }
     </style>
 </body>
