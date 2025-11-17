@@ -13,25 +13,17 @@
     <div class="Muestra">
         @foreach(var repo in Model)
         {
-            <div class="Casilla">
+            <div class="CasillaP">
                 <a  asp-action="Detalle" asp-route-id="@repo.IdPelicula">
-                        <div class="CuadroPeli" id="@("p"+repo.IdPelicula)"></div>
-                        </a>
-                        <style>
-                        #@("p"+repo.IdPelicula){
-                            background-image: image-set("@repo.IMG");
-                            background-size: 100% 100%;
-                        }
-                        #@("p"+repo.IdPelicula):hover{
-                            background-size: 120% 120%;
-                            background-position: 40% 40%;
-                        }
-                        
-                        </style>
-                <a  asp-action="Detalle" asp-route-id="@repo.IdPelicula">
-                            @repo.Nombre
-                        </a>
-                <a asp-action="Modificar" asp-route-Id="@repo.IdPelicula">Modificar</a>
+                    <div class="Pimg"><img src="@repo.IMG" alt=""></div> 
+                </a>
+                <div class="CasillaContenido">
+                    <a  asp-action="Detalle" asp-route-id="@repo.IdPelicula"><label>@repo.Nombre</label></a>
+                    <div>
+                        <a asp-action="Modificar" asp-route-Id="@repo.IdPelicula">Modificar</a>
+                    </div>
+                    <div class="Brillo"> <div class="Bespacio"></div> <div class="BrilloA"></div></div>
+                </div>
             </div>
         }
     </div>
@@ -58,3 +50,8 @@
     </script>
     
 </body>
+<style>
+    body{
+        background-color: rgb(91, 27, 240);
+    }
+</style>

@@ -20,14 +20,22 @@
             <div class="CasillaG">
                 <a asp-action="Detalle" asp-route-Id="@dir.idDirector">
                     <div class="Mimg"><img src="@dir.IMG" alt=""></div>
-                    <p>@dir.Nombre @dir.Apellido</p>
+                    <label>@dir.Nombre @dir.Apellido</label>
+                    <div class="Brillo"> <div class="BrilloA"></div> </div>
                 </a>
-                <a asp-action="Modificar" asp-route-Id="@dir.idDirector">Modificar</a>
+                    <a asp-action="Modificar" asp-route-Id="@dir.idDirector">Modificar</a>
+                
             </div>
         }
     </div>
 </div>
 </body>
+
+<style>
+    body{
+        background-color: rgb(38, 42, 245);
+    }
+</style>
 </html>
 
 

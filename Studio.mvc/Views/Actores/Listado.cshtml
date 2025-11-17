@@ -25,7 +25,8 @@
                 <div class="CasillaG">
                     <a  asp-action="Detalle" asp-route-id="@actor.IdActor">
                         <div class="Mimg"><img src="@(actor.IMG)" class="ImgPerfil" alt="Imagen de @actor.Nombre"></div>
-                        @actor.Nombre @actor.Apellido
+                        <label>@actor.Nombre @actor.Apellido</label>
+                    <div class="Brillo"></div>
                     </a>
                     <a asp-action="Modificar" asp-route-id="@actor.IdActor">Modificar</a>
                 </div>
@@ -53,4 +54,10 @@
         })
     </script>
 </body>
+
+<style>
+    body{
+        background-color: rgb(78, 95, 248);
+    }
+</style>
 </html>

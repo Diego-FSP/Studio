@@ -29,22 +29,7 @@ img.ImgPerfil{
   }
 }
 
-.ItemActor{
-  display: flex;
-  flex-direction: column;
-  width: 300px;
-  margin-left: 25px;
-}
 
-.itemPersonaje{
-  display: flex;
-  flex-direction: column;
-  width: 250px;
-  margin-left: 25px;
-  img{
-    width: 90%;
-  }
-}
 
 .CuadroPeli:hover{
   animation: mover normal 0.3s;
@@ -81,11 +66,9 @@ img.ImgPerfil{
 }
 
 .CasillaG{
-  display: flex;
   flex-direction: column;
   width: 250px;
   height: 400px;
-  margin-left: 25px;
   overflow:hidden;
   position:relative;
 }
@@ -210,4 +193,90 @@ body{
 }
 .colorL{
 
+}
+
+.CasillaP{
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  height: 500px;
+  overflow:hidden;
+  position:relative;
+}
+
+.Pimg{
+  height: 400px;
+  overflow:hidden;
+  position:relative
+}
+
+.Pimg img{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    object-fit:cover;
+  }
+
+.Pimg:hover img{
+  height: 120%;
+  animation: hoverImg normal 0.3s;
+}
+
+
+.BAzul{
+  background-color: #3DACDB;
+  color: #0b457c;
+}
+
+.BCeleste, body{
+  background-color: #0098DB;
+  color: white;
+}
+
+.Bpurple{
+  background-color: #3D48DB;
+}
+
+.CasillaG, .CasillaP{
+  background-color: #3D48DB;
+  margin: 20px 10px;
+  border-radius: 10px;
+  display: flex;
+  text-align: center;
+    object-fit:cover;
+    display:flex;
+  label{
+    font-size: 120%
+  }
+  a{
+    color: #a2f3ec;
+  }
+}
+.Brillo{
+  background-color: rgb(122, 61, 219);
+  border-radius: 50%;
+  width: 400px;
+  height: 200px;
+  position:static;
+  margin-top: -180px;
+  margin-left: -20px;
+  object-fit:cover;
+}
+
+.BrilloA{
+  background-color: rgb(161, 61, 219);
+  border-radius: 50%;
+  width: 100px;
+  height: 50px;
+  position:static;
+  margin-left: 190px;
+}
+
+.CasillaContenido{
+    display:inline;
+    object-fit:cover;
+}
+
+.Bespacio{
+  height: 100px;
 }

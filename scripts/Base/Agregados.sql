@@ -103,13 +103,12 @@ begin
 		Nombre = unnombre,
         IMG = unIMG
 	where id_personaje = unidpersonaje;
-    
-    
+-- -------------------------------------------------------------------------------------------    
 	update 	personaje_voz
 	set id_actor = unidActor
 	where id_personaje = unidpersonaje;
+    
 end&&
-
 
 -- 3.-Asignar personajes con actores
 drop procedure if exists asignarAP&&
