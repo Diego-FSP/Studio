@@ -74,7 +74,8 @@ public class PeliculasController : Controller
                 Calificacion = vmPelicula.Calificacion,
                 Presupuesto = vmPelicula.Presupuesto,
                 IMG = vmPelicula.IMG,
-                director = vmPelicula.director
+                director = vmPelicula.director,
+                Trailer = vmPelicula.Trailer
             };
             pelicula.director.idDirector = vmPelicula.idDirector;
             await repoPelicula.AltaAsync(pelicula);
@@ -91,7 +92,8 @@ public class PeliculasController : Controller
                 Calificacion = vmPelicula.Calificacion,
                 Presupuesto = vmPelicula.Presupuesto,
                 IMG = vmPelicula.IMG,
-                director = vmPelicula.director
+                director = vmPelicula.director,
+                Trailer = vmPelicula.Trailer
             };
             pelicula.director.idDirector = vmPelicula.idDirector;
             await repoPelicula.ModificarAsync(pelicula);

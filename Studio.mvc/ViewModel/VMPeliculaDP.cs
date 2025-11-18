@@ -23,7 +23,7 @@ public class VMPeliculaDP
     public int Presupuesto { get; set; }
 
     public string IMG { get; set; }
-
+    public string Trailer { get; set; }
     public int idStudio { get; set; }
 
     public Director director { get; set; }
@@ -60,6 +60,7 @@ public class VMPeliculaDP
         idStudio = 1;
         director = pelicula.director;
         Personajes = pelicula.Personajes;
+        Trailer = pelicula.Trailer;
     }
 
     public async Task traerDirectores(IRepoDirector repoDirector)
@@ -70,25 +71,4 @@ public class VMPeliculaDP
                                     dataValueField: nameof(Director.idDirector));
     }
 
-    public async Task<Personaje> crearPersonaje(int id)
-    {
-        ActorVoz actores = new ActorVoz()
-        {
-            Nombre = "Nombre",
-            Apellido = "Apellido",
-            IMG = "Ninguno",
-        };
-        Personaje personaje = new Personaje()
-        {
-            Nombre = "Nombre",
-            Actor = actores,
-            IMG = "Ninguno"
-        };
-        return personaje;
-    }
-
-    public void agregarPersonaje(Personaje personaje)
-    {
-        Personajes.Append(personaje);
-    }
 }

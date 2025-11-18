@@ -6,9 +6,9 @@
 
 >Docente: Luis Duran
 
->Año y División: 5º 8º
+>Año y División: 6º 8º
 
->Integrantes: Diego Silupu👦🏾, Keila Mateo👧🏻, Josehp Tapahuasco 🧑🏾
+>Integrantes: Diego Silupu👦🏾, Josehp Tapahuasco 🧑🏾
 
 
 #  Base de datos para un Studio de Peliculas Ghibli
