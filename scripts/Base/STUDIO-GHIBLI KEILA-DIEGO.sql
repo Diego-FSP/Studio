@@ -9,14 +9,14 @@ create table Director(
  Fecha_nacimiento date,
  nacionalidad varchar(20),
  descripcion varchar(400),
- IMG varchar(400),
+ IMG varchar(9000),
  constraint pk_Director primary key(id_director)
  );
 create table Actor_voz(
  nombre varchar(20),
  Apellido  varchar(20), 
  id_actor int AUTO_INCREMENT,
- IMG varchar(400),
+ IMG varchar(9000),
  constraint pk_Actor_voz primary key(id_actor)
 );
 
@@ -39,7 +39,7 @@ genero  varchar(20),
 presupuesto double, 
 calificacion varchar(20),
 Trailer varchar(100),
-IMG varchar(400),  
+IMG varchar(9000),  
 constraint PK_puliculas primary key(id_pelicula, genero),
 constraint fk_peliculas_Estudio foreign key(id_estudio)
 references  Estudio (id_estudio),

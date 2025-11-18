@@ -12,7 +12,7 @@ end &&
 
 
 drop PROCEDURE if EXISTS directorAG&&
-CREATE PROCEDURE directorAG(out unidDirector int, unnombre VARCHAR(20),unapellido VARCHAR(20), unanacionalidad VARCHAR(20), unaFecha DATETIME, unadescripcion VARCHAR(400),unIMG varchar(400))
+CREATE PROCEDURE directorAG(out unidDirector int, unnombre VARCHAR(20),unapellido VARCHAR(20), unanacionalidad VARCHAR(20), unaFecha DATETIME, unadescripcion VARCHAR(400),unIMG varchar(9000))
 Begin
 	INSERT into Director (id_Director, nombre, Apellido, nacionalidad, Fecha_nacimiento, descripcion, IMG)
 	VALUES (unidDirector , unnombre , unapellido , unanacionalidad , unaFecha, unadescripcion, unIMG);
@@ -21,7 +21,7 @@ Begin
 end&&
 
 drop PROCEDURE if EXISTS directorUP&&
-CREATE PROCEDURE directorUP(unidDirector int, unnombre VARCHAR(20),unapellido VARCHAR(20), unanacionalidad VARCHAR(20), unaFecha DATETIME, unadescripcion VARCHAR(400),unIMG varchar(400))
+CREATE PROCEDURE directorUP(unidDirector int, unnombre VARCHAR(20),unapellido VARCHAR(20), unanacionalidad VARCHAR(20), unaFecha DATETIME, unadescripcion VARCHAR(400),unIMG varchar(9000))
 Begin
 	update director
 	set	nombre= unnombre,
@@ -36,7 +36,7 @@ end&&
 
 -- 2.- agregarO pelicula
 drop procedure if exists agregarP&&
-CREATE PROCEDURE agregarP	(out unidpelicula int, unidestudio int, unidirector int, unnombre varchar(100), unfechaestreno date, unDuracion varchar(20), ungenero varchar(20), unpresupuesto double, uncalificacion varchar(20), unTrailer varchar(100),  unIMG varchar(400))
+CREATE PROCEDURE agregarP	(out unidpelicula int, unidestudio int, unidirector int, unnombre varchar(100), unfechaestreno date, unDuracion varchar(20), ungenero varchar(20), unpresupuesto double, uncalificacion varchar(20), unTrailer varchar(100),  unIMG varchar(9000))
 BEGIN
 	INSERT INTO peliculas	(id_pelicula, id_estudio, id_director, nombre, fecha_estreno, Duracion, genero, presupuesto, calificacion, Trailer, IMG)
 					VALUES (unidpelicula, unidestudio, unidirector, unnombre, unfechaestreno, unDuracion, ungenero, unpresupuesto, uncalificacion, unTrailer, unIMG);
@@ -44,7 +44,7 @@ BEGIN
 END&&
 
 drop procedure if exists agregarPL&&
-CREATE PROCEDURE agregarPL	(unidpelicula int, unidestudio int, unidirector int, unnombre varchar(100), unfechaestreno date, unDuracion varchar(20), ungenero varchar(20), unpresupuesto double, uncalificacion varchar(20), unTrailer varchar(100), unIMG varchar(400))
+CREATE PROCEDURE agregarPL	(unidpelicula int, unidestudio int, unidirector int, unnombre varchar(100), unfechaestreno date, unDuracion varchar(20), ungenero varchar(20), unpresupuesto double, uncalificacion varchar(20), unTrailer varchar(100), unIMG varchar(9000))
 BEGIN
 	INSERT INTO peliculas	(id_pelicula, id_estudio, id_director, nombre, fecha_estreno, Duracion, genero, presupuesto, calificacion, Trailer, IMG)
 					VALUES (unidpelicula, unidestudio, unidirector, unnombre, unfechaestreno, unDuracion, ungenero, unpresupuesto, uncalificacion, unTrailer, unIMG);
@@ -52,7 +52,7 @@ BEGIN
 END&&
 
 drop procedure if exists actualizarPL&&
-CREATE PROCEDURE actualizarPL	(unidpelicula int, unidestudio int, unidirector int, unnombre varchar(100), unfechaestreno date, unDuracion varchar(20), ungenero varchar(20), unpresupuesto double, uncalificacion varchar(20), unTrailer varchar(100), unIMG varchar(400))
+CREATE PROCEDURE actualizarPL	(unidpelicula int, unidestudio int, unidirector int, unnombre varchar(100), unfechaestreno date, unDuracion varchar(20), ungenero varchar(20), unpresupuesto double, uncalificacion varchar(20), unTrailer varchar(100), unIMG varchar(9000))
 BEGIN
 	update peliculas	
 	set id_estudio=unidestudio, 
@@ -88,7 +88,7 @@ END&&
 
 
 drop procedure if exists agregarPer&&
-CREATE procedure agregarPer(out unidpersonaje int, unidpelicula int, unnombre varchar(40), unIMG varchar(400))
+CREATE procedure agregarPer(out unidpersonaje int, unidpelicula int, unnombre varchar(40), unIMG varchar(9000))
 begin
 	insert INTO Personajes (id_personaje, id_pelicula, nombre, IMG)
 					values (unidpersonaje, unidpelicula, unnombre, unIMG);
@@ -96,7 +96,7 @@ begin
 end&&
 
 drop procedure if exists actualizarPer&&
-CREATE procedure actualizarPer(unidpersonaje int, unidpelicula int, unnombre varchar(100), unIMG varchar(400), unidActor int)
+CREATE procedure actualizarPer(unidpersonaje int, unidpelicula int, unnombre varchar(100), unIMG varchar(9000), unidActor int)
 begin
 	update 	personajes
 	set id_pelicula = unidpelicula,
