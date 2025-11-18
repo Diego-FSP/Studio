@@ -3,8 +3,6 @@
 @model VMPersonaje
 @{
     ViewData["Title"] = "Peliculas Page";
-
-    int contador=0;
 }
 
 <div>
@@ -37,11 +35,9 @@
                 @foreach(var peli in Model.ListadoPeliculas)
                 {
                     <div class="ImgPosterP" data-valor="@peli.IdPelicula">
-                        <img src="@peli.IMG" alt=""  id="@("Pimg"+contador)" >
+                        <img src="@peli.IMG" alt="" >
                     </div>
-                    contador++;
                 }
-                @{contador=0;}
 
                 <script>
                     let posters= document.getElementsByClassName("ImgPosterP");
@@ -52,20 +48,17 @@
                     function mostrarPelicula()
                     {
                         valor= this.value;
-                        console.log(valor)
-
+                        console.log(valor);
                         for(p=0; p< posters.length; p++)
                         {
                             if(parseInt(posters[p].dataset.valor) == (valor))
                             {
                                 posters[p].style.display = 'flex';
-                                console.log(posters[p].dataset.valor)
                             }
                             else
                             {
                                 posters[p].style.display = 'none';
                             }
-                            
                         }
                     }
                 </script>
@@ -80,13 +73,11 @@
                 {
                     <div class="ImgActorP" data-valor="@actor.IdActor">
                         <div>
-                            <img src="@actor.IMG" alt=""  id="@("Pimg"+contador)" >
+                            <img src="@actor.IMG" alt="" >
                             <p>@actor.Nombre @actor.Apellido</p>
                         </div>
                     </div>
-                    contador++;
                 }
-                @{contador=0;}
 
                 <script>
                     let actores= document.getElementsByClassName("ImgActorP");

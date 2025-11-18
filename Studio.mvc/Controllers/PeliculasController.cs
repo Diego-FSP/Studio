@@ -15,12 +15,15 @@ public class PeliculasController : Controller
         repoDirector = repoD;
     }
 
+//____________________________Listado________________________________
     public async Task<IActionResult> Listado()
     {
         var peliculas = await repoPelicula.ListarAsync();
         return View(peliculas);
     }
 
+
+//____________________________Detalle________________________________
     public async Task<IActionResult> Detalle(int? id)
     {
         if (id is null || id == 0)
@@ -34,6 +37,9 @@ public class PeliculasController : Controller
         return View(pelicula);
     }
 
+
+//____________________________Alta________________________________
+
     [HttpGet]
     public async Task<IActionResult> Alta()
     {
@@ -42,6 +48,9 @@ public class PeliculasController : Controller
         await vmPelicula.traerDirectores(repoDirector);
         return View("Upsert", vmPelicula);
     }
+
+
+//____________________________Modificar________________________________
 
     [HttpGet]
     public async Task<IActionResult> Modificar(int? id)
