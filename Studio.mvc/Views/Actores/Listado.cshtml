@@ -44,11 +44,11 @@
                 texto=listado[f].textContent
                 if(texto.includes(Buscador.value) || (texto.toLowerCase()).includes(Buscador.value))
                 {
-                    listado[f].style.display = 'flex';
+                    listado[f].dataset.valor="Abierto";
                 }
                 else
                 {
-                    listado[f].style.display = 'none';
+                    listado[f].dataset.valor="Cerrado";;
                 }
             }
         })

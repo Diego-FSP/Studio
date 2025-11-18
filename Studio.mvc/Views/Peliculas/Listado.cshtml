@@ -13,7 +13,7 @@
     <div class="Muestra">
         @foreach(var repo in Model)
         {
-            <div class="CasillaP">
+            <div class="CasillaP"  data-valor="Abierto">
                 <a  asp-action="Detalle" asp-route-id="@repo.IdPelicula">
                     <div class="Pimg"><img src="@repo.IMG" alt=""></div> 
                 </a>
@@ -33,17 +33,17 @@
         
         Buscador.addEventListener("keyup", function filtro()
         {
-            listado = document.getElementsByClassName("Casilla")
+            listado = document.getElementsByClassName("CasillaP")
             for(f=0;f<listado.length;f++)
             {
                 texto=listado[f].textContent
                 if(texto.includes(Buscador.value) || (texto.toLowerCase()).includes(Buscador.value))
                 {
-                    listado[f].style.display = 'flex';
+                    listado[f].dataset.valor="Abierto";
                 }
                 else
                 {
-                    listado[f].style.display = 'none';
+                    listado[f].dataset.valor="Cerrado";;
                 }
             }
         })
