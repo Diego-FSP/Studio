@@ -313,3 +313,7 @@ body{
   overflow-wrap: break-word;
   word-wrap: break-word;
 }
+
+#personajeH{
+  width: 200px;
+}
